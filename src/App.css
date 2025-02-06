@@ -16,8 +16,14 @@
   background-color: #bd61fb8d;
 }
 
-.App-bg-color {
-  background-color: #61fb94c0;
+.App-bg {
+  width: 80vw;
+  /* too large */
+    /* width: 90vw;  */
+  /* too small */
+    /* width: 70vw;  */
+  /* height: 70vh; */
+  background-color: #61fb94c0
 }
 
 .Threejs-bg-color {
@@ -25,11 +31,10 @@
 }
 
 
-.component-window-size-1{
-  /* width: 90vw; */
-  width: 10vw;
+/* .component-window-size-1{
+   width: 80vw;
   height: 9vh;
-}
+} */
 
 .logo {
   height: 6em;

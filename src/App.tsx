@@ -18,9 +18,11 @@ function DefaultApp(){
   // };
 
   return (
-    <div className='App-bg-color'>
+              // <div className='App-bg-color component-window-size-1'>
+    <div className='App-bg'>
       {/* <div>  */}
       {/* <div style={myStyles}> */}
+      {/* <div className='App-icon-bg-color component-window-size-1'> */}
       <div className='App-icon-bg-color'>
       {/* <div>  */}
         <a href="https://vite.dev" target="_blank">
@@ -49,8 +51,10 @@ function DefaultApp(){
 function App(){
   return(
     <>
+    <div className='App-bg'> 
       <DefaultApp/>
       <BoxDemo2/>
+    </div>
     </>
   )
 }

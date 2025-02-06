@@ -7,6 +7,7 @@ import viteLogo from '/vite.svg'
 
 // import Box from './Box'
 import BoxDemo2 from './BoxDemo2'
+import ToggleBobble from './ToggleBobble'
 
 import './App.css'
 // import { color } from 'three/tsl'
@@ -70,17 +71,45 @@ function View2(){
   )
 }
 
-function App(){
+function View3(){
+  return(
+    <>
+      <ToggleBobble/>
+    </>
+  )
+}
 
-  // const displayView1 = true;
-  const displayView1 = false;
-  // [1]
- 
+function ViewPicker(props:{choice: number}){
   return(
     <>
     <div>
-      {displayView1 && <View1/>}
-      {!displayView1 && <View2/>}
+      {(() => {
+        switch (props.choice) {
+          case 1:
+            return <p><View1/></p>;
+          case 2:
+            return <p><View2/></p>;
+          case 3:
+            return <p><View3/></p>;
+          default:
+            return <p><View2/></p>;
+        }
+      })()}
+    </div>
+    </>
+  )
+}
+
+function App(){
+
+  // const displayView1 = true;
+  // const displayView1 = false;
+  return(
+    <>
+    <div>
+      {/* <ViewPicker choice={1}/> */}
+      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={3}/>
     </div>
     </>
   )

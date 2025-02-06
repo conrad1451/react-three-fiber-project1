@@ -5,9 +5,9 @@ import { animated, SpringValue, useSpring } from "@react-spring/web"
 import { a } from "@react-spring/three"
 
 function Switch({ x, set }: { set: React.Dispatch<React.SetStateAction<number>>; x: SpringValue<number> }) {
-  // const { nodes, materials } = useGLTF("/switch.glb")
+  const { nodes, materials } = useGLTF("/switch.glb")
   // const texture = useTexture("/cross.jpg")
-  const texture = useTexture("/moon.jpg")
+  const texture = useTexture("./imgs/moon.jpg")
 
   // Hover state
   const [hovered, setHover] = useState(false)
@@ -49,7 +49,7 @@ function Switch({ x, set }: { set: React.Dispatch<React.SetStateAction<number>>;
 // </>)
 // }
 
-export default function App() {
+export default function ToggleBobble() {
   const [toggle, set] = useState(0)
   // Set up a shared spring which simply animates the toggle above
   // We use this spring to interpolate all the colors, position and rotations

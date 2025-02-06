@@ -72,7 +72,7 @@ function Box(props: ThreeElements['mesh']) {
 
 
 // 
-export default function BoxDemo2() {
+export default function BoxDemo2(props: {windowMinimized:boolean}) {
 
   // [2] - for orthographic shadows
   // [3] - for the size attribute of Canvas
@@ -96,7 +96,7 @@ export default function BoxDemo2() {
 
     <div className='Threejs-bg-color'>
       
-    <Canvas style={{width: innerWidth, height: `200px`}}>
+    <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}>
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />

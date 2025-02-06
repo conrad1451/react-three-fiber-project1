@@ -1,3 +1,6 @@
+// Source:
+// [1]: https://www.freecodecamp.org/news/react-conditional-rendering/
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -48,12 +51,36 @@ function DefaultApp(){
   )
 }
 
-function App(){
+function View1(){
   return(
     <>
     <div className='App-bg'> 
       <DefaultApp/>
-      <BoxDemo2/>
+      <BoxDemo2 windowMinimized={true}/>
+    </div>
+    </>
+  )
+}
+
+function View2(){
+  return(
+    <>
+      <BoxDemo2 windowMinimized={false}/>
+    </>
+  )
+}
+
+function App(){
+
+  // const displayView1 = true;
+  const displayView1 = false;
+  // [1]
+ 
+  return(
+    <>
+    <div>
+      {displayView1 && <View1/>}
+      {!displayView1 && <View2/>}
     </div>
     </>
   )

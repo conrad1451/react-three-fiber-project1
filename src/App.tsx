@@ -1,5 +1,7 @@
 // Source:
 // [1]: https://www.freecodecamp.org/news/react-conditional-rendering/
+// [2]: https://www.google.com/search?q=switch+statement+reactjs&client=firefox-b-1-d&sca_esv=fd368f2ad05e4b13&ei=_gGlZ5GYB6LS5NoPpdTX4Ak&ved=0ahUKEwiRj5-N2a-LAxUiKVkFHSXqFZwQ4dUDCBI&uact=5&oq=switch+statement+reactjs&gs_lp=Egxnd3Mtd2l6LXNlcnAiGHN3aXRjaCBzdGF0ZW1lbnQgcmVhY3RqczIGEAAYBxgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMggQABiABBiiBDIFEAAY7wVI4hRQmgFYkxNwBHgBkAEAmAGUAaABrAqqAQM3Lja4AQPIAQD4AQGYAg6gArIIwgIKEAAYsAMY1gQYR8ICCBAAGAUYDRgewgIIEAAYCBgNGB7CAgcQABiABBgNwgIIECEYoAEYwwSYAwCIBgGQBgiSBwM5LjWgB8BE&sclient=gws-wiz-serp (from GeminiAI response to search "switch statement reactjs")
+
 
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'

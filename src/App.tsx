@@ -11,6 +11,7 @@ import viteLogo from '/vite.svg'
 // import BoxDemo2 from './BoxDemo2'
 import ToggleBobble from './ToggleBobble'
 import FullscreenComponent from './FullscreenTest'
+import MyScene from './TextureTest1'
 
 import './App.css'
 // import { color } from 'three/tsl'
@@ -91,6 +92,15 @@ function View4(){
     </>
   )
 }
+function View5(){
+  return(
+    <>
+    <div className='App-bg'>
+      <MyScene/>
+    </div>
+    </>
+  )
+}
 function ViewPicker(props:{choice: number}){
   return(
     <>
@@ -105,6 +115,8 @@ function ViewPicker(props:{choice: number}){
             return <p><View3/></p>;
           case 4:
             return <p><View4/></p>;
+          case 5:
+            return <p><View5/></p>;
           default:
             return <p><View2/></p>;
         }
@@ -124,7 +136,8 @@ function App(){
       {/* <ViewPicker choice={1}/> */}
       {/* <ViewPicker choice={2}/> */}
       {/* <ViewPicker choice={3}/> */}
-      <ViewPicker choice={4}/>
+      {/* <ViewPicker choice={4}/> */}
+      <ViewPicker choice={5}/>
     </div>
     </>
   )

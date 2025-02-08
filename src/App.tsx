@@ -8,8 +8,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 // import Box from './Box'
-import BoxDemo2 from './BoxDemo2'
+// import BoxDemo2 from './BoxDemo2'
 import ToggleBobble from './ToggleBobble'
+import FullscreenComponent from './FullscreenTest'
 
 import './App.css'
 // import { color } from 'three/tsl'
@@ -59,7 +60,7 @@ function View1(){
     <>
     <div className='App-bg'> 
       <DefaultApp/>
-      <BoxDemo2 windowMinimized={true}/>
+      {/* <BoxDemo2 windowMinimized={true}/> */}
     </div>
     </>
   )
@@ -68,7 +69,8 @@ function View1(){
 function View2(){
   return(
     <>
-      <BoxDemo2 windowMinimized={false}/>
+    <p>Hi</p>
+      {/* <BoxDemo2 windowMinimized={false}/> */}
     </>
   )
 }
@@ -80,7 +82,15 @@ function View3(){
     </>
   )
 }
-
+function View4(){
+  return(
+    <>
+    <div className='App-bg'>
+      <FullscreenComponent/>
+    </div>
+    </>
+  )
+}
 function ViewPicker(props:{choice: number}){
   return(
     <>
@@ -93,6 +103,8 @@ function ViewPicker(props:{choice: number}){
             return <p><View2/></p>;
           case 3:
             return <p><View3/></p>;
+          case 4:
+            return <p><View4/></p>;
           default:
             return <p><View2/></p>;
         }
@@ -110,8 +122,9 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      <ViewPicker choice={2}/>
-      {/* <ViewPicker choice={3}/> */}
+      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={3}/>
+      {/* <ViewPicker choice={4}/> */}
     </div>
     </>
   )

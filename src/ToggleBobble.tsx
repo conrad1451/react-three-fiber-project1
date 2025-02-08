@@ -10,7 +10,8 @@ import { a } from "@react-spring/three"
 function Switch({ x, set }: { set: React.Dispatch<React.SetStateAction<number>>; x: SpringValue<number> }) {
 //   const { nodes, materials } = useGLTF("/switch.glb")
   // const texture = useTexture("/cross.jpg")
-  const texture = useTexture("./imgs/moon.jpg")
+//   const texture = useTexture("./imgs/moon.jpg")
+  const texture = useTexture("/imgs/moon.jpg")
 
   // Hover state
   const [hovered, setHover] = useState(false)

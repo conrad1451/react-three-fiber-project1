@@ -96,6 +96,9 @@ export default function BoxDemo2(props: {windowMinimized:boolean}) {
 
     <div className='Threejs-bg-color'>
       
+      {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
+      one access the full screen button unless it is an overlay? Exaclty. */}
+    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
     <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}>
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />

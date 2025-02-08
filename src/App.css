@@ -1,12 +1,25 @@
-#root {
+/* source:  https://forum.freecodecamp.org/t/my-wrapper-div-in-react-doesnt-fill-window/388844/3*/
+html, body, #root,
+.wrapper {
+	height:100%;
+}
+
+.wrapper{
+	padding-top:100px;
+	min-height:100%;
+	background:lightblue; 
+	
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   --bg-color1: lightblue;
-  /* background-color: #bd61fb8d; */
+  background-color: #bd61fb8d;
 
-}
+} */
 
 .App-main-screen {
   background-color: #13fe32d8;
@@ -16,18 +29,34 @@
   background-color: #bd61fb8d;
 }
 
+/* when I apply this to a wrapper div that encapsulates the FullscreenComponent, the 
+FullscreenComponent no longer takes up the full screen. I had achieved full screen
+filling with  the html body root wrapper. The solution is simply to remove
+the width specifications from App-bg class*/
 .App-bg {
+  /* width: 80vw; */
+  /* too large */
+    /* width: 90vw;  */
+  /* too small */
+    /* width: 70vw;  */
+  /* height: 70vh; */
+  background-color: #61fb94c0
+}
+
+.App-view2-bg {
   width: 80vw;
   /* too large */
     /* width: 90vw;  */
   /* too small */
     /* width: 70vw;  */
-  height: 70vh;
+  height: 100vh;
   background-color: #61fb94c0
 }
 
 .Threejs-bg-color {
   background-color: #2289e3c0;
+  height: 100vh;
+  background-size: cover;
 }
 
 

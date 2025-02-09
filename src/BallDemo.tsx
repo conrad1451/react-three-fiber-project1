@@ -9,8 +9,6 @@
 
 import * as THREE from 'three'
 
-import { Ball } from './BallDemo'
-
 // [1]
 import { useRef, useState } from 'react'
 // import { useRef, useState, useEffect } from 'react'
@@ -18,9 +16,16 @@ import { useRef, useState } from 'react'
 // import { Canvas, useFrame } from '@react-three/fiber'
  // CHQ - below is the line I wrote to test purpose of useFrame in code
 // import { Canvas, ThreeElements } from '@react-three/fiber'
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
-// import { Canvas, useThree, useFrame, ThreeElements } from '@react-three/fiber'
 
+
+// import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
+// import { Canvas, useThree, useFrame, ThreeElements } from '@react-three/fiber'
+import { useFrame, ThreeElements } from '@react-three/fiber'
+
+
+// import { Suspense } from 'react'
+import { Canvas, useLoader } from '@react-three/fiber'
+import { TextureLoader } from 'three'
 
 
 // import { OrbitControls, OrthographicCamera } from '@react-three/drei'
@@ -28,29 +33,74 @@ import { OrbitControls } from '@react-three/drei'
 
 // import { cameraPosition } from 'three/tsl'
 
-function Box(props: ThreeElements['mesh']) {
+
+// function Scene() {
+// //   const colorMap = useLoader(TextureLoader, 'PavingStones092_1K_Color.jpg')
+// const colorMap = useLoader(TextureLoader, 'cross.jpg')
+// // const colorMap = useLoader(TextureLoader, 'moon.jpg')
+
+//   return (
+//     <>
+//       <ambientLight intensity={0.2} />
+//       <directionalLight />
+//       <mesh>
+//         <sphereGeometry args={[1, 32, 32]} />
+//         {/* CHQ: below also worked */}
+//         {/* <coneGeometry args={[1, 32, 32]} /> */}
+//         <meshStandardMaterial
+//           displacementScale={0.2}
+//           map={colorMap}
+//           displacementMap={colorMap}
+//         //   normalMap={colorMap}
+//         //   roughnessMap={colorMap}
+//         //   aoMap={colorMap}
+//         />
+//       </mesh>
+//     </>
+//   )
+// }
+
+export function Ball(props: ThreeElements['mesh']) {
+
+// function Ball(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
 
-  // CHQ: automatically rotate cubes along x axis
+  const colorMap = useLoader(TextureLoader, 'cross.jpg')
+
+  // CHQ: automatically rotate ball along y axis
   useFrame((state, delta) => {
-    ref.current.rotation.x += delta;
+    ref.current.rotation.y += delta;
+    ref.current.position.y += (clicked ? Math.cos(delta)/100 : 0);
+    // ref.current.position.y = (clicked ? Math.cos(delta)/100 : 0);
+
+    // makes it go up forvere
+    // ref.current.position.y = (clicked ? Math.cos(delta) : 0);
+
+    // gotta figure out how to do this
+    // ref.current.position.y = (clicked ? mouseX : 0);
     // OrthographicCamera()
   })
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
+    //   scale={clicked ? 1.5 : 1}
       onClick={(event) => click(!clicked)}
     // onClick={click(!clicked)}
       onPointerOver={(event) => hover(true)}
     // onPointerOver={hover(true)}
       onPointerOut={(event) => hover(false)}>
     {/* onPointerOut={hover(false)}> */}
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'limegreen' : 'orange'} />
+      {/* <boxGeometry args={[1, 1, 1]} /> */}
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial 
+        color={hovered ? 'limegreen' : 'white'} 
+        displacementScale={0.2}
+        map={colorMap}
+        displacementMap={colorMap}
+        />
     </mesh>
   )
 }
@@ -74,7 +124,9 @@ function Box(props: ThreeElements['mesh']) {
 
 
 // 
-export default function BoxDemo2(props: {windowMinimized:boolean}) {
+export function BallDemo(props: {windowMinimized:boolean}) {
+
+// export default function BallDemo(props: {windowMinimized:boolean}) {
 
   // [2] - for orthographic shadows
   // [3] - for the size attribute of Canvas
@@ -105,26 +157,10 @@ export default function BoxDemo2(props: {windowMinimized:boolean}) {
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
-      <Ball position={[3.6, 0, 0]} />
+      <Ball position={[-3.6, 0, 0]} />
+      {/* <Box position={[1.2, 0, 0]} /> */}
       <OrbitControls />
-
-      {/*[2]  */}
-      {/* Got this warning when implenneting below code:
-      WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
-       */}
-      {/* <OrthographicCamera
-        makeDefault
-        zoom={1}
-        top={200}
-        bottom={-200}
-        left={200}
-        right={-200}
-        near={1}
-        far={2000}
-        position={[0, 0, 200]}
-      /> */}
+ 
     </Canvas>
     </div>
   )

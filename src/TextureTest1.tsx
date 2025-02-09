@@ -30,7 +30,9 @@ function SceneMulti() {
   
 function Scene() {
 //   const colorMap = useLoader(TextureLoader, 'PavingStones092_1K_Color.jpg')
-const colorMap = useLoader(TextureLoader, 'moon.jpg')
+const colorMap = useLoader(TextureLoader, 'cross.jpg')
+// const colorMap = useLoader(TextureLoader, 'moon.jpg')
+
   return (
     <>
       <ambientLight intensity={0.2} />
@@ -39,7 +41,14 @@ const colorMap = useLoader(TextureLoader, 'moon.jpg')
         <sphereGeometry args={[1, 32, 32]} />
         {/* CHQ: below also worked */}
         {/* <coneGeometry args={[1, 32, 32]} /> */}
-        <meshStandardMaterial />
+        <meshStandardMaterial
+          displacementScale={0.2}
+          map={colorMap}
+          displacementMap={colorMap}
+        //   normalMap={colorMap}
+        //   roughnessMap={colorMap}
+        //   aoMap={colorMap}
+        />
       </mesh>
     </>
   )

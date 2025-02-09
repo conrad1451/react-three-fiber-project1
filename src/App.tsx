@@ -136,8 +136,8 @@ function App(){
       {/* <ViewPicker choice={1}/> */}
       {/* <ViewPicker choice={2}/> */}
       {/* <ViewPicker choice={3}/> */}
-      {/* <ViewPicker choice={4}/> */}
-      <ViewPicker choice={5}/>
+      <ViewPicker choice={4}/>
+      {/* <ViewPicker choice={5}/> */}
     </div>
     </>
   )

@@ -19,6 +19,8 @@ import './App.css'
 function DefaultApp(){
   const [count, setCount] = useState(0)
 
+  //  This worked but I got a warning not to do it this way
+
   // const myStyles = {
   //   // textAlign: 'center',
   //   // marginTop: '2rem',
@@ -27,12 +29,12 @@ function DefaultApp(){
 
   return (
               // <div className='App-bg-color component-window-size-1'>
-    <div className='App-bg'>
-      {/* <div>  */}
+    // <div className='App-bg'>
+      <div> 
       {/* <div style={myStyles}> */}
       {/* <div className='App-icon-bg-color component-window-size-1'> */}
-      <div className='App-icon-bg-color'>
-      {/* <div>  */}
+      {/* <div className='App-icon-bg-color'> */}
+      <div> 
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -127,6 +129,9 @@ function ViewPicker(props:{choice: number}){
 }
 
 function App(){
+  // view 2 is text that just says hi
+  // view 3 of toggle bobble is broken
+  // view 5 is a still 3D image - not that useful
 
   // const displayView1 = true;
   // const displayView1 = false;

@@ -67,8 +67,8 @@ export function Ball(props: ThreeElements['mesh']) {
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
 
-//   const colorMap = useLoader(TextureLoader, 'moon.jpg')
-  const colorMap = useLoader(TextureLoader, 'cross.jpg')
+  const colorMap = useLoader(TextureLoader, 'moon.jpg')
+//   const colorMap = useLoader(TextureLoader, 'cross.jpg')
 
   // CHQ: automatically rotate ball along y axis
   useFrame((state, delta) => {

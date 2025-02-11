@@ -127,9 +127,9 @@ export function Ball(props: ThreeElements['mesh']) {
 
 
 // 
-export function BallDemo(props: {windowMinimized:boolean}) {
+export function MyBall(props: {windowMinimized:boolean}) {
 
-// export default function BallDemo(props: {windowMinimized:boolean}) {
+// export default function MyBall(props: {windowMinimized:boolean}) {
 
   // [2] - for orthographic shadows
   // [3] - for the size attribute of Canvas

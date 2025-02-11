@@ -3,7 +3,7 @@
  
 import * as THREE from 'three'
 
-import { Ball } from './BallDemo'
+import { Ball } from './MyBall'
 
 // [1]
 import { useRef, useState } from 'react'

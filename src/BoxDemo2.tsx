@@ -1,12 +1,6 @@
 // Source: 
 // [1]: https://codesandbox.io/p/sandbox/gifted-varahamihira-rrppl0y8l4?file=%2Fsrc%2FApp.js%3A1%2C1-40%2C1
-
-// [2]: https://onion2k.github.io/r3f-by-example/examples/cameras/orthographic-camera/
-
-// [3]: https://github.com/pmndrs/react-three-fiber/discussions/630
-
-// [4]: https://www.google.com/search?client=firefox-b-1-d&q=set+cavnas+size+in+react+three+fiber (from GeminiAI response to search "set canvas size in react three fiber")
-
+ 
 import * as THREE from 'three'
 
 import { Ball } from './BallDemo'
@@ -54,49 +48,10 @@ function Box(props: ThreeElements['mesh']) {
     </mesh>
   )
 }
-
-// function SetCanvasSize(){
-//   const { size, setSize } = useThree();
-//   useEffect(() => {
-//     // Set the canvas size dynamically
-//     const handleResize = () => {
-//       // Expected 2-5 arguments, but got 1.ts(2554)
-//       // setSize({ width: window.innerWidth, height: window.innerHeight });
-//       setSize(window.innerWidth=800, window.innerHeight=600);
-//     };
-
-//     window.addEventListener('resize', handleResize);
-//     handleResize(); // Initial size setting
-
-//     return () => window.removeEventListener('resize', handleResize);
-//   }, []);
-// }
-
-
-// 
-export default function ShapeArena(props: {windowMinimized:boolean}) {
-
-  // [2] - for orthographic shadows
-  // [3] - for the size attribute of Canvas
-  return (
-    // <Canvas orthographic shadows dpr={[1, 2]} camera={{ zoom: 160, position: [-10, 10, 10], fov: 35 }}>
-    // <Canvas>
-    /** Got error
-     * Type '{ children: Element[]; size: { width: number; height: number; }; }' is not assignable to type 'IntrinsicAttributes & Props & RefAttributes<HTMLCanvasElement>'.
-  Property 'size' does not exist on type 'IntrinsicAttributes & Props & RefAttributes<HTMLCanvasElement>'.ts(2322)
-     */
-    // <Canvas size={{ width: 800, height: 600 }}>
-    // <Canvas>
-      // <SetCanvasSize/>
-      // CHQ: got error [4]
-      // Type 'boolean' is not assignable to type 'new (cb: ResizeObserverCallback) => ResizeObserver'.ts(2322)
-    // <Canvas resize={{ polyfill: true }}>
  
-    // given a line like this above failed, I am surprised that the following line worked
-    //     <Canvas style={{width: 55, height: 200}}>
-
-
-    <div className='Threejs-bg-color'>
+export default function ShapeArena(props: {windowMinimized:boolean}) {
+  return (
+       <div className='Threejs-bg-color'>
       
       {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
       one access the full screen button unless it is an overlay? Exaclty. */}

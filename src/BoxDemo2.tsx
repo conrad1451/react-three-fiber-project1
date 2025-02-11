@@ -74,7 +74,7 @@ function Box(props: ThreeElements['mesh']) {
 
 
 // 
-export default function BoxDemo2(props: {windowMinimized:boolean}) {
+export default function ShapeArena(props: {windowMinimized:boolean}) {
 
   // [2] - for orthographic shadows
   // [3] - for the size attribute of Canvas

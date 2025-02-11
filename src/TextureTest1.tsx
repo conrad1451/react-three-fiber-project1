@@ -1,5 +1,5 @@
 // Source: https://r3f.docs.pmnd.rs/tutorials/loading-textures
-
+// [2]: https://github.com/pmndrs/gltfjsx
 import { Suspense } from 'react'
 import { Canvas, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'

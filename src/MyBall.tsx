@@ -28,6 +28,13 @@ import { Canvas, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'
 
 
+interface ShapeCoords {
+  xPos: number;
+  yPos: number;
+  zPos: number;
+}
+
+
 // import { OrbitControls, OrthographicCamera } from '@react-three/drei'
 import { OrbitControls } from '@react-three/drei'
 
@@ -60,6 +67,8 @@ import { OrbitControls } from '@react-three/drei'
 //   )
 // }
 
+// export function Ball(props: ThreeElements['mesh']) {
+  // const RotatingBox = ({ color = 'red', size = [1, 1, 1], position = ThreeElements['mesh'], speed = 1 }) => {
 export function Ball(props: ThreeElements['mesh']) {
 
 // function Ball(props: ThreeElements['mesh']) {
@@ -127,7 +136,11 @@ export function Ball(props: ThreeElements['mesh']) {
 
 
 // 
-export function MyBall(props: {windowMinimized:boolean}) {
+export function MyBall(props: {theCoords:ShapeCoords}) {
+  // export function MyBall(props: {theCoords:ShapeCoords, windowMinimized:boolean}) {
+  // CHQ: tried to shorthand the variable - did not work
+  // Type 'ShapeCoords' must have a '[Symbol.iterator]()' method that returns an iterator.ts(2488)
+  // let theCoords = [...props.theCoords]
 
 // export default function MyBall(props: {windowMinimized:boolean}) {
 
@@ -156,11 +169,13 @@ export function MyBall(props: {windowMinimized:boolean}) {
       {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
       one access the full screen button unless it is an overlay? Exaclty. */}
     {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
-    <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}>
+    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}> */}
+<Canvas>
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-      <Ball position={[-3.6, 0, 0]} />
+      <Ball position={[props.theCoords.xPos, props.theCoords.yPos, props.theCoords.zPos]} />
+      {/* <Ball position={[-3.6, 0, 0]} /> */}
       {/* <Box position={[1.2, 0, 0]} /> */}
       <OrbitControls />
  

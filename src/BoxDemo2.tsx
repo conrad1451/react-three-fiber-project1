@@ -3,7 +3,9 @@
  
 import * as THREE from 'three'
 
-import { Ball } from './MyBall'
+// import { Ball } from './MyBall'
+import { Ball, MyBall } from './MyBall'
+
 
 // [1]
 import { useRef, useState } from 'react'
@@ -62,7 +64,10 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
+      <Ball position={[-3.6, 0, 0]} />
       <Ball position={[3.6, 0, 0]} />
+      {/* <MyBall theCoords={{xPos=3.6, yPos=0, zPos=0}}} /> */}
+
       <OrbitControls />
 
       {/*[2]  */}

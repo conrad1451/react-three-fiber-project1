@@ -13,6 +13,10 @@ import ToggleBobble from './ToggleBobble'
 import FullscreenComponent from './FullscreenTest'
 import MyScene from './TextureTest1'
 
+// import Scene from './TextureTest3'
+
+import MyBox from './TextureTest4'
+
 import './App.css'
 // import { color } from 'three/tsl'
 
@@ -81,7 +85,9 @@ function View2(){
 function View3(){
   return(
     <>
-      <ToggleBobble/>
+    <MyBox position={[3.6, 0, 0]}/>
+    {/* <Scene/> */}
+      {/* <ToggleBobble/> */}
     </>
   )
 }
@@ -130,7 +136,7 @@ function ViewPicker(props:{choice: number}){
 
 function App(){
   // view 2 is text that just says hi
-  // view 3 of toggle bobble is broken
+  // view 3 of toggle bobble is broken (replaced)
   // view 5 is a still 3D image - not that useful
 
   // const displayView1 = true;
@@ -140,8 +146,8 @@ function App(){
     <div>
       {/* <ViewPicker choice={1}/> */}
       {/* <ViewPicker choice={2}/> */}
-      {/* <ViewPicker choice={3}/> */}
-      <ViewPicker choice={4}/>
+      <ViewPicker choice={3}/>
+      {/* <ViewPicker choice={4}/> */}
       {/* <ViewPicker choice={5}/> */}
     </div>
     </>

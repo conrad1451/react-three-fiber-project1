@@ -3,8 +3,10 @@
  
 import * as THREE from 'three'
 
-// import { Ball } from './MyBall'
-import { Ball, MyBall } from './MyBall'
+import { Ball } from './MyBall'
+// import { Ball, BallTest2 } from './MyBall'
+
+
 
 
 // [1]
@@ -65,7 +67,18 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
       <Ball position={[-3.6, 0, 0]} />
-      <Ball position={[3.6, 0, 0]} />
+
+{/* Type '{ position: [number, number, number]; textureInput: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ExtendedColors<Overwrite<Partial<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>, NodeProps<...>>>, NonFunctionKeys<...>> & { ...; } & EventHandlers'.
+ */}
+ {/*   Property 'textureInput' does not exist on type 'IntrinsicAttributes & Omit<ExtendedColors<Overwrite<Partial<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>, NodeProps<...>>>, NonFunctionKeys<...>> & { ...; } & EventHandlers'.ts(2322)
+ */}
+      {/* <BallTest2 position={[-3.6, 0, 0] textureInput={'moon.jpg''}} /> */}
+
+      '
+
+      {/* <BallTest objGeometry={[-3.6, 0, 0]} textureSource={'moon.jpg'}/> */}
+
+      {/* <Ball position={[3.6, 0, 0]} /> */}
       {/* <MyBall theCoords={{xPos=3.6, yPos=0, zPos=0}}} /> */}
 
       <OrbitControls />

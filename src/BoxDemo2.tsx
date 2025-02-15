@@ -40,7 +40,12 @@ function Box(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
-  const colorMap = useLoader(TextureLoader, 'moon.jpg')
+  // const colorMap = useLoader(TextureLoader, 'moon.jpg')
+  // const colorMap = useLoader(TextureLoader, 'cross.jpg')
+  // const colorMap = useLoader(TextureLoader, 'square Profile photo - Iris - profesional.png')
+  const colorMap = useLoader(TextureLoader, 'profilePic.png')
+
+  // 
 
   let chosenDirection = 1;
 

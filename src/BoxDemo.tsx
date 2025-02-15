@@ -16,7 +16,7 @@ import { useRef, useState } from 'react'
 // import { Canvas, useFrame } from '@react-three/fiber'
  // CHQ - below is the line I wrote to test purpose of useFrame in code
 // import { Canvas, ThreeElements } from '@react-three/fiber'
-
+  
 
 // import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 // import { Canvas, useThree, useFrame, ThreeElements } from '@react-three/fiber'

@@ -11,7 +11,7 @@ import { useLoader } from '@react-three/fiber'
 
 import { TextureLoader } from 'three'
 
-import { CustomShape } from './CustomShape1'
+// import { CustomShape } from './CustomShape1'
 
 // FIX: does not appear in code, commenting out
 // import MyBox from './TextureTest4'

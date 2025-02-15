@@ -13,10 +13,11 @@ import { TextureLoader } from 'three'
 
 import { CustomShape } from './CustomShape1'
 
-import MyBox from './TextureTest4'
+// FIX: does not appear in code, commenting out
+// import MyBox from './TextureTest4'
 
 // FIX: CHQ: The importation and use of this seems to break the entire canvas
-import BallWithProps from './BallPositionTexture'
+// import BallWithProps from './BallPositionTexture'
 
 // [1]
 import { useRef, useState } from 'react'
@@ -84,8 +85,8 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
       <Ball position={[-3.6, 0, 0]} />
-      <MyBox position={[2.1, 0.2, 5]}/>
-      <BallWithProps/>
+      {/* <MyBox position={[2.1, 0.2, 5]}/> */}
+      {/* <BallWithProps/> */}
 
       {/* <CustomShape/> */}
 

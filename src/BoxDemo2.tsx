@@ -11,6 +11,12 @@ import { useLoader } from '@react-three/fiber'
 
 import { TextureLoader } from 'three'
 
+import { CustomShape } from './CustomShape1'
+
+import MyBox from './TextureTest4'
+
+// FIX: CHQ: The importation and use of this seems to break the entire canvas
+import BallWithProps from './BallPositionTexture'
 
 // [1]
 import { useRef, useState } from 'react'
@@ -78,6 +84,10 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
       <Ball position={[-3.6, 0, 0]} />
+      <MyBox position={[2.1, 0.2, 5]}/>
+      <BallWithProps/>
+
+      {/* <CustomShape/> */}
 
 {/* Type '{ position: [number, number, number]; textureInput: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ExtendedColors<Overwrite<Partial<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>, NodeProps<...>>>, NonFunctionKeys<...>> & { ...; } & EventHandlers'.
  */}

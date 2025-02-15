@@ -42,16 +42,26 @@ function Box(props: ThreeElements['mesh']) {
   const [clicked, click] = useState(false)
   const colorMap = useLoader(TextureLoader, 'moon.jpg')
 
+  let chosenDirection = 1;
+
   // CHQ: automatically rotate cubes along x axis
   useFrame((state, delta) => {
-    ref.current.rotation.x += delta;
+    
+    if(clicked)
+    {
+      chosenDirection = -1;
+    }
+    else{
+      chosenDirection = 1;
+    }
+    ref.current.rotation.x += (delta*chosenDirection);
     // OrthographicCamera()
   })
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
+      // scale={clicked ? 1.5 : 1}
       onClick={(event) => click(!clicked)}
     // onClick={click(!clicked)}
       onPointerOver={(event) => hover(true)}

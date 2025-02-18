@@ -23,8 +23,8 @@ import { TextureLoader } from 'three'
 // import BallWithProps from './BallPositionTexture'
 
 // [1]
-import { useRef, useState } from 'react'
-// import { useRef, useState, useEffect } from 'react'
+// import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 // import { Canvas, useFrame } from '@react-three/fiber'
  // CHQ - below is the line I wrote to test purpose of useFrame in code
@@ -38,6 +38,32 @@ import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
 // import { cameraPosition } from 'three/tsl'
+
+
+// FIXME: FOr some reason this functional component causes the code to crash. 
+//       Will debug later
+// [1]
+function InfoOfBoundingBody() {
+  // const elementRef = useRef(null);
+
+  // for below code I got the error 
+  /**Type 'MutableRefObject<HTMLElement>' is not assignable to type 'LegacyRef<HTMLDivElement> | undefined'.
+  Type 'MutableRefObject<HTMLElement>' is not assignable to type 'RefObject<HTMLDivElement>'.
+    Types of property 'current' are incompatible.
+      Property 'align' is missing in type 'HTMLElement' but required in type 'HTMLDivElement'. */
+  // const elementRef = useRef(document.body); 
+
+  const elementRef = useRef<HTMLDivElement>(null!);
+ 
+  useEffect(() => {
+    const rect = elementRef.current.getBoundingClientRect();
+    console.log(rect);
+  }, []);
+
+  return <div ref={elementRef}>This is an element</div>;
+}
+
+// const ref: React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material | THREE.Material[], THREE.Object3DEventMap>>
 
 function Box(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
@@ -151,6 +177,7 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Ball position={[-10, 0, 30]}  />
       {/* <MyTorus position={[-0.5, 2, 0.2]}/> */}
       <MyTorus position={[0, 0, 0]}/>
+      {/* <InfoOfBoundingBody/> */}
       {/* <MyBox position={[2.1, 0.2, 5]}/> */}
       {/* <BallWithProps/> */}
 

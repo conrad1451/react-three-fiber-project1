@@ -93,7 +93,7 @@ export function Ball(props: ThreeElements['mesh']) {
       onClick={(event) => click(!clicked)}
        onPointerOver={(event) => hover(true)}
        onPointerOut={(event) => hover(false)}>
-       <sphereGeometry args={[1, 32, 32]} />
+       <sphereGeometry args={[3, 32, 32]} />
       <meshStandardMaterial 
         color={hovered ? 'limegreen' : 'white'} 
         displacementScale={0.2}

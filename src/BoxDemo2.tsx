@@ -92,7 +92,7 @@ function MyTorus(props: ThreeElements['mesh'])
   // const colorMap = useLoader(TextureLoader, 'moon.jpg')
   // const colorMap = useLoader(TextureLoader, 'cross.jpg')
   // const colorMap = useLoader(TextureLoader, 'square Profile photo - Iris - profesional.png')
-  const colorMap = useLoader(TextureLoader, 'profilePic.png')
+  // const colorMap = useLoader(TextureLoader, 'profilePic.png')
 
   // 
 
@@ -132,10 +132,10 @@ function MyTorus(props: ThreeElements['mesh'])
         {/* <torusGeometry args={[10, 3, 32, 256]} /> */}
       {/* <boxGeometry args={[1, 1, 1]} /> */}
       <meshStandardMaterial 
-        color={hovered ? 'limegreen' : 'white'} 
+        color={hovered ? 'limegreen' : 'orange'} 
         displacementScale={0.2}
-        map={colorMap}
-        displacementMap={colorMap}
+        // map={colorMap}
+        // displacementMap={colorMap}
         />
     </mesh>
   )

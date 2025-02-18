@@ -4,7 +4,7 @@
 
 
 
-import * as THREE from 'three'
+// import * as THREE from 'three'
 
 import { Ball } from './MyBall'
 // import { Ball, BallTest2 } from './MyBall'
@@ -65,8 +65,18 @@ function InfoOfBoundingBody() {
 
 // const ref: React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material | THREE.Material[], THREE.Object3DEventMap>>
 
+function Star(props: ThreeElements['mesh'])
+{
+  return 0;
+}
+
+// Note: when I swap const const ref = useRef<THREE.Mesh>(null!) with
+// const ref = useRef<ThreeElements['mesh']>(null!), I get the error that 
+// 'ref.current.rotation.x/y/z' and 'ref.current.position.x/y/z' is possibly 'undefined'.ts(18048)
+  
 function Box(props: ThreeElements['mesh']) {
-  const ref = useRef<THREE.Mesh>(null!)
+  // const ref = useRef<THREE.Mesh>(null!) // this uses the import of THREE from 'three'
+  const ref = useRef<ThreeElements['mesh']>(null!) // this uses the import of ThreeElements from 'react-three-fiber'
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
   // const colorMap = useLoader(TextureLoader, 'moon.jpg')
@@ -75,6 +85,7 @@ function Box(props: ThreeElements['mesh']) {
   const colorMap = useLoader(TextureLoader, 'profilePic.png')
 
   // 
+  // let joe=ref.current.position.x;
 
   let chosenDirection = 1;
 
@@ -115,8 +126,9 @@ function Box(props: ThreeElements['mesh']) {
 }
 
 function MyTorus(props: ThreeElements['mesh'])
-{
-  const ref = useRef<THREE.Mesh>(null!)
+{ 
+    // const ref = useRef<THREE.Mesh>(null!) // this uses the import of THREE from 'three'
+    const ref = useRef<ThreeElements['mesh']>(null!) // this uses the import of ThreeElements from 'react-three-fiber'
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
   // const colorMap = useLoader(TextureLoader, 'profilePic.png')
@@ -159,6 +171,8 @@ function MyTorus(props: ThreeElements['mesh'])
   )
 }
  
+
+
 export default function ShapeArena(props: {windowMinimized:boolean}) {
 
   

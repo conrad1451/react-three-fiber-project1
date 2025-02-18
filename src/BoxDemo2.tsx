@@ -89,12 +89,7 @@ function MyTorus(props: ThreeElements['mesh'])
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
-  // const colorMap = useLoader(TextureLoader, 'moon.jpg')
-  // const colorMap = useLoader(TextureLoader, 'cross.jpg')
-  // const colorMap = useLoader(TextureLoader, 'square Profile photo - Iris - profesional.png')
   // const colorMap = useLoader(TextureLoader, 'profilePic.png')
-
-  // 
 
   let chosenDirection = 1;
 
@@ -126,12 +121,8 @@ function MyTorus(props: ThreeElements['mesh'])
       onPointerOut={(event) => hover(false)}>
     {/* onPointerOut={hover(false)}> */}
 
-    {/* const geometry = new THREE.TorusGeometry(10, 3, 16, 100); */}
-    {/* <torusGeometry args={[10, 3, 16, 100]} /> */}
-        <torusGeometry args={[torusSize*(10/3), torusSize*(1), 32, 256]} />
-        {/* <torusGeometry args={[10, 3, 32, 256]} /> */}
-      {/* <boxGeometry args={[1, 1, 1]} /> */}
-      <meshStandardMaterial 
+          <torusGeometry args={[torusSize*(10/3), torusSize*(1), 32, 256]} />
+        <meshStandardMaterial 
         color={hovered ? 'limegreen' : 'orange'} 
         displacementScale={0.2}
         // map={colorMap}

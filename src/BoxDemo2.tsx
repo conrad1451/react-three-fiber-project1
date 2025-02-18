@@ -1,7 +1,7 @@
 // Source: 
 // [1]: https://codesandbox.io/p/sandbox/gifted-varahamihira-rrppl0y8l4?file=%2Fsrc%2FApp.js%3A1%2C1-40%2C1
 // [2]: https://www.google.com/search?client=firefox-b-1-d&q=using+getBoundingClientRect+in+reactjs (search: using getBoundingClientRect in reactjs)
-
+// [3]: https://www.google.com/search?client=firefox-b-1-d&q=array+fill+with+map+-+expectd+1-3+arguemnts+but+got+0 (search: array fill with map - expected 1-3 arguments but got 0)
 
 
 import * as THREE from 'three'
@@ -12,7 +12,14 @@ import { Ball } from './MyBall'
 // import { Canvas, useLoader } from '@react-three/fiber'
 import { useLoader } from '@react-three/fiber'
 
-import { TextureLoader } from 'three'
+// import { TextureLoader } from 'three'
+import { Vector3, TextureLoader } from 'three'
+
+ 
+// interface Vector3 {
+//   position: [0,0,0]; 
+// }
+
 
 // import { CustomShape } from './CustomShape1'
 
@@ -83,12 +90,85 @@ function Star(props: ThreeElements['mesh'])
   )
 }
 
-function StarDistribution(){
+// It took me about 45+15 min to realize that I should use a helpper function and then call it
+// in another one to achieve the array of objects
+// Also I did not realize that I should just import Vector3, i kep trying to recreate it which was 
+// giving me isseues - close reading is important
+function AddRandomStar(){
+  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*0.25)));
+
   return(
     <>
-      <Star position={[0,0,0]}/>
+      <Star position={myVector}/>
+    </>
+  )
+}
+
+function StarDistribution(){
+
+  // const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+  // const [x, y, z] = Array(3).map(() => THREE.MathUtils.randFloatSpread(100));
+  // const [x, y, z] = Array(3).map(() => THREE.MathUtils.randFloatSpread(50));
+
+  // const [x1, y1, z1] = Array(3).fill(THREE.MathUtils.randFloatSpread(50));
+  //  [3]
+  // const [x2, y2, z2] = Array(3).fill(null).map(()=>Math.floor(100*Math.random())/10);
+
+  // const listOfStarCoords = Array(100).fill(null).map(()=> Array(3).fill(null).map(()=>Math.floor(100*Math.random())/10));
+  // const listOfStarCoords2:number[][] = Array(100).fill(null).map(()=> Array(3).fill(null).map(()=>Math.floor(100*Math.random())/10));
+  // const listOfStarCoords3:Vector3[] = Array(100).fill(null).map(()=> Array(3).fill(null).map(()=>Math.floor(100*Math.random())/10));
+
+  // const a = new THREE.Vector3( 0, 1, 0 );
+
+  // Property 'fill' does not exist on type 'Vector3'.ts(2339)
+  // const a = new THREE.Vector3().fill(null).map(()=>Math.floor(100*Math.random())/10);
+
+  // Property 'fill' does not exist on type 'Vector3'.ts(2339)
+  // const a = new THREE.Vector3().setComponent().fill()
+  // .fill(null).map(()=>Math.floor(100*Math.random())/10);
+
+  // const myVector = new THREE.Vector3(...array);
+
+  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)));
+  
+
+  // const myStarCount = 100;
+  // for (let index = 0; index < myStarCount; ++index) {
+  //   const element = Array(3).fill(null).map(()=>Math.floor(100*Math.random())/10); 
+  // }
+/**<Star position={[0,0,0]}/>
       <Star position={[0.4,0,0]}/>
-      <Star position={[0,0.6,0]}/>
+      <Star position={[0,0.6,0]}/> */
+
+      // solution = change the top on the array being used
+      /**
+       * Type 'number[]' is not assignable to type 'Vector3 | undefined'.
+  Type 'number[]' is not assignable to type 'Vector3 | [x: number, y: number, z: number] | readonly [x: number, y: number, z: number]'.
+    Type 'number[]' is not assignable to type '[x: number, y: number, z: number]'.
+      Target requires 3 element(s) but source may have fewer.ts(2322)
+       */
+  return(
+    <>
+    {/* {Array(100).map((item, index) => (
+        <Star key={index} position={new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)))}/>
+      ))} */}
+          {/* {listOfStarCoords.map((item, index) => (
+        <Star key={index} position={item}/>
+      ))} */}
+
+      {Array(100).map((item, index) => (
+        <AddRandomStar key={index} />
+      ))} 
+
+      <Star position={myVector}/>
+      <AddRandomStar/>
+      <AddRandomStar/>
+      <AddRandomStar/>
+      <AddRandomStar/>
+      <AddRandomStar/>
+
+      {/* <Star position={new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)))}/> */}
+      {/* <Star position={new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)))}/> */}
     </>
   )
 }

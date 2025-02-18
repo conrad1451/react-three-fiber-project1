@@ -83,6 +83,63 @@ function Box(props: ThreeElements['mesh']) {
     </mesh>
   )
 }
+
+function MyTorus(props: ThreeElements['mesh'])
+{
+  const ref = useRef<THREE.Mesh>(null!)
+  const [hovered, hover] = useState(false)
+  const [clicked, click] = useState(false)
+  // const colorMap = useLoader(TextureLoader, 'moon.jpg')
+  // const colorMap = useLoader(TextureLoader, 'cross.jpg')
+  // const colorMap = useLoader(TextureLoader, 'square Profile photo - Iris - profesional.png')
+  const colorMap = useLoader(TextureLoader, 'profilePic.png')
+
+  // 
+
+  let chosenDirection = 1;
+
+  // CHQ: automatically rotate cubes along x axis
+  useFrame((state, delta) => {
+    
+    if(clicked)
+    {
+      chosenDirection = -1;
+    }
+    else{
+      chosenDirection = 1;
+    }
+    ref.current.rotation.x += (delta*chosenDirection);
+    // OrthographicCamera()
+  })
+
+  const torusSize = 3;
+  // const torusSize = 2;
+  return (
+    <mesh
+      {...props}
+      ref={ref}
+      // scale={clicked ? 1.5 : 1}
+      onClick={(event) => click(!clicked)}
+    // onClick={click(!clicked)}
+      onPointerOver={(event) => hover(true)}
+    // onPointerOver={hover(true)}
+      onPointerOut={(event) => hover(false)}>
+    {/* onPointerOut={hover(false)}> */}
+
+    {/* const geometry = new THREE.TorusGeometry(10, 3, 16, 100); */}
+    {/* <torusGeometry args={[10, 3, 16, 100]} /> */}
+        <torusGeometry args={[torusSize*(10/3), torusSize*(1), 32, 256]} />
+        {/* <torusGeometry args={[10, 3, 32, 256]} /> */}
+      {/* <boxGeometry args={[1, 1, 1]} /> */}
+      <meshStandardMaterial 
+        color={hovered ? 'limegreen' : 'white'} 
+        displacementScale={0.2}
+        map={colorMap}
+        displacementMap={colorMap}
+        />
+    </mesh>
+  )
+}
  
 export default function ShapeArena(props: {windowMinimized:boolean}) {
 
@@ -100,6 +157,7 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
       <Ball position={[-3.6, 0, 0]} />
+      <MyTorus position={[-0.5, 2, 0.2]}/>
       {/* <MyBox position={[2.1, 0.2, 5]}/> */}
       {/* <BallWithProps/> */}
 

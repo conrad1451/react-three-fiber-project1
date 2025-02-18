@@ -83,6 +83,15 @@ function Star(props: ThreeElements['mesh'])
   )
 }
 
+function StarDistribution(){
+  return(
+    <>
+      <Star position={[0,0,0]}/>
+      <Star position={[0.4,0,0]}/>
+      <Star position={[0,0.6,0]}/>
+    </>
+  )
+}
 
 function Box(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
@@ -198,7 +207,8 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <Ball position={[-10, 0, 30]}  />
       {/* <MyTorus position={[-0.5, 2, 0.2]}/> */}
       <MyTorus position={[0, 0, 0]}/>
-      <Star position={[0,0,0]}/>
+      <StarDistribution/>
+      {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */}
       {/* <MyBox position={[2.1, 0.2, 5]}/> */}
       {/* <BallWithProps/> */}

@@ -91,13 +91,9 @@ export function Ball(props: ThreeElements['mesh']) {
       ref={ref}
     //   scale={clicked ? 1.5 : 1}
       onClick={(event) => click(!clicked)}
-    // onClick={click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-    // onPointerOver={hover(true)}
-      onPointerOut={(event) => hover(false)}>
-    {/* onPointerOut={hover(false)}> */}
-      {/* <boxGeometry args={[1, 1, 1]} /> */}
-      <sphereGeometry args={[1, 32, 32]} />
+       onPointerOver={(event) => hover(true)}
+       onPointerOut={(event) => hover(false)}>
+       <sphereGeometry args={[1, 32, 32]} />
       <meshStandardMaterial 
         color={hovered ? 'limegreen' : 'white'} 
         displacementScale={0.2}

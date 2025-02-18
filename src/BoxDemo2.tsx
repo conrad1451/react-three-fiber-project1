@@ -106,7 +106,7 @@ function Box(props: ThreeElements['mesh']) {
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial 
         color={hovered ? 'limegreen' : 'white'} 
-        displacementScale={0.2}
+        displacementScale={0.0}
         map={colorMap}
         displacementMap={colorMap}
         />

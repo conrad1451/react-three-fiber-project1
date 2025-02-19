@@ -95,7 +95,9 @@ function Star(props: ThreeElements['mesh'])
 // Also I did not realize that I should just import Vector3, i kep trying to recreate it which was 
 // giving me isseues - close reading is important
 function AddRandomStar(){
-  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*0.25)));
+  // const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(1 )));
+
+  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150)));
 
   return(
     <>
@@ -156,16 +158,26 @@ function StarDistribution(){
         <Star key={index} position={item}/>
       ))} */}
 
-      {Array(100).map((item, index) => (
+      {/* {Array(100).map((item, index) => (
         <AddRandomStar key={index} />
-      ))} 
+      ))}  */}
 
       <Star position={myVector}/>
+      {/* <AddRandomStar/>
       <AddRandomStar/>
       <AddRandomStar/>
       <AddRandomStar/>
-      <AddRandomStar/>
-      <AddRandomStar/>
+      <AddRandomStar/> */}
+      
+      {/* if I use the div instead of the empty angle brackets, I get this error:
+      Uncaught Error: R3F: Div is not part of the THREE namespace! 
+      Did you forget to extend? See: 
+      https://docs.pmnd.rs/react-three-fiber/api/objects#using-3rd-party-objects-declaratively */}
+      <>
+      {Array(200).fill(null).map((_, index) => (
+        <AddRandomStar key={index} />
+      ))}
+      </>
 
       {/* <Star position={new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)))}/> */}
       {/* <Star position={new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)))}/> */}

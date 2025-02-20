@@ -91,6 +91,10 @@ function View3(){
     </>
   )
 }
+
+// CHQ: found this error in console: <div> cannot appear as a descendant of <p>.
+// fix: change the view components so instead of being nested between <p>, 
+// they are nested between emtpy angle brackets
 function ViewPicker(props:{choice: number}){
   return(
     <>

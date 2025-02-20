@@ -74,6 +74,7 @@ function InfoOfBoundingBody() {
 
 function Star(props: ThreeElements['mesh'])
 {
+  // CHQ: changing the color worked when I stopped 
   return (
     <mesh
       {...props}
@@ -81,7 +82,9 @@ function Star(props: ThreeElements['mesh'])
       >  
       <sphereGeometry args={[0.25, 24, 24]} />
       <meshStandardMaterial 
-        color='0xffffff'  
+        // color="#ADD8E6"
+        // color="#FFFFFF"
+        color="#000000"
         displacementScale={0.0}
         // map={colorMap}
         // displacementMap={colorMap}

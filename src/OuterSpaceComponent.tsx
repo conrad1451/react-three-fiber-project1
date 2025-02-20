@@ -320,7 +320,7 @@ function MySpaceScene(){
 }
 
 
-export default function ShapeArena(props: {windowMinimized:boolean}) {
+export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
 
   
   return (

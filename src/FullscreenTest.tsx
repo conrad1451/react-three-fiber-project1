@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import ShapeArena from './BoxDemo2'
+import OuterSpaceComponent from './OuterSpaceComponent'
 
 
 import { Suspense } from 'react'
@@ -84,7 +84,7 @@ function FullscreenComponent() {
     // <div ref={componentRef}> 
     <div ref={componentRef}>
       {/* Content of your component */}
-      <ShapeArena windowMinimized={false}/>
+      <OuterSpaceComponent windowMinimized={false}/>
       {/* <MyScene/> */}
       {/* <Scene/> */}
       <button onClick={toggleFullscreen}>

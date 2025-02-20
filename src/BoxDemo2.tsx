@@ -283,17 +283,9 @@ function MyTorus(props: ThreeElements['mesh'])
 }
  
 
-
-export default function ShapeArena(props: {windowMinimized:boolean}) {
-
-  
-  return (
-       <div className='Threejs-bg-color'>
-      
-      {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
-      one access the full screen button unless it is an overlay? Exaclty. */}
-    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
-    <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}>
+function MySpaceScene(){
+  return(
+    <>
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
@@ -323,6 +315,22 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
         far={2000}
         position={[0, 0, 200]}
       /> */}
+    </>
+  )
+}
+
+
+export default function ShapeArena(props: {windowMinimized:boolean}) {
+
+  
+  return (
+       <div className='Threejs-bg-color'>
+      
+      {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
+      one access the full screen button unless it is an overlay? Exaclty. */}
+    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
+    <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px`}}>
+      <MySpaceScene/>
     </Canvas>
     </div>
   )

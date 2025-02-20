@@ -304,24 +304,7 @@ export default function ShapeArena(props: {windowMinimized:boolean}) {
       <MyTorus position={[0, 0, 0]}/>
       <StarDistribution/>
       {/* <Star position={[0,0,0]}/> */}
-      {/* <InfoOfBoundingBody/> */}
-      {/* <MyBox position={[2.1, 0.2, 5]}/> */}
-      {/* <BallWithProps/> */}
-
-      {/* <CustomShape/> */}
-
-{/* Type '{ position: [number, number, number]; textureInput: string; }' is not assignable to type 'IntrinsicAttributes & Omit<ExtendedColors<Overwrite<Partial<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>, NodeProps<...>>>, NonFunctionKeys<...>> & { ...; } & EventHandlers'.
- */}
- {/*   Property 'textureInput' does not exist on type 'IntrinsicAttributes & Omit<ExtendedColors<Overwrite<Partial<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>, NodeProps<...>>>, NonFunctionKeys<...>> & { ...; } & EventHandlers'.ts(2322)
- */}
-      {/* <BallTest2 position={[-3.6, 0, 0] textureInput={'moon.jpg''}} /> */}
-
-      '
-
-      {/* <BallTest objGeometry={[-3.6, 0, 0]} textureSource={'moon.jpg'}/> */}
-
-      {/* <Ball position={[3.6, 0, 0]} /> */}
-      {/* <MyBall theCoords={{xPos=3.6, yPos=0, zPos=0}}} /> */}
+      {/* <InfoOfBoundingBody/> */} 
 
       <OrbitControls />
 

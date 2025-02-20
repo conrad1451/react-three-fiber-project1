@@ -31,7 +31,9 @@ import { Vector3, TextureLoader } from 'three'
 
 // [1]
 // import { useRef, useState } from 'react'
-import { useRef, useState, useEffect } from 'react'
+// import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, Suspense } from 'react'
+
 
 // import { Canvas, useFrame } from '@react-three/fiber'
  // CHQ - below is the line I wrote to test purpose of useFrame in code
@@ -283,12 +285,28 @@ function MyTorus(props: ThreeElements['mesh'])
 }
  
 
+const Background = () => {
+    // const mesh = useRef();
+    const ref = useRef<THREE.Mesh>(null!)
+    // const texture = useLoader(THREE.TextureLoader, '/space.jpg');
+    const texture = useLoader(THREE.TextureLoader, 'space.jpg');
+
+    return (
+        // <mesh ref={mesh} scale={[100, 100, 100]}> {/* Scale it up! */}
+        <mesh ref={ref} scale={[100, 100, 100]}> {/* Scale it up! */}
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshBasicMaterial map={texture} side={THREE.BackSide} /> {/* Important: BackSide */}
+        </mesh>
+    );
+}
+
 function MySpaceScene(){
   return(
     <>
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+      <Suspense fallback={null}> <Background /> </Suspense>
       <Box position={[2, 0, 0]} />
       {/* <Box position={[1.2, 0, 0]} /> */}
       <Ball position={[-10, 0, 30]}  />

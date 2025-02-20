@@ -330,7 +330,7 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
       one access the full screen button unless it is an overlay? Exaclty. */}
     {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
     {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
-    <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `100vh`}}>
+    <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
       <MySpaceScene/>
     </Canvas>
     </div>

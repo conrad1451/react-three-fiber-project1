@@ -10,7 +10,8 @@ import viteLogo from '/vite.svg'
 // import Box from './Box'
 // import BoxDemo2 from './BoxDemo2'
 import ToggleBobble from './ToggleBobble'
-import FullscreenComponent from './FullscreenTest'
+// import FullscreenComponent from './FullscreenTest'
+import OuterSpaceComponent from './OuterSpaceComponent'
 import MyScene from './TextureTest1'
 
 import AIGenSpaceComponent from './AIGenScene'
@@ -79,7 +80,8 @@ function View2(){
   return(
     <>
     <div className='App-bg'>
-      <FullscreenComponent/>
+      {/* <FullscreenComponent/> */}
+      <OuterSpaceComponent windowMinimized={false}/>
     </div>
     </>
   )

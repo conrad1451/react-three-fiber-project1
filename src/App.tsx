@@ -13,6 +13,8 @@ import ToggleBobble from './ToggleBobble'
 import FullscreenComponent from './FullscreenTest'
 import MyScene from './TextureTest1'
 
+import AIGenSpaceComponent from './AIGenScene'
+
 // import Scene from './TextureTest3'
 
 import MyBox from './TextureTest4'
@@ -86,7 +88,8 @@ function View3(){
   return(
     <>
     <div className='App-bg'>
-      <MyScene/>
+      {/* <MyScene/> */}
+      <AIGenSpaceComponent/>
     </div>
     </>
   )

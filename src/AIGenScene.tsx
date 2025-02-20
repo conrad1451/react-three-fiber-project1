@@ -39,11 +39,19 @@ const Background = () => {
     // const texture = useLoader(THREE.TextureLoader, '/space.jpg');
     const texture = useLoader(THREE.TextureLoader, 'space.jpg');
 
+        // <mesh ref={ref} scale={[100, 100, 100]}> 
+        {/* Scale it up! */}
+
+          {/* <mesh ref={ref} scale={[400, 400, 400]}>  */}
+                      {/* Scale it up! */}
     return (
-        // <mesh ref={mesh} scale={[100, 100, 100]}> {/* Scale it up! */}
-        <mesh ref={ref} scale={[100, 100, 100]}> {/* Scale it up! */}
+
+        <mesh ref={ref} scale={[50, 50, 50]}> 
+
           <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial map={texture} side={THREE.BackSide} /> {/* Important: BackSide */}
+          <meshBasicMaterial map={texture} side={THREE.BackSide} />   
+          {/* Important: BackSide */}
+          {/* <meshBasicMaterial map={texture} side={THREE.BackSide} />  */}
         </mesh>
     );
 }

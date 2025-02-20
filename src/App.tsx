@@ -98,13 +98,17 @@ function ViewPicker(props:{choice: number}){
       {(() => {
         switch (props.choice) {
           case 1: // standard Vite + React intro display
-            return <p><View1/></p>;
+            // return <p><View1/></p>;
+            return <><View1/></>;
           case 2: // react-three-fiber space scenne
-            return <p><View2/></p>;
+            // return <p><View2/></p>;
+            return <><View2/></>;
           case 3: // react-three-fiber object in non-three-fiber background
-            return <p><View3/></p>;
+            // return <p><View3/></p>;
+            return <><View3/></>;
           default:
-            return <p><View1/></p>;
+            // return <p><View1/></p>;
+            return <><View1/></>;
         }
       })()}
     </div>

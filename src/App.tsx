@@ -76,31 +76,13 @@ function View1(){
 function View2(){
   return(
     <>
-    <p>Hi</p>
-      {/* <BoxDemo2 windowMinimized={false}/> */}
-    </>
-  )
-}
-
-function View3(){
-  return(
-    <>
-    <MyBox position={[3.6, 0, 0]}/>
-    {/* <Scene/> */}
-      {/* <ToggleBobble/> */}
-    </>
-  )
-}
-function View4(){
-  return(
-    <>
     <div className='App-bg'>
       <FullscreenComponent/>
     </div>
     </>
   )
 }
-function View5(){
+function View3(){
   return(
     <>
     <div className='App-bg'>
@@ -115,18 +97,14 @@ function ViewPicker(props:{choice: number}){
     <div>
       {(() => {
         switch (props.choice) {
-          case 1:
+          case 1: // standard Vite + React intro display
             return <p><View1/></p>;
-          case 2:
+          case 2: // react-three-fiber space scenne
             return <p><View2/></p>;
-          case 3:
+          case 3: // react-three-fiber object in non-three-fiber background
             return <p><View3/></p>;
-          case 4:
-            return <p><View4/></p>;
-          case 5:
-            return <p><View5/></p>;
           default:
-            return <p><View2/></p>;
+            return <p><View1/></p>;
         }
       })()}
     </div>
@@ -145,10 +123,8 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={2}/>
       {/* <ViewPicker choice={3}/> */}
-      <ViewPicker choice={4}/>
-      {/* <ViewPicker choice={5}/> */}
     </div>
     </>
   )

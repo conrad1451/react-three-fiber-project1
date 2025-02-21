@@ -9,16 +9,19 @@ import viteLogo from '/vite.svg'
 
 // import Box from './Box'
 // import BoxDemo2 from './BoxDemo2'
-import ToggleBobble from './ToggleBobble'
+import ToggleBobble from './Code Examples/modSampleCode/ToggleBobble'
 // import FullscreenComponent from './FullscreenTest'
 import OuterSpaceComponent from './OuterSpaceComponent'
-import MyScene from './TextureTest1'
+import MyScene from './Code Examples/testsForTexture/TextureTest1'
 
-import AIGenSpaceComponent from './AIGenScene'
+import AIGenSpaceComponent from './Code Examples/aiGenContent/AIGenScene'
+import AIMazeOld from './Code Examples/aiGenContent/AIMazeOld'
 
 // import Scene from './TextureTest3'
 
-import MyBox from './TextureTest4'
+import MyBox from './Code Examples/testsForTexture/TextureTest4'
+
+import AIMaze from './Code Examples/aiGenContent/AIMazeOld'
 
 import './App.css'
 // import { color } from 'three/tsl'
@@ -91,7 +94,8 @@ function View3(){
     <>
     <div className='App-bg'>
       {/* <MyScene/> */}
-      <AIGenSpaceComponent/>
+      {/* <AIGenSpaceComponent/> */}
+      <AIMaze/>
     </div>
     </>
   )
@@ -136,8 +140,8 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      <ViewPicker choice={2}/>
-      {/* <ViewPicker choice={3}/> */}
+      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={3}/>
     </div>
     </>
   )

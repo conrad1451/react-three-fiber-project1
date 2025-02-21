@@ -294,7 +294,7 @@ const Background = () => {
     return (
         // <mesh ref={mesh} scale={[100, 100, 100]}> {/* Scale it up! */}
         <mesh ref={ref} scale={[100, 100, 100]}> {/* Scale it up! */}
-          <sphereGeometry args={[1, 32, 32]} />
+          <sphereGeometry args={[3, 32, 32]} />
           <meshBasicMaterial map={texture} side={THREE.BackSide} /> {/* Important: BackSide */}
         </mesh>
     );

@@ -342,7 +342,7 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
 
   
   return (
-       <div className='Threejs-bg-color'>
+       <div className='Threejs-bg-outerspace'>
       
       {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
       one access the full screen button unless it is an overlay? Exaclty. */}

@@ -68,6 +68,13 @@ the width specifications from App-bg class*/
 }
 
 
+.Threejs-bg-outerspace {
+  background-color: #022c85;
+  height: 100vh;
+  background-size: cover;
+}
+
+
 /* .component-window-size-1{
    width: 80vw;
   height: 9vh;

@@ -15,13 +15,13 @@ import OuterSpaceComponent from './OuterSpaceComponent'
 import MyScene from './Code Examples/testsForTexture/TextureTest1'
 
 import AIGenSpaceComponent from './Code Examples/aiGenContent/AIGenScene'
-import AIMazeOld from './Code Examples/aiGenContent/AIMazeOld'
+// import AIMazeOld from './Code Examples/aiGenContent/AIMazeOld'
 
 // import Scene from './TextureTest3'
 
 import MyBox from './Code Examples/testsForTexture/TextureTest4'
 
-import AIMaze from './Code Examples/aiGenContent/AIMazeOld'
+import AIMaze from './Code Examples/aiGenContent/AIMaze'
 
 import './App.css'
 // import { color } from 'three/tsl'

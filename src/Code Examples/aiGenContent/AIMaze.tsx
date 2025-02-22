@@ -1,5 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+// import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useState, useEffect, Suspense } from 'react'
+
+import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
+// import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useScroll } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -49,7 +52,8 @@ const Camera: React.FC = () => {
   });
 
   useFrame(() => {
-    const scrollProgress = scroll.offset;
+    if (scroll) { // Check if scroll is available
+        const scrollProgress = scroll.offset;
 
     const newTargetIndex = Math.floor(scrollProgress * NUMBER_OF_SPHERES);
     if (newTargetIndex !== targetSphereIndex && newTargetIndex < NUMBER_OF_SPHERES) {
@@ -59,15 +63,17 @@ const Camera: React.FC = () => {
     const targetPosition = spherePositions[targetSphereIndex];
 
     if (targetPosition) {
-      camera.current.position.lerp(targetPosition, 0.05);
-      const lookAtPosition = new THREE.Vector3(
-        targetPosition.x,
-        targetPosition.y + 0.2,
-        targetPosition.z + 1
-      );
-
-      camera.current.lookAt(lookAtPosition);
+        camera.current.position.lerp(targetPosition, 0.05);
+        const lookAtPosition = new THREE.Vector3(
+          targetPosition.x,
+          targetPosition.y + 0.2,
+          targetPosition.z + 1
+        );
+  
+        camera.current.lookAt(lookAtPosition);
+      }
     }
+
   });
 
   useEffect(() => {
@@ -82,8 +88,8 @@ const Camera: React.FC = () => {
     <perspectiveCamera
       ref={camera}
       fov={75}
-      aspect={100/ 200}
-      aspect={gl.viewport.width / gl.viewport.height}
+    //   aspect={100/ 200}
+      aspect={gl.domElement.clientWidth/ gl.domElement.clientHeight}
       near={0.1}
       far={100}
     />
@@ -101,13 +107,73 @@ const Scene: React.FC = () => {
     </>
   );
 };
+const Background = () => {
+    // const mesh = useRef();
+    const ref = useRef<THREE.Mesh>(null!)
+    // const texture = useLoader(THREE.TextureLoader, '/space.jpg');
+    const texture = useLoader(THREE.TextureLoader, 'space.jpg');
 
-const App: React.FC = () => {
+    return (
+        // <mesh ref={mesh} scale={[100, 100, 100]}> {/* Scale it up! */}
+        <mesh ref={ref} scale={[100, 100, 100]}> {/* Scale it up! */}
+          <sphereGeometry args={[3, 32, 32]} />
+          <meshBasicMaterial map={texture} side={THREE.BackSide} /> {/* Important: BackSide */}
+        </mesh>
+    );
+}
+function MySpaceScene(){
+  return(
+    <>
+      <ambientLight intensity={Math.PI / 2} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+      <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+      <Suspense fallback={null}> <Background /> </Suspense>
+      <Floor />
+      <Spheres /> 
+
+      {/* will comment out later when I get the movement of camera working */}
+      <OrbitControls />
+
+      {/*[2]  */}
+      {/* Got this warning when implenneting below code:
+      WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
+       */}
+      {/* <OrthographicCamera
+        makeDefault
+        zoom={1}
+        top={200}
+        bottom={-200}
+        left={200}
+        right={-200}
+        near={1}
+        far={2000}
+        position={[0, 0, 200]}
+      /> */}
+    </>
+  )
+}
+
+const AIMaze: React.FC = () => {
+
+    // const myChoice = 1;
+
   return (
-    <Canvas>
-      <Scene />
+    <div className='Threejs-bg-outerspace'>
+    <Canvas style={{width: `100vw`, height:`100vh`}}>
+        {/* {
+            if(myChoice === 1)
+            {<Scene />}
+            else
+            {
+            <MySpaceScene /> 
+            }
+        } */}
+        <MySpaceScene /> 
+        {/* <Scene />  */}
     </Canvas>
+    </div>
+
   );
 };
 
-export default App;
+export default AIMaze;

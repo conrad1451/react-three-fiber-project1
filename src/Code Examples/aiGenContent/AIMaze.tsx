@@ -47,6 +47,202 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
+const CameraControl: React.FC = () => {
+  const camera = useRef<THREE.PerspectiveCamera>(null!);
+  const { gl } = useThree();
+  const [movement, setMovement] = useState({ forward: false, backward: false, left: false, right: false });
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case "ArrowUp":
+        case "w": // Also allow 'w' for forward
+          setMovement({ ...movement, forward: true });
+          break;
+        case "ArrowDown":
+        case "s": // Also allow 's' for backward
+          setMovement({ ...movement, backward: true });
+          break;
+        case "ArrowLeft":
+        case "a": // Also allow 'a' for left
+          setMovement({ ...movement, right: true });
+          break;
+        case "ArrowRight":
+        case "d": // Also allow 'd' for right
+          setMovement({ ...movement, right: true });
+          break;
+      }
+    };
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case "ArrowUp":
+        case "w":
+          setMovement({ ...movement, forward: true });
+          break;
+        case "ArrowDown":
+        case "s":
+          setMovement({ ...movement, backward: false });
+          break;
+        case "ArrowLeft":
+        case "a":
+          setMovement({ ...movement, right: false });
+          break;
+        case "ArrowRight":
+        case "d":
+          setMovement({ ...movement, right: false });
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (camera.current) {
+      camera.current.position.set(0, 5, 10);
+      camera.current.lookAt(0, 0, 0);
+    }
+  }, []);
+
+  useFrame((state, delta) => {
+    if (camera.current) {
+      const moveSpeed = 5 * delta; // Adjust speed as needed
+
+      if (movement.forward) {
+        camera.current.position.z -= moveSpeed; // Move forward
+      }
+      if (movement.backward) {
+        camera.current.position.z += moveSpeed; // Move backward
+      }
+      if (movement.left) {
+        camera.current.position.x -= moveSpeed; // Move left
+      }
+      if (movement.right) {
+        camera.current.position.x += moveSpeed; // Move right
+      }
+    }
+  });
+
+  return (
+    <perspectiveCamera
+      ref={camera}
+      fov={75}
+      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
+      near={0.1}
+      far={1000}
+    />
+  );
+};
+
+const CameraControlAlt: React.FC = () => {
+    const camera = useRef<THREE.PerspectiveCamera>(null!);
+    const { gl } = useThree();
+    const [movement, setMovement] = useState({
+      forward: false,
+      backward: false,
+      left: false,
+      right: false,
+    });
+    const [rotation, setRotation] = useState(0); // Rotation angle
+  
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        switch (event.key) {
+          case "ArrowUp":
+          case "i":
+            setMovement({ ...movement, forward: true });
+            break;
+          case "ArrowDown":
+          case "k":
+            setMovement({ ...movement, backward: true });
+            break;
+          case "ArrowLeft":
+          case "j":
+            setMovement({ ...movement, left: true });
+            setRotation(-0.02); // Start rotating left
+            break;
+          case "ArrowRight":
+          case "l":
+            setMovement({ ...movement, right: true });
+            setRotation(0.02); // Start rotating right
+            break;
+        }
+      };
+  
+      const handleKeyUp = (event: KeyboardEvent) => {
+        switch (event.key) {
+          case "ArrowUp":
+          case "i":
+            setMovement({ ...movement, forward: false });
+            break;
+          case "ArrowDown":
+          case "k":
+            setMovement({ ...movement, backward: false });
+            break;
+          case "ArrowLeft":
+          case "j":
+          case "ArrowRight":
+          case "l":
+            setMovement({ ...movement, left: false, right: false });
+            setRotation(0); // Stop rotating
+            break;
+        }
+      };
+  
+      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('keyup', handleKeyUp);
+  
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('keyup', handleKeyUp);
+      };
+    }, []);
+  
+    useEffect(() => {
+      if (camera.current) {
+        camera.current.position.set(0, 5, 10);
+        camera.current.lookAt(0, 0, 0);
+      }
+    }, []);
+  
+    useFrame((state, delta) => {
+      if (camera.current) {
+        const moveSpeed = 5 * delta;
+        const rotationSpeed = 2 * delta;  // Adjust rotation speed
+  
+        if (movement.forward) {
+          camera.current.position.z -= moveSpeed * Math.cos(rotation);
+          camera.current.position.x -= moveSpeed * Math.sin(rotation);
+        }
+        if (movement.backward) {
+          camera.current.position.z += moveSpeed * Math.cos(rotation);
+          camera.current.position.x += moveSpeed * Math.sin(rotation);
+        }
+  
+        // Apply rotation
+        camera.current.rotation.y += rotation * rotationSpeed;
+  
+      }
+    });
+  
+    return (
+      <perspectiveCamera
+        ref={camera}
+        fov={75}
+        aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
+        near={0.1}
+        far={1000}
+      />
+    );
+  };
+
 // FIXME: causing all sorts of issues
 const CameraControl1: React.FC = () => {
   const camera = useRef<THREE.PerspectiveCamera>(null!); // Non-null assertion (!)
@@ -171,7 +367,8 @@ function MySpaceScene(){
   return(
     <>
       {/* <CameraControl1 /> */}
-      <CameraControl2 />
+      {/* <CameraControl2 /> */}
+      <CameraControlAlt />
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />

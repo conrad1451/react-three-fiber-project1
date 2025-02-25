@@ -111,7 +111,7 @@ const CameraControl2: React.FC = () => {
 
   useFrame((state, delta) => {
     // if (camera.current !== null) {
-      console.log("cdd?")
+      // console.log("cdd?")
     if (camera.current) {
       // Smoothly zoom in
       camera.current.position.z -= 0.5 * delta; // Adjust speed
@@ -121,8 +121,8 @@ const CameraControl2: React.FC = () => {
         camera.current.position.z = targetZ;
       }
     }
-    else
-    {console.log("camera is null! WHY?")}
+    // else
+    // {console.log("camera is null! WHY?")}
   });
 
 

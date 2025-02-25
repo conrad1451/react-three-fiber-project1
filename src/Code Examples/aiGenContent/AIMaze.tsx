@@ -8,6 +8,10 @@ import * as THREE from 'three';
 
 const NUMBER_OF_SPHERES = 20;
 
+const SPHERE_SIZE = 0.5;
+
+const INTERSPHERE_SPACING = 2;
+
 interface SphereProps {
   position: [number, number, number];
 }
@@ -15,7 +19,7 @@ interface SphereProps {
 const Sphere: React.FC<SphereProps> = ({ position }) => {
   return (
     <mesh position={position}>
-      <sphereGeometry args={[0.5, 32, 32]} />
+      <sphereGeometry args={[SPHERE_SIZE, 32, 32]} />
       <meshStandardMaterial color="lightblue" />
     </mesh>
   );
@@ -23,7 +27,8 @@ const Sphere: React.FC<SphereProps> = ({ position }) => {
 
 const Floor: React.FC = () => {
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
+    // <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -(SPHERE_SIZE)/1, 0]}>
       <planeGeometry args={[50, 50]} />
       <meshStandardMaterial color="lightgray" />
     </mesh>
@@ -32,8 +37,8 @@ const Floor: React.FC = () => {
 
 const Spheres: React.FC = () => {
   const spheres = Array.from({ length: NUMBER_OF_SPHERES }, (_, i) => {
-    const x = (Math.random() - 0.5) * 20;
-    const z = (Math.random() - 0.5) * 20;
+    const x = INTERSPHERE_SPACING*((2.0*SPHERE_SIZE)*Math.floor((Math.random() - 0.5) * 20));
+    const z = INTERSPHERE_SPACING*((2.0*SPHERE_SIZE)*Math.floor((Math.random() - 0.5) * 20));
     return <Sphere key={i} position={[x, 0, z]} />;
   }); 
   return <>{spheres}</>;

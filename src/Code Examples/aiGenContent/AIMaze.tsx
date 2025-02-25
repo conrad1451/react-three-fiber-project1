@@ -44,6 +44,7 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
+// FIXME: causing all sorts of issues
 const Camera: React.FC = () => {
   const camera = useRef<THREE.PerspectiveCamera>(null!); // Non-null assertion (!)
   const { gl } = useThree();

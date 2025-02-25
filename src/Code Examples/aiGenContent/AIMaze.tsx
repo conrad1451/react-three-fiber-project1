@@ -114,7 +114,7 @@ const CameraControl2: React.FC = () => {
       // console.log("cdd?")
     if (camera.current) {
       // Smoothly zoom in
-      camera.current.position.z -= 0.5 * delta; // Adjust speed
+      camera.current.position.z -= 0.5 *10* delta; // Adjust speed
 
       // Stop zooming when targetZ is reached
       if (camera.current.position.z <= targetZ) {

@@ -45,7 +45,7 @@ const Spheres: React.FC = () => {
 };
 
 // FIXME: causing all sorts of issues
-const Camera: React.FC = () => {
+const CameraControl1: React.FC = () => {
   const camera = useRef<THREE.PerspectiveCamera>(null!); // Non-null assertion (!)
   const { gl } = useThree();
   const scroll = useScroll();
@@ -103,10 +103,49 @@ const Camera: React.FC = () => {
   );
 };
 
+
+const CameraControl2: React.FC = () => {
+  const camera = useRef<THREE.PerspectiveCamera>(null!);
+  const { gl } = useThree();
+  const targetZ = -50; // How far the camera should zoom
+
+  useFrame((state, delta) => {
+    if (camera.current) {
+      // Smoothly zoom in
+      camera.current.position.z -= 0.5 * delta; // Adjust speed
+
+      // Stop zooming when targetZ is reached
+      if (camera.current.position.z <= targetZ) {
+        camera.current.position.z = targetZ;
+      }
+    }
+  });
+
+
+  useEffect(() => {
+    if (camera.current) {
+      camera.current.position.set(0, 5, 10); // Initial position
+      camera.current.lookAt(0, 0, 0);       // Look at the center
+    }
+  }, []);
+
+  return (
+    <perspectiveCamera
+      ref={camera}
+      fov={75}
+      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
+      near={0.1}
+      far={1000} // Increased far plane for better visibility
+    />
+  );
+};
+
+
+
 const Scene: React.FC = () => {
   return (
     <>
-      <Camera />
+      <CameraControl1 />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={0.8} />
       <Floor />
@@ -131,8 +170,8 @@ const Background = () => {
 function MySpaceScene(){
   return(
     <>
-          <Camera />
-
+      {/* <CameraControl1 /> */}
+      <CameraControl2 />
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />

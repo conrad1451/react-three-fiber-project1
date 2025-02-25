@@ -4,7 +4,8 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 // import { Canvas, useFrame, useThree } from '@react-three/fiber';
 // import { OrbitControls, useScroll } from '@react-three/drei';
-import { useScroll } from '@react-three/drei';
+import { FirstPersonControls, useScroll } from '@react-three/drei';
+// import { useScroll } from '@react-three/drei';
 
 import * as THREE from 'three';
 
@@ -207,6 +208,9 @@ const AIMaze: React.FC = () => {
   return (
     <div className='Threejs-bg-outerspace'>
     <Canvas style={{width: `100vw`, height:`100vh`}}>
+    {/* <FirstPersonControls mouseDragOn={true}/> */}
+      <FirstPersonControls movementSpeed={1} autoForward={false}/>
+      {/* <FirstPersonControls movementSpeed={-1} autoForward={false}/> */}
         {/* {
             if(myChoice === 1)
             {<Scene />}

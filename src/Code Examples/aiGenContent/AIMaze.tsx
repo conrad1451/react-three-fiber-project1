@@ -3,7 +3,9 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 // import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useScroll } from '@react-three/drei';
+// import { OrbitControls, useScroll } from '@react-three/drei';
+import { useScroll } from '@react-three/drei';
+
 import * as THREE from 'three';
 
 const NUMBER_OF_SPHERES = 20;

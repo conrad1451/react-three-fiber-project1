@@ -109,30 +109,23 @@ const CameraControl2: React.FC = () => {
   const { gl } = useThree();
   const targetZ = -50; // How far the camera should zoom
 
-  useFrame((state, delta) => {
-    // if (camera.current !== null) {
-      // console.log("cdd?")
+  useEffect(() => {
+    // This is the ONLY place where you should directly manipulate camera.current
     if (camera.current) {
-      // Smoothly zoom in
-      camera.current.position.z -= 0.5 *10* delta; // Adjust speed
+      camera.current.position.set(0, 5, 10);
+      camera.current.lookAt(0, 0, 0);
+    }
+  }, []); // Empty dependency array ensures this runs only once after mount
 
-      // Stop zooming when targetZ is reached
+  useFrame((state, delta) => {
+    if (camera.current) {  // Still important to check in useFrame!
+      camera.current.position.z -= 0.5 * 10 * delta;
+
       if (camera.current.position.z <= targetZ) {
         camera.current.position.z = targetZ;
       }
     }
-    // else
-    // {console.log("camera is null! WHY?")}
   });
-
-
-  useEffect(() => {
-    if (camera.current) {
-      camera.current.position.set(0, 5, 10); // Initial position
-      camera.current.lookAt(0, 0, 0);       // Look at the center
-    }
-  }, []);
-
   return (
     <perspectiveCamera
       ref={camera}

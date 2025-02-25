@@ -22,6 +22,7 @@ import AIGenSpaceComponent from './Code Examples/aiGenContent/AIGenScene'
 import MyBox from './Code Examples/testsForTexture/TextureTest4'
 
 import AIMaze from './Code Examples/aiGenContent/AIMaze'
+import ZApp from './Code Examples/aiGenContent/AICameraControlLeva'
 
 import './App.css'
 // import { color } from 'three/tsl'
@@ -95,7 +96,8 @@ function View3(){
     <div className='App-bg'>
       {/* <MyScene/> */}
       {/* <AIGenSpaceComponent/> */}
-      <AIMaze/>
+      {/* <AIMaze/> */}
+      <ZApp/>
     </div>
     </>
   )

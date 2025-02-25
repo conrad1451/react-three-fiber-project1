@@ -35,7 +35,7 @@ const Spheres: React.FC = () => {
     const x = (Math.random() - 0.5) * 20;
     const z = (Math.random() - 0.5) * 20;
     return <Sphere key={i} position={[x, 0, z]} />;
-  });
+  }); 
   return <>{spheres}</>;
 };
 

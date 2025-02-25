@@ -66,8 +66,8 @@ const Camera: React.FC = () => {
     }
 
     const targetPosition = spherePositions[targetSphereIndex];
-
-    if (targetPosition) {
+    if (false) {
+    // if (targetPosition) {
         camera.current.position.lerp(targetPosition, 0.05);
         const lookAtPosition = new THREE.Vector3(
           targetPosition.x,
@@ -79,6 +79,7 @@ const Camera: React.FC = () => {
       }
     }
 
+    camera.current.position.setComponent(0.13, 0.14)
   });
 
   useEffect(() => {
@@ -129,6 +130,8 @@ const Background = () => {
 function MySpaceScene(){
   return(
     <>
+          <Camera />
+
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
@@ -137,7 +140,7 @@ function MySpaceScene(){
       <Spheres /> 
 
       {/* will comment out later when I get the movement of camera working */}
-      <OrbitControls />
+      {/* <OrbitControls /> */}
 
       {/*[2]  */}
       {/* Got this warning when implenneting below code:

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei'; // For optional camera control
 import { useControls } from 'leva';
@@ -13,8 +13,13 @@ const Box: React.FC = () => {
   });
 
   useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.y += rotationSpeed;
+    try {
+      if (mesh.current) {
+        mesh.current.rotation.y += rotationSpeed;
+      }
+    } catch (error) {
+      console.error("Error in Box useFrame:", error);
+      // Handle the error, e.g., set a default value, stop animation, etc.
     }
   });
 
@@ -37,21 +42,39 @@ const Camera: React.FC = () => {
   });
 
   useFrame(() => {
+    try {
       if (camera.current) {
-          camera.current.zoom = zoom;
-          camera.current.lookAt(lookAtX, lookAtY, lookAtZ)
-          camera.current.updateProjectionMatrix();
+        camera.current.zoom = zoom;
+        camera.current.lookAt(lookAtX, lookAtY, lookAtZ);
+        camera.current.updateProjectionMatrix();
       }
-  })
+    } catch (error) {
+      console.error("Error in Camera useFrame:", error);
+      // Handle error (e.g., set default values, stop animation)
+    }
+  });
 
   useEffect(() => {
-    if (camera.current) {
-      camera.current.position.set(5, 5, 5);
-      camera.current.lookAt(0, 0, 0);
+    try {
+      if (camera.current) {
+        camera.current.position.set(5, 5, 5);
+        camera.current.lookAt(0, 0, 0);
+      }
+    } catch (error) {
+      console.error("Error in Camera useEffect:", error);
+      // Handle error (e.g., set default values)
     }
   }, []);
 
-  return <perspectiveCamera ref={camera} fov={75} aspect={gl.domElement.clientWidth / gl.domElement.clientHeight} near={0.1} far={1000} />;
+  return (
+    <perspectiveCamera
+      ref={camera}
+      fov={75}
+      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
+      near={0.1}
+      far={1000}
+    />
+  );
 };
 
 const Scene: React.FC = () => {
@@ -79,8 +102,24 @@ const Floor: React.FC = () => {
 };
 
 const ZApp: React.FC = () => {
+  const [hasError, setHasError] = useState(false); // State to track errors
+
+  const handleError = (error: any) => {
+    console.error("Global Error:", error);
+    setHasError(true); // Set error state
+  };
+
+  if (hasError) {
+      return (
+          <div>
+              <h1>An error has occurred:</h1>
+              <p>Please check the console for details.</p>
+          </div>
+      )
+  }
+
   return (
-    <Canvas>
+    <Canvas onError={handleError}> {/* Catch errors at the Canvas level */}
       <Scene />
     </Canvas>
   );

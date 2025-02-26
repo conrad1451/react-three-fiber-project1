@@ -70,10 +70,8 @@ the width specifications from App-bg class*/
 
 .Threejs-bg-outerspace {
   background-color: #022c85;
-  /* height: 100vh; */
-  height: 50vh;
-  width: 50vw;
-  /* background-size: cover; */
+  height: 100vh;
+  background-size: cover;
 }
 
 

@@ -24,6 +24,8 @@ import MyBox from './Code Examples/testsForTexture/TextureTest4'
 import AIMaze from './Code Examples/aiGenContent/AIMaze'
 import ZApp from './Code Examples/aiGenContent/AICameraControlLeva'
 
+import { AIScrollApp } from './Code Examples/aiGenContent/AIScrollingText1'
+
 import './App.css'
 // import { color } from 'three/tsl'
 
@@ -97,7 +99,8 @@ function View3(){
       {/* <MyScene/> */}
       {/* <AIGenSpaceComponent/> */}
       {/* <AIMaze/> */}
-      <ZApp/>
+      {/* <ZApp/> */}
+      <AIScrollApp/>
     </div>
     </>
   )
@@ -142,8 +145,8 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      <ViewPicker choice={2}/>
-      {/* <ViewPicker choice={3}/> */}
+      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={3}/>
     </div>
     </>
   )

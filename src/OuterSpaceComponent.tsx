@@ -19,6 +19,9 @@ import { Vector3, TextureLoader } from 'three'
 // interface Vector3 {
 //   position: [0,0,0]; 
 // }
+interface TextDisplayProps {
+  text: string;
+}
 
 
 // import { CustomShape } from './CustomShape1'
@@ -284,6 +287,39 @@ function MyTorus(props: ThreeElements['mesh'])
   )
 }
  
+// Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322)
+// const TextDisplay = (props: {theText: TextDisplayProps}) => {
+const TextDisplay = (props: {theText: string}) => {
+
+// const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+
+  useFrame(() => {
+    if (meshRef.current) {
+        meshRef.current.position.y += 0.01;
+    //   meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+    }
+  });
+
+  return (
+    <group>
+      <mesh position={[0, 0, -0.1]}> {/* Black background mesh */}
+        <planeGeometry args={[5, 1]} /> {/* Adjust size as needed */}
+        <meshBasicMaterial color="black" transparent opacity={0.5} />
+      </mesh>
+      <Text
+        ref={meshRef}
+        position={[0, 0, 0]}
+        fontSize={0.5}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        {props.theText}
+      </Text>
+    </group>
+  );
+};
 
 const Background = () => {
     // const mesh = useRef();
@@ -313,6 +349,10 @@ function MySpaceScene(){
       {/* <MyTorus position={[-0.5, 2, 0.2]}/> */}
       <MyTorus position={[0, 0, 0]}/>
       <StarDistribution/>
+
+{/* Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322) */}
+      <TextDisplay theText="Hello, React Three Fiber!" />
+
       {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */} 
 

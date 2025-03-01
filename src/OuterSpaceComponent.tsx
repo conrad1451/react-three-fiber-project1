@@ -6,52 +6,18 @@
 import * as THREE from 'three'
 
 import { Ball } from './MyBall'
-// import { Ball, BallTest2 } from './MyBall'
 
 import { useRef, useState, useEffect, Suspense } from 'react'
 
 import { Canvas, useLoader, useFrame, ThreeElements } from '@react-three/fiber'
 
 import { OrbitControls } from '@react-three/drei'
-
-
-// import { Canvas, useLoader } from '@react-three/fiber'
-// import { useLoader } from '@react-three/fiber'
-
-// import { TextureLoader } from 'three'
-// import { Vector3, TextureLoader } from 'three'
-
  
-// interface Vector3 {
-//   position: [0,0,0]; 
-// }
 interface TextDisplayProps {
   text: string;
 }
 
-
-// import { CustomShape } from './CustomShape1'
-
-// FIX: does not appear in code, commenting out
-// import MyBox from './TextureTest4'
-
-// FIX: CHQ: The importation and use of this seems to break the entire canvas
-// import BallWithProps from './BallPositionTexture'
-
-// [1]
-// import { useRef, useState } from 'react'
-// import { useRef, useState, useEffect } from 'react'
-
-
-// import { Canvas, useFrame } from '@react-three/fiber'
- // CHQ - below is the line I wrote to test purpose of useFrame in code
-// import { Canvas, ThreeElements } from '@react-three/fiber'
-// import { Canvas, useThree, useFrame, ThreeElements } from '@react-three/fiber'
-
-
-
 // import { OrbitControls, OrthographicCamera } from '@react-three/drei'
-
 // import { cameraPosition } from 'three/tsl'
 
 

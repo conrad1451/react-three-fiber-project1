@@ -3,17 +3,17 @@
 // [2]: https://www.google.com/search?client=firefox-b-1-d&q=using+getBoundingClientRect+in+reactjs (search: using getBoundingClientRect in reactjs)
 // [3]: https://www.google.com/search?client=firefox-b-1-d&q=array+fill+with+map+-+expectd+1-3+arguemnts+but+got+0 (search: array fill with map - expected 1-3 arguments but got 0)
 
-
 import * as THREE from 'three'
 
 import { Ball } from './MyBall'
 // import { Ball, BallTest2 } from './MyBall'
+import { Canvas, useLoader, useFrame, ThreeElements } from '@react-three/fiber'
 
 // import { Canvas, useLoader } from '@react-three/fiber'
-import { useLoader } from '@react-three/fiber'
+// import { useLoader } from '@react-three/fiber'
 
 // import { TextureLoader } from 'three'
-import { Vector3, TextureLoader } from 'three'
+// import { Vector3, TextureLoader } from 'three'
 
  
 // interface Vector3 {
@@ -41,7 +41,6 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 // import { Canvas, useFrame } from '@react-three/fiber'
  // CHQ - below is the line I wrote to test purpose of useFrame in code
 // import { Canvas, ThreeElements } from '@react-three/fiber'
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 // import { Canvas, useThree, useFrame, ThreeElements } from '@react-three/fiber'
 
 
@@ -105,7 +104,7 @@ function Star(props: ThreeElements['mesh'])
 function AddRandomStar(){
   // const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(1 )));
 
-  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150)));
+  const myVector: THREE.Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150)));
 
   return(
     <>
@@ -139,7 +138,7 @@ function StarDistribution(){
 
   // const myVector = new THREE.Vector3(...array);
 
-  const myVector: Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)));
+  const myVector: THREE.Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>Math.floor(100*Math.random())/(10*2)));
   
 
   // const myStarCount = 100;
@@ -197,10 +196,10 @@ function Box(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
-  // const colorMap = useLoader(TextureLoader, 'moon.jpg')
-  // const colorMap = useLoader(TextureLoader, 'cross.jpg')
-  // const colorMap = useLoader(TextureLoader, 'square Profile photo - Iris - profesional.png')
-  const colorMap = useLoader(TextureLoader, 'profilePic.png')
+  // const colorMap = useLoader(THREE.TextureLoader, 'moon.jpg')
+  // const colorMap = useLoader(THREE.TextureLoader, 'cross.jpg')
+  // const colorMap = useLoader(THREE.TextureLoader, 'square Profile photo - Iris - profesional.png')
+  const colorMap = useLoader(THREE.TextureLoader, 'profilePic.png')
 
   // 
 
@@ -247,7 +246,7 @@ function MyTorus(props: ThreeElements['mesh'])
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
-  // const colorMap = useLoader(TextureLoader, 'profilePic.png')
+  // const colorMap = useLoader(THREE.TextureLoader, 'profilePic.png')
 
   let chosenDirection = 1;
 

@@ -7,7 +7,13 @@ import * as THREE from 'three'
 
 import { Ball } from './MyBall'
 // import { Ball, BallTest2 } from './MyBall'
+
+import { useRef, useState, useEffect, Suspense } from 'react'
+
 import { Canvas, useLoader, useFrame, ThreeElements } from '@react-three/fiber'
+
+import { OrbitControls } from '@react-three/drei'
+
 
 // import { Canvas, useLoader } from '@react-three/fiber'
 // import { useLoader } from '@react-three/fiber'
@@ -35,7 +41,6 @@ interface TextDisplayProps {
 // [1]
 // import { useRef, useState } from 'react'
 // import { useRef, useState, useEffect } from 'react'
-import { useRef, useState, useEffect, Suspense } from 'react'
 
 
 // import { Canvas, useFrame } from '@react-three/fiber'
@@ -46,7 +51,6 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 
 
 // import { OrbitControls, OrthographicCamera } from '@react-three/drei'
-import { OrbitControls } from '@react-three/drei'
 
 // import { cameraPosition } from 'three/tsl'
 

@@ -11,7 +11,7 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 
 import { Canvas, useLoader, useFrame, ThreeElements } from '@react-three/fiber'
 
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Text } from '@react-three/drei';
  
 interface TextDisplayProps {
   text: string;

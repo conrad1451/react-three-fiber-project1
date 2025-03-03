@@ -208,14 +208,21 @@ const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
 
   const time = useRef(0);
 
-  const myWidth = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x);
+  // const myWidth = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x);
+  const myWidth = useRef(0);
 
   useFrame(() => {
     if (meshRef.current && meshRef.current.geometry) {
+      myWidth.current = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x)
       time.current += 0.02; // Adjust speed of oscillation
-      const oscillation = (props.verticalIncrement) * Math.sin(time.current) + 0;
+      const oscillation = (props.verticalIncrement) * Math.sin(time.current) + 0
+      // meshRef.current.position.y += props.verticalIncrement;
       meshRef.current.position.y = oscillation;
       // meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+      // meshRef.current.geometry.computeBoundingBox();
+      // const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+      // myWidth = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+      // console.log(`Text width (bounding box): ${width}`);
     }
     if (backgroundRef.current) {
       time.current += 0.02; // Adjust speed of oscillation
@@ -229,7 +236,7 @@ const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
   return (
     <group>
       <mesh ref={backgroundRef} position={[0, 0, -0.1]}> {/* Black background mesh */}
-        <planeGeometry args={[myWidth, 1]} /> {/* Adjust size as needed */}
+        <planeGeometry args={[myWidth.current, 1]} /> {/* Adjust size as needed */}
         <meshBasicMaterial color="black" transparent opacity={0.5} />
       </mesh>
       <Text

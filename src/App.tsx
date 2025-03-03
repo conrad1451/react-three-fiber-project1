@@ -92,15 +92,21 @@ function View2(){
     </>
   )
 }
+
+// MyScene: plus sign ball against green (non react three fiber) background 
+// AIGenSpaceComponent: small react three fiber space scene with blank ball
+// AIMaze: the space platform with balls on it
+// ZApp: rotating cube with controls for rotation speed and size
+// AIScrollApp: basic text scrolling up against green (non react three fiber) background  
 function View3(){
   return(
     <>
     <div className='App-bg'>
-      {/* <MyScene/> */}
+      <MyScene/>
       {/* <AIGenSpaceComponent/> */}
       {/* <AIMaze/> */}
       {/* <ZApp/> */}
-      <AIScrollApp/>
+      {/* <AIScrollApp/> */}
     </div>
     </>
   )
@@ -145,8 +151,8 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      <ViewPicker choice={2}/>
-      {/* <ViewPicker choice={3}/> */}
+      {/* <ViewPicker choice={2}/> */}
+      <ViewPicker choice={3}/>
     </div>
     </>
   )

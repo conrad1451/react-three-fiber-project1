@@ -199,22 +199,42 @@ function MyTorus(props: ThreeElements['mesh'])
  
 // Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322)
 // const TextDisplay = (props: {theText: TextDisplayProps}) => {
-const TextDisplay = (props: {theText: string}) => {
+const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
 
 // const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
   const meshRef = useRef<THREE.Mesh>(null!);
 
+  const backgroundRef = useRef<THREE.Mesh>(null!);
+
+  const time = useRef(0);
+
+  const myWidth = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x);
+
   useFrame(() => {
-    if (meshRef.current) {
-        meshRef.current.position.y += 0.01;
-    //   meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+    if (meshRef.current && meshRef.current.geometry) {
+      time.current += 0.02; // Adjust speed of oscillation
+      const oscillation = Math.sin(time.current) * (props.verticalIncrement); // Adjust amplitude of oscillation
+      // meshRef.current.position.y += props.verticalIncrement;
+      meshRef.current.position.y = oscillation;
+      // meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+      // meshRef.current.geometry.computeBoundingBox();
+      // const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+      // myWidth = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+      // console.log(`Text width (bounding box): ${width}`);
+    }
+    if (backgroundRef.current) {
+      time.current += 0.02; // Adjust speed of oscillation
+      const oscillation = Math.sin(time.current) * (props.verticalIncrement); // Adjust amplitude of oscillation
+      // backgroundRef.current.position.y += props.verticalIncrement;
+      backgroundRef.current.position.y = oscillation;
+      // backgroundRef.current.rotation.y += 0.01; // Optional: Rotate the text
     }
   });
 
   return (
     <group>
-      <mesh position={[0, 0, -0.1]}> {/* Black background mesh */}
-        <planeGeometry args={[5, 1]} /> {/* Adjust size as needed */}
+      <mesh ref={backgroundRef} position={[0, 0, -0.1]}> {/* Black background mesh */}
+        <planeGeometry args={[myWidth, 1]} /> {/* Adjust size as needed */}
         <meshBasicMaterial color="black" transparent opacity={0.5} />
       </mesh>
       <Text
@@ -261,7 +281,8 @@ function MySpaceScene(){
       <StarDistribution/>
 
 {/* Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322) */}
-      <TextDisplay theText="Hello, React Three Fiber!" />
+      {/* <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.1}/> */}
+      <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.5}/>
 
       {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */} 

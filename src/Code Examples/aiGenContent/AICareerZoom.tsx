@@ -3,40 +3,6 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-interface TextDisplayProps {
-  text: string;
-}
-
-const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
-  const meshRef = React.useRef<THREE.Mesh>(null!);
-
-  useFrame(() => {
-    if (meshRef.current) {
-        meshRef.current.position.y += 0.01;
-    //   meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
-    }
-  });
-
-  return (
-    <group>
-      <mesh position={[0, 0, -0.1]}> {/* Black background mesh */}
-        <planeGeometry args={[5, 1]} /> {/* Adjust size as needed */}
-        <meshBasicMaterial color="black" transparent opacity={0.5} />
-      </mesh>
-      <Text
-        ref={meshRef}
-        position={[0, 0, 0]}
-        fontSize={0.5}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {text}
-      </Text>
-    </group>
-  );
-};
-
 const ScrollingText: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
@@ -68,20 +34,48 @@ const ScrollingText: React.FC = () => {
   );
 };
 
-// const Scene: React.FC = () => {
-export function Scene(){
+const Camera: React.FC = () => {
+  const camera = useRef<THREE.PerspectiveCamera>(null!);
+  const { gl } = useThree();
+
+  useEffect(() => {
+    if (camera.current) {
+      camera.current.position.set(0, 0, 10); // Initial camera position
+      camera.current.lookAt(0, 0, 0);
+    }
+  }, []);
+
+  useFrame(() => {
+    if (camera.current) {
+      if (camera.current.position.z > 2) {
+          camera.current.position.z -= 0.01;
+      }
+    }
+  })
+
+  return (
+    <perspectiveCamera
+      ref={camera}
+      fov={75}
+      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
+      near={0.1}
+      far={1000}
+    />
+  );
+};
+
+const Scene: React.FC = () => {
   return (
     <>
+      <Camera />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={0.8} />
       <ScrollingText />
-      {/* <TextDisplay text="Hello, React Three Fiber!" /> */}
     </>
   );
 };
 
-// const AIScrollApp: React.FC = () => {
-export function AIScrollApp(){
+const AIGenComponent = () => {
   return (
     <Canvas>
       <Scene />
@@ -89,4 +83,4 @@ export function AIScrollApp(){
   );
 };
 
-// export default AIScrollApp;
+export default AIGenComponent;

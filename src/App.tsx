@@ -15,6 +15,8 @@ import OuterSpaceComponent from './OuterSpaceComponent'
 import MyScene from './Code Examples/testsForTexture/TextureTest1'
 
 import AIGenSpaceComponent from './Code Examples/aiGenContent/AIGenScene'
+
+import AIGenComponent from './Code Examples/aiGenContent/AICareerZoom'
 // import AIMazeOld from './Code Examples/aiGenContent/AIMazeOld'
 
 // import Scene from './TextureTest3'
@@ -102,11 +104,12 @@ function View3(){
   return(
     <>
     <div className='App-bg'>
-      <MyScene/>
+      {/* <MyScene/> */}
       {/* <AIGenSpaceComponent/> */}
       {/* <AIMaze/> */}
       {/* <ZApp/> */}
       {/* <AIScrollApp/> */}
+      <AIGenComponent/>
     </div>
     </>
   )
@@ -151,8 +154,8 @@ function App(){
     <>
     <div>
       {/* <ViewPicker choice={1}/> */}
-      {/* <ViewPicker choice={2}/> */}
-      <ViewPicker choice={3}/>
+      <ViewPicker choice={2}/>
+      {/* <ViewPicker choice={3}/> */}
     </div>
     </>
   )

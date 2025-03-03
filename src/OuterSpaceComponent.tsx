@@ -201,28 +201,52 @@ function MyTorus(props: ThreeElements['mesh'])
 const ScrollingText: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
 
-  const directionThing = 10;
+ 
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
+  
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+      const directionThing = 10;
 
   useFrame(() => {
     // if (camera.position.z > 10) { // Adjust zoom threshold
 
     if (camera.position.z > directionThing) { // Adjust zoom threshold
-      const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
-      setScrollPosition((prev) => prev + scrollSpeed);
+      // const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
+      // setScrollPosition((prev) => prev + scrollSpeed);
     } else {
-      setScrollPosition(0); // Reset scroll when not zoomed
+      // setScrollPosition(0); // Reset scroll when not zoomed
     }
     if (meshRef.current) {
-        meshRef.current.position.y = scrollPosition;
+      meshRef.current.position.y = scrollPosition;
+      // meshRef.current.position.y = 5;
     }
   });
+
+  useEffect(() => {
+    if (meshRef.current && meshRef.current.geometry && scrollContainerRef.current) {
+      meshRef.current.geometry.computeBoundingBox();
+      const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+      const height = meshRef.current.geometry.boundingBox!.max.y - meshRef.current.geometry.boundingBox!.min.y;
+
+      const canvasRect = scrollContainerRef.current.getBoundingClientRect();
+      const textPosition = {
+        top: canvasRect.top, // Adjust as needed
+        left: canvasRect.left, // Adjust as needed
+        width: width,
+        height: height,
+      };
+      setTextRect(textPosition);
+    }
+  }, [scrollPosition]);   
 
   return (
     <Text
       ref={meshRef}
-      position={[0, 0, 0]}
+      // position={[0, 0, 0]}
+      position={[0, 0, camera.position.z-2.3]}
       fontSize={0.3}
       color="white"
       anchorX="center"

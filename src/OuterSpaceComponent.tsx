@@ -9,7 +9,7 @@ import { Ball } from './MyBall'
 
 import { useRef, useState, useEffect, Suspense } from 'react'
 
-import { Canvas, useLoader, useFrame, ThreeElements } from '@react-three/fiber'
+import { Canvas, useLoader, useFrame, ThreeElements, useThree } from '@react-three/fiber'
 
 import { OrbitControls, Text } from '@react-three/drei';
  
@@ -196,6 +196,42 @@ function MyTorus(props: ThreeElements['mesh'])
     </mesh>
   )
 }
+
+
+const ScrollingText: React.FC = () => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+  const { camera } = useThree();
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const directionThing = 10;
+
+  useFrame(() => {
+    // if (camera.position.z > 10) { // Adjust zoom threshold
+
+    if (camera.position.z > directionThing) { // Adjust zoom threshold
+      const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
+      setScrollPosition((prev) => prev + scrollSpeed);
+    } else {
+      setScrollPosition(0); // Reset scroll when not zoomed
+    }
+    if (meshRef.current) {
+        meshRef.current.position.y = scrollPosition;
+    }
+  });
+
+  return (
+    <Text
+      ref={meshRef}
+      position={[0, 0, 0]}
+      fontSize={0.3}
+      color="white"
+      anchorX="center"
+      anchorY="top" // Anchor to top for scrolling effect
+    >
+      {`This is scrolling text.\nIt scrolls up when the camera zooms out.\nYou can add more lines to make it longer.\nLike this!\nAnd this!\nAnd so on...\nAnd even more!\nAnd more!\nAnd MORE!`}
+    </Text>
+  );
+};
  
 // Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322)
 // const TextDisplay = (props: {theText: TextDisplayProps}) => {
@@ -285,6 +321,8 @@ function MySpaceScene(){
 {/* Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322) */}
       {/* <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.1}/> */}
       <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.5}/>
+
+      <ScrollingText/>
 
       {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */} 

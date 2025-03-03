@@ -213,14 +213,9 @@ const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
   useFrame(() => {
     if (meshRef.current && meshRef.current.geometry) {
       time.current += 0.02; // Adjust speed of oscillation
-      const oscillation = Math.sin(time.current) * (props.verticalIncrement); // Adjust amplitude of oscillation
-      // meshRef.current.position.y += props.verticalIncrement;
+      const oscillation = (props.verticalIncrement) * Math.sin(time.current) + 0;
       meshRef.current.position.y = oscillation;
       // meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
-      // meshRef.current.geometry.computeBoundingBox();
-      // const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
-      // myWidth = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
-      // console.log(`Text width (bounding box): ${width}`);
     }
     if (backgroundRef.current) {
       time.current += 0.02; // Adjust speed of oscillation

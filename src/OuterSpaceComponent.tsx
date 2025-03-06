@@ -201,8 +201,16 @@ function quadraticPath(aVal: number, xVal: number, hVal:number){
   return ((aVal)*(xVal-hVal)*(xVal-hVal));  
 }
 
+// function quarticPath(aVal: number, xVal: number, hVal:number){
+//   return ((aVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal));  
+// }
+
 function quarticPath(aVal: number, xVal: number, hVal:number){
-  return ((aVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal));  
+  return ((aVal)*Math.pow((xVal-hVal), 4 / 1));  
+}
+
+function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:number){
+  return (Math.pow((yVal/aVal), 1 / 4)+hVal);  
 }
 
 
@@ -240,10 +248,17 @@ const ScrollingText: React.FC = () => {
   useFrame((state, delta) => {
     time.current += 0.02; // Adjust speed 
 
-    if(time.current <= 10.0){
+    if(time.current <= 4.0){
+
+    // if(time.current <= 10.0){
       
-      camera.position.z += 1*((movementSpeed.current)*time.current);
-      camera.position.x += 1*(quarticPath(movementSpeed.current, time.current, 0.4)); 
+    camera.position.z += 1*((movementSpeed.current)*time.current);
+    camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, time.current, 0.4)); 
+
+
+    // quartic works but need to adjust the scale
+      // camera.position.z += 1*((movementSpeed.current)*time.current);
+      // camera.position.x += 1*(quarticPath(movementSpeed.current, time.current, 0.4)); 
 
       // simply tinkering with z does not work - need a more massive arc - maybe quartic will do
       // camera.position.z += 20*((movementSpeed.current)*time.current);

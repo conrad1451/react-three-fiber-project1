@@ -197,7 +197,7 @@ function MyTorus(props: ThreeElements['mesh'])
   )
 }
 
-function functionPathx(aVal: number, xVal: number, hVal:number){
+function quadraticPath(aVal: number, xVal: number, hVal:number){
   return ((aVal)*(xVal-hVal)*(xVal-hVal));  
 }
 
@@ -237,15 +237,21 @@ const ScrollingText: React.FC = () => {
     time.current += 0.02; // Adjust speed 
 
     if(time.current <= 10.0){
-      camera.position.z += (movementSpeed.current)*time.current;
-      camera.position.x += functionPathx(movementSpeed.current, time.current, 0.4); 
+
+      // simply tinkering with z does not work - need a more massive arc - maybe quartic will do
+      // camera.position.z += 20*((movementSpeed.current)*time.current);
+      // camera.position.x += 1*(quadraticPath(movementSpeed.current, time.current, 0.4)); 
+      
+      // mutllyipling both by 40 just makes the animation go faster and move further without changing the shape or flattening the curve 
+      // camera.position.z += 40*((movementSpeed.current)*time.current);
+      // camera.position.x += 40*(quadraticPath(movementSpeed.current, time.current, 0.4)); 
     }
 
 
     // weird motion side effects
-    // camera.position.x += functionPathx(movementSpeed.current, time.current, 2); 
+    // camera.position.x += quadraticPath(movementSpeed.current, time.current, 2); 
     // even weirder motion side effects
-    // camera.position.x += functionPathx(movementSpeed.current, time.current, 6); 
+    // camera.position.x += quadraticPath(movementSpeed.current, time.current, 6); 
 
     // too slow to make J movement in time 
     // camera.position.x += (movementSpeed.current)*0.1*(time.current)*(time.current);  

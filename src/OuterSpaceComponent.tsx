@@ -207,7 +207,6 @@ const ScrollingText: React.FC = () => {
   const { camera } = useThree();
   // const [scrollPosition, setScrollPosition] = useState(0);
 
-
   const [scrollPosition, setScrollPosition] = useState(0);
   const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
@@ -236,18 +235,6 @@ const ScrollingText: React.FC = () => {
   // });
   useFrame((state, delta) => {
     time.current += 0.02; // Adjust speed 
-     
-    // if(clicked)
-    // {
-    //   chosenDirection = -1;
-    // }
-    // else{
-    //   chosenDirection = 1;
-    // }
-    // camera.position.y += (delta*chosenDirection);
-    // camera.position.z = delta * -0.01;
-    // camera.position.x = delta * -0.0002;
-    // camera.rotation.y = delta * -0.0002;
 
     if(time.current <= 10.0){
       camera.position.z += (movementSpeed.current)*time.current;
@@ -260,17 +247,9 @@ const ScrollingText: React.FC = () => {
     // even weirder motion side effects
     // camera.position.x += functionPathx(movementSpeed.current, time.current, 6); 
 
-
     // too slow to make J movement in time 
     // camera.position.x += (movementSpeed.current)*0.1*(time.current)*(time.current);  
 
-
-    // basic movement in x-z plane as the camera automatically rotates to focus on the cube and torus
-
-    // camera.position.z += 100*delta * -0.01; //0.01; //
-    // camera.position.x += 100*delta * -0.0002; // 0.0002;//
-      // camera.rotation.y = 1 * -0.2;
-    // camera.rotation.y += 100*delta * -0.0002; //0.0002;//
     // OrthographicCamera()
   })
 

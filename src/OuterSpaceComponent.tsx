@@ -208,22 +208,44 @@ const ScrollingText: React.FC = () => {
     const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
   
     const scrollContainerRef = useRef<HTMLDivElement>(null);
-      const directionThing = 10;
 
-  useFrame(() => {
-    // if (camera.position.z > 10) { // Adjust zoom threshold
+    let chosenDirection = 1;
+ 
+      // const directionThing = 10;
 
-    if (camera.position.z > directionThing) { // Adjust zoom threshold
-      // const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
-      // setScrollPosition((prev) => prev + scrollSpeed);
-    } else {
-      // setScrollPosition(0); // Reset scroll when not zoomed
-    }
-    if (meshRef.current) {
-      meshRef.current.position.y = scrollPosition;
-      // meshRef.current.position.y = 5;
-    }
-  });
+  // useFrame(() => {
+  //   // if (camera.position.z > 10) { // Adjust zoom threshold
+
+  //   if (camera.position.z > directionThing) { // Adjust zoom threshold
+  //     // const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
+  //     // setScrollPosition((prev) => prev + scrollSpeed);
+  //   } else {
+  //     // setScrollPosition(0); // Reset scroll when not zoomed
+  //   }
+  //   if (meshRef.current) {
+  //     meshRef.current.position.y = scrollPosition;
+  //     // meshRef.current.position.y = 5;
+  //   }
+  // });
+  useFrame((state, delta) => {
+    
+    // if(clicked)
+    // {
+    //   chosenDirection = -1;
+    // }
+    // else{
+    //   chosenDirection = 1;
+    // }
+    // camera.position.y += (delta*chosenDirection);
+    // camera.position.z = delta * -0.01;
+    // camera.position.x = delta * -0.0002;
+    // camera.rotation.y = delta * -0.0002;
+
+    camera.position.z += 100*delta * -0.01;
+    camera.position.x += 100*delta * -0.0002;
+    camera.rotation.y += 100*delta * -0.0002;
+    // OrthographicCamera()
+  })
 
   useEffect(() => {
     if (meshRef.current && meshRef.current.geometry && scrollContainerRef.current) {

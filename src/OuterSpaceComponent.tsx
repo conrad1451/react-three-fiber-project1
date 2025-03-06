@@ -201,6 +201,10 @@ function quadraticPath(aVal: number, xVal: number, hVal:number){
   return ((aVal)*(xVal-hVal)*(xVal-hVal));  
 }
 
+function quarticPath(aVal: number, xVal: number, hVal:number){
+  return ((aVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal));  
+}
+
 
 const ScrollingText: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
@@ -237,6 +241,9 @@ const ScrollingText: React.FC = () => {
     time.current += 0.02; // Adjust speed 
 
     if(time.current <= 10.0){
+      
+      camera.position.z += 1*((movementSpeed.current)*time.current);
+      camera.position.x += 1*(quarticPath(movementSpeed.current, time.current, 0.4)); 
 
       // simply tinkering with z does not work - need a more massive arc - maybe quartic will do
       // camera.position.z += 20*((movementSpeed.current)*time.current);

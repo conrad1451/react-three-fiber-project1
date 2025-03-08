@@ -2,6 +2,7 @@
 // [1]: https://codesandbox.io/p/sandbox/gifted-varahamihira-rrppl0y8l4?file=%2Fsrc%2FApp.js%3A1%2C1-40%2C1
 // [2]: https://www.google.com/search?client=firefox-b-1-d&q=using+getBoundingClientRect+in+reactjs (search: using getBoundingClientRect in reactjs)
 // [3]: https://www.google.com/search?client=firefox-b-1-d&q=array+fill+with+map+-+expectd+1-3+arguemnts+but+got+0 (search: array fill with map - expected 1-3 arguments but got 0)
+// [4]: https://www.google.com/search?client=firefox-b-1-d&q=how+to+do+fractional+powers+in+javascript
 
 import * as THREE from 'three'
 
@@ -205,8 +206,16 @@ function quadraticPath(aVal: number, xVal: number, hVal:number){
 //   return ((aVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal));  
 // }
 
+function powerPath(thePower: number, aVal: number, xVal: number, hVal:number){
+  return ((aVal)*Math.pow((xVal-hVal), thePower));  
+}
+
 function quarticPath(aVal: number, xVal: number, hVal:number){
   return ((aVal)*Math.pow((xVal-hVal), 4 / 1));  
+}
+
+function calcInputForDesiredOutputPowerPath(thePower: number, aVal: number, yVal: number, hVal:number){
+  return (Math.pow((yVal/aVal), 1 / thePower)+hVal);  
 }
 
 function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:number){
@@ -228,7 +237,20 @@ const ScrollingText: React.FC = () => {
 
   const time = useRef(0);
   const movementSpeed = useRef(0.002);
+
+  // orig, not far enough
+  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 10, 2);
+  
+  // still not far enough
+  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 70, 2);
+
+  // close so better
+  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 120, 2);
  
+  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 150, 2);
+  const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 150, 2);
+
+  // powerPath
       // const directionThing = 10;
 
   // useFrame(() => {
@@ -248,12 +270,14 @@ const ScrollingText: React.FC = () => {
   useFrame((state, delta) => {
     time.current += 0.02; // Adjust speed 
 
-    if(time.current <= 4.0){
+    if(time.current < xForBoundaryYVal){
 
     // if(time.current <= 10.0){
       
     camera.position.z += 1*((movementSpeed.current)*time.current);
-    camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, time.current, 0.4)); 
+    camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, time.current, 0.4) ); 
+
+    // camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, time.current, 0.4)); 
 
 
     // quartic works but need to adjust the scale

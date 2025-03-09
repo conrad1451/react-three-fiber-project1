@@ -248,7 +248,8 @@ const ScrollingText: React.FC = () => {
   // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 120, 2);
  
   // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 150, 2);
-  const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 150, 2);
+  // const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 150, 2);
+  const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 120, 2);
 
   // powerPath
       // const directionThing = 10;
@@ -274,7 +275,7 @@ const ScrollingText: React.FC = () => {
 
     // if(time.current <= 10.0){
       
-    camera.position.z += 1*((movementSpeed.current)*time.current);
+    camera.position.z += 12*((movementSpeed.current)*time.current);
     camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, time.current, 0.4) ); 
 
     // camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, time.current, 0.4)); 

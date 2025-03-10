@@ -238,6 +238,10 @@ const ScrollingText: React.FC = () => {
   const time = useRef(0);
   const movementSpeed = useRef(0.002);
 
+  const isAutopanning = true;
+
+  const movementSelection = useRef(0);
+
   // orig, not far enough
   // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 10, 2);
   
@@ -271,14 +275,17 @@ const ScrollingText: React.FC = () => {
   useFrame((state, delta) => {
     time.current += 0.02; // Adjust speed 
 
-    if(time.current < xForBoundaryYVal){
+    if(isAutopanning){
+      movementSelection.current = time.current;
+    } 
+    if(movementSelection.current < xForBoundaryYVal){
 
     // if(time.current <= 10.0){
       
-    camera.position.z += 12*((movementSpeed.current)*time.current);
-    camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, time.current, 0.4) ); 
+    camera.position.z += 12*((movementSpeed.current)*movementSelection.current);
+    camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, movementSelection.current, 0.4) ); 
 
-    // camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, time.current, 0.4)); 
+    // camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, movementSelection.current, 0.4)); 
 
 
     // quartic works but need to adjust the scale

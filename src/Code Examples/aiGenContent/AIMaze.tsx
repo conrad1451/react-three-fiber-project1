@@ -19,6 +19,43 @@ interface SphereProps {
   position: [number, number, number];
 }
 
+const GrowingSphere: React.FC = () => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [sphereScale, setSphereScale] = useState(1); // Initial scale
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Adjust scale based on scroll position
+    const newScale = 1 + scrollPosition * 0.001; // Adjust multiplier for sensitivity
+    setSphereScale(newScale);
+  }, [scrollPosition]);
+
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.scale.set(sphereScale, sphereScale, sphereScale);
+    }
+  });
+
+  return (
+    <mesh ref={meshRef} position={[0, 2, 0]}>
+      <sphereGeometry args={[3, 32, 32]} />
+      <meshStandardMaterial color="lightblue" />
+    </mesh>
+  );
+};
+
 const Sphere: React.FC<SphereProps> = ({ position }) => {
   return (
     <mesh position={position}>
@@ -341,9 +378,11 @@ const CameraControl2: React.FC = () => {
 const Scene: React.FC = () => {
   return (
     <>
-      <CameraControl1 />
+      {/* <CameraControl1 /> */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={0.8} />
+      <GrowingSphere />
+
       <Floor />
       <Spheres />
     </>
@@ -368,11 +407,12 @@ function MySpaceScene(){
     <>
       {/* <CameraControl1 /> */}
       {/* <CameraControl2 /> */}
-      <CameraControlAlt />
+      {/* <CameraControlAlt /> */}
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
       <Suspense fallback={null}> <Background /> </Suspense>
+      <GrowingSphere/>
       <Floor />
       <Spheres /> 
 

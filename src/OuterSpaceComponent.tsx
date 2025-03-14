@@ -465,15 +465,19 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
 
   
   return (
-       <div className='Threejs-bg-outerspace'>
-      
+    <div className='Threejs-bg-outerspace'>
       {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
       one access the full screen button unless it is an overlay? Exaclty. */}
-    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
-    {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
-    <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
-      <MySpaceScene/>
-    </Canvas>
+      {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
+      {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
+      <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
+        <MySpaceScene/>
+      </Canvas>
+      <div className="html-overlay">
+        <h1>Welcome to Outer Space!</h1>
+        <p>This is some HTML text overlaying the 3D scene.</p>
+        {/* <button>Click Me</button> */}
+      </div>
     </div>
   )
 }

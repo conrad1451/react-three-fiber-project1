@@ -115,3 +115,44 @@ the width specifications from App-bg class*/
 .read-the-docs {
   color: #888;
 }
+
+
+.scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.html-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5); /* Optional semi-transparent background */
+  pointer-events: none; /* Allows click-through to the canvas */
+}
+
+.html-overlay h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.html-overlay p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.html-overlay button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto; /* Re-enable pointer events for the button */
+}

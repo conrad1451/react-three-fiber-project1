@@ -558,7 +558,7 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
       <Canvas
         style={{
           width: props.windowMinimized ? `200px` : `100vw`,
-          height: props.windowMinimized ? `200px` : `80vh`,
+          height: props.windowMinimized ? `200px` : `100vh`,
           zIndex: 1, // lower z-index for canvas
         }}
       >

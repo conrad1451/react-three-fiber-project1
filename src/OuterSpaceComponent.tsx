@@ -526,10 +526,10 @@ const TextOverlayTest1 = (props: { topAligned: boolean }) => {
       <div style={{ display: 'flex' }}>
         {Array(4).fill(null).map((_, index) => (
           <div className="html-overlay" key={index}>
-            <div className="experienceleftside">
+            {/* <div className="experienceleftside"> */}
               <h1>Conrad</h1>
               <p>🚀 Welcome to my portfolio!</p>
-            </div>
+            {/* </div> */}
           </div>
         ))}
       </div>

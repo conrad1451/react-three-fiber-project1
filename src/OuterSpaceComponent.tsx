@@ -534,22 +534,18 @@ const TextOverlay = (props: {topAligned: boolean}) => {
   )
 }
 
-export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
-
-  
+export default function OuterSpaceComponent(props: { windowMinimized: boolean }) {
   return (
-    <div className='Threejs-bg-outerspace'>
-      {/* CHQ: below shrinks the cubes but not the window in which they exist. How does
-      one access the full screen button unless it is an overlay? Exaclty. */}
-      {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
-      {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
-      <TextOverlay topAligned={true}/>
-      <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `80vh`}}>
-        <MySpaceScene/>
+    <div className="Threejs-bg-outerspace" style={{ position: 'relative', height: '100vh' }}>
+      {/* Container for relative positioning */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%' }}>
+        <TextOverlay topAligned={true} />
+      </div>
+      <Canvas style={{ width: props.windowMinimized ? `200px` : `100vw`, height: props.windowMinimized ? `200px` : `40vh` }}>
+        <MySpaceScene />
       </Canvas>
-      <TextOverlay topAligned={true}/>
     </div>
-  )
+  );
 }
 
 // I think I can put

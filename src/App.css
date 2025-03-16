@@ -216,15 +216,12 @@ the width specifications from App-bg class*/
 
 /* need to oremove things from this to make the layotut tterch across page */
 .html-overlay {
-  /* position: absolute; - remove this line */
-  /* top: 0; - remove this line */
-  /* left: 0; - remove this line */
   width: 100%; /* Ensure each overlay takes its grid column's width */
-  height: 2%; /* was 25vh*/ /* Adjust as needed */
-  display: flex; /* was grid*//* was flex*/
-  flex-direction: column; /* was row*//* was column*/
-  justify-content: center; /* was start*//* was center*/
-  align-items: start; /* was center*/
+  height: auto; /* Allow height to adjust to content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
@@ -236,8 +233,8 @@ the width specifications from App-bg class*/
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing2);
-  width: 100%; /* Ensure text content takes its container's width */
-  text-align: center; /* Center the text */
+  width: 100%;
+  text-align: center;
 }
 
 .html-overlay h1 {

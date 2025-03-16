@@ -539,11 +539,29 @@ const TextOverlay = (props: { topAligned: boolean }) => {
 
 export default function OuterSpaceComponent(props: { windowMinimized: boolean }) {
   return (
-    <div className="Threejs-bg-outerspace" style={{ position: 'relative', height: '100vh' }}>
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 'auto' }}>
+    <div
+      className="Threejs-bg-outerspace"
+      style={{ position: 'relative', height: '100vh' }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 'auto',
+          zIndex: 10, // Higher z-index for overlay
+        }}
+      >
         <TextOverlay topAligned={true} />
       </div>
-      <Canvas style={{ width: props.windowMinimized ? `200px` : `100vw`, height: props.windowMinimized ? `200px` : `80vh` }}>
+      <Canvas
+        style={{
+          width: props.windowMinimized ? `200px` : `100vw`,
+          height: props.windowMinimized ? `200px` : `80vh`,
+          zIndex: 1, // lower z-index for canvas
+        }}
+      >
         <MySpaceScene />
       </Canvas>
     </div>

@@ -460,47 +460,35 @@ function MySpaceScene(){
   )
 }
 
-function IntroBlock(){
-  return(
-    <>
-    <main>
+function IntroBlock() {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100vw' }}> {/* Container for four overlays */}
       <div className="html-overlay">
-        <div className='experienceleftside'>
-          <h1>Conrad</h1>
+        <div className="experienceleftside">
+          {/* <h1>Conrad</h1> */}
           <p>🚀 Welcome to my portfolio!</p>
+        </div>
+      </div>
+      <div className="html-overlay">
+        <div className="experienceleftside">
+          {/* <h1>Conrad</h1> */}
           <p>🚀 Welcome to my portfolio!</p>
-
-        </div> 
-        <div className='experiencerightside'>
+        </div>
+      </div>
+      <div className="html-overlay">
+        <div className="experienceleftside">
+          {/* <h1>Conrad</h1> */}
+          <p>🚀 Welcome to my portfolio!</p>
+        </div>
+      </div>
+      <div className="html-overlay">
+        <div className="experienceleftside">
           <h1>Conrad</h1>
           <p>🚀 Welcome to my portfolio!</p>
         </div>
-        {/* <h1>Welcome to Outer Space!</h1> */}
-        {/* <p>This is some HTML text overlaying the 3D scene.</p> */}
-        {/* <button>Click Me</button> */}
       </div>
-    </main>
-    <main>
-      <div className="html-overlay">
-        <div className='experienceleftside'>
-          <h1>Conrad</h1>
-          <p>🚀 Welcome to my portfolio!</p>
-          <p>🚀 Welcome to my portfolio!</p>
-          <p>🚀 Welcome to my portfolio!</p>
-
-
-        </div> 
-        <div className='experiencerightside'>
-          <h1>Conrad</h1>
-          <p>🚀 Welcome to my portfolio!</p>
-        </div>
-        {/* <h1>Welcome to Outer Space!</h1> */}
-        {/* <p>This is some HTML text overlaying the 3D scene.</p> */}
-        {/* <button>Click Me</button> */}
-      </div>
-    </main>
-    </>
-  )
+    </div>
+  );
 }
 
 function TheText(){
@@ -508,7 +496,7 @@ function TheText(){
     <>
     <main>
       <IntroBlock/>
-      <IntroBlock/>
+      {/* <IntroBlock/> */}
 
     </main>
     {/* <IntroBlock/> */}
@@ -525,11 +513,11 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
       one access the full screen button unless it is an overlay? Exaclty. */}
       {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
       {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
+      <TheText/>
       <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
         <MySpaceScene/>
       </Canvas>
       <TheText/>
-      {/* <TheText/> */}
     </div>
   )
 }

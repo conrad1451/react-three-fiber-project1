@@ -460,6 +460,47 @@ function MySpaceScene(){
   )
 }
 
+function IntroBlock(){
+  return(
+    <>
+    <main>
+      <div className="html-overlay">
+        <div className='myHead'>
+          <h1>Conrad</h1>
+          <p>🚀 Welcome to my portfolio!</p>
+          <p>🚀 Welcome to my portfolio!</p>
+
+        </div>
+        {/* <h1>Welcome to Outer Space!</h1> */}
+        {/* <p>This is some HTML text overlaying the 3D scene.</p> */}
+        {/* <button>Click Me</button> */}
+      </div>
+      <div className="html-overlay">
+        <div className='myHead'>
+          <h1>Conrad</h1>
+          <p>🚀 Welcome to my portfolio!</p>
+        </div>
+        {/* <h1>Welcome to Outer Space!</h1> */}
+        {/* <p>This is some HTML text overlaying the 3D scene.</p> */}
+        {/* <button>Click Me</button> */}
+      </div>
+    </main>
+    </>
+  )
+}
+
+function TheText(){
+  return(
+    <>
+    <main>
+      <IntroBlock/>
+      <IntroBlock/>
+
+    </main>
+    {/* <IntroBlock/> */}
+    </>
+  )
+}
 
 export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
 
@@ -473,11 +514,8 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
       <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
         <MySpaceScene/>
       </Canvas>
-      <div className="html-overlay">
-        <h1>Welcome to Outer Space!</h1>
-        <p>This is some HTML text overlaying the 3D scene.</p>
-        {/* <button>Click Me</button> */}
-      </div>
+      <TheText/>
+      {/* <TheText/> */}
     </div>
   )
 }

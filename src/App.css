@@ -229,7 +229,7 @@ the width specifications from App-bg class*/
 
 .experienceleftside {
   padding: 1rem;
-  background: var(--dark-bg);
+  /* background: var(--dark-bg); */
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing2);

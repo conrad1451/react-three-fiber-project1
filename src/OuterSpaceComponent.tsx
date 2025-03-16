@@ -520,7 +520,7 @@ const IntroBlock = (props: {widthOfTextOverlaySection: number}) => {
 }
 
 
-const TextOverlay = (props: { topAligned: boolean }) => {
+const TextOverlayTest1 = (props: { topAligned: boolean }) => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div style={{ display: 'flex' }}>
@@ -553,7 +553,7 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
           zIndex: 10, // Higher z-index for overlay
         }}
       >
-        <TextOverlay topAligned={true} />
+        <TextOverlayTest1 topAligned={true} />
       </div>
       <Canvas
         style={{

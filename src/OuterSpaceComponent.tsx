@@ -465,18 +465,32 @@ function IntroBlock(){
     <>
     <main>
       <div className="html-overlay">
-        <div className='myHead'>
+        <div className='experienceleftside'>
           <h1>Conrad</h1>
           <p>🚀 Welcome to my portfolio!</p>
           <p>🚀 Welcome to my portfolio!</p>
 
+        </div> 
+        <div className='experiencerightside'>
+          <h1>Conrad</h1>
+          <p>🚀 Welcome to my portfolio!</p>
         </div>
         {/* <h1>Welcome to Outer Space!</h1> */}
         {/* <p>This is some HTML text overlaying the 3D scene.</p> */}
         {/* <button>Click Me</button> */}
       </div>
+    </main>
+    <main>
       <div className="html-overlay">
-        <div className='myHead'>
+        <div className='experienceleftside'>
+          <h1>Conrad</h1>
+          <p>🚀 Welcome to my portfolio!</p>
+          <p>🚀 Welcome to my portfolio!</p>
+          <p>🚀 Welcome to my portfolio!</p>
+
+
+        </div> 
+        <div className='experiencerightside'>
           <h1>Conrad</h1>
           <p>🚀 Welcome to my portfolio!</p>
         </div>

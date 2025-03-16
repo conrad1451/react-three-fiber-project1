@@ -460,25 +460,53 @@ function MySpaceScene(){
   )
 }
 
-function IntroBlock() {
+
+const TemplateOverlayBlock = (props: {blockTitle: string, blockMessage: string, repeatCount: number}) => {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100vw' }}> {/* Container for four overlays */}
-      <div className="html-overlay">
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +props.repeatCount+', 1fr)', width: '100vw' }}>
+      {Array(props.repeatCount).fill(null).map((_, index) => (
+        <div className="html-overlay" key={index}>
+          {/* <h1>{props.blockTitle}</h1> */}
+          <div className="experienceleftside">
+            <h1>{props.blockTitle}</h1>
+            <p>{props.blockMessage}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const IntroBlock = (props: {widthOfTextOverlaySection: number}) => {
+
+  const blockCount = 4;
+
+// function IntroBlock() {
+  return (
+        // <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +16+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
+
+        // <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +4*blockCount+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
+
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +blockCount+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
+      
+      {/* const myVector: THREE.Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150))); */}
+
+    {/* <div>HI</div> */}
+    <TemplateOverlayBlock blockTitle='Conrad' blockMessage='🚀 Welcome to my portfolio!' repeatCount={blockCount}/>
+      
+      {/* <div className="html-overlay">
         <div className="experienceleftside">
-          {/* <h1>Conrad</h1> */}
-          <p>🚀 Welcome to my portfolio!</p>
+           <p>🚀 Welcome to my portfolio!</p>
         </div>
       </div>
       <div className="html-overlay">
         <div className="experienceleftside">
-          {/* <h1>Conrad</h1> */}
-          <p>🚀 Welcome to my portfolio!</p>
+           <p>🚀 Welcome to my portfolio!</p>
         </div>
       </div>
       <div className="html-overlay">
         <div className="experienceleftside">
-          {/* <h1>Conrad</h1> */}
-          <p>🚀 Welcome to my portfolio!</p>
+           <p>🚀 Welcome to my portfolio!</p>
         </div>
       </div>
       <div className="html-overlay">
@@ -486,16 +514,18 @@ function IntroBlock() {
           <h1>Conrad</h1>
           <p>🚀 Welcome to my portfolio!</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
 
-function TheText(){
+const TextOverlay = (props: {topAligned: boolean}) => {
+
+// function TextOverlay(){
   return(
     <>
     <main>
-      <IntroBlock/>
+      <IntroBlock widthOfTextOverlaySection={100}/>
       {/* <IntroBlock/> */}
 
     </main>
@@ -513,11 +543,11 @@ export default function OuterSpaceComponent(props: {windowMinimized:boolean}) {
       one access the full screen button unless it is an overlay? Exaclty. */}
       {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `20vh`: `30vh`}}> */}
       {/* <Canvas style={{width: innerWidth, height: props.windowMinimized? `200px`: `600px `}}> */}
-      <TheText/>
-      <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `100vh`}}>
+      <TextOverlay topAligned={true}/>
+      <Canvas style={{width: props.windowMinimized? `200px`: `100vw`, height: props.windowMinimized? `200px`: `80vh`}}>
         <MySpaceScene/>
       </Canvas>
-      <TheText/>
+      <TextOverlay topAligned={true}/>
     </div>
   )
 }

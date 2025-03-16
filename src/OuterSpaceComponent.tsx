@@ -519,29 +519,31 @@ const IntroBlock = (props: {widthOfTextOverlaySection: number}) => {
   );
 }
 
-const TextOverlay = (props: {topAligned: boolean}) => {
 
-// function TextOverlay(){
-  return(
-    <>
-    <main>
-      <IntroBlock widthOfTextOverlaySection={100}/>
-      {/* <IntroBlock/> */}
-
-    </main>
-    {/* <IntroBlock/> */}
-    </>
-  )
-}
+const TextOverlay = (props: { topAligned: boolean }) => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex' }}>
+        {Array(4).fill(null).map((_, index) => (
+          <div className="html-overlay" key={index}>
+            <div className="experienceleftside">
+              <h1>Conrad</h1>
+              <p>🚀 Welcome to my portfolio!</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function OuterSpaceComponent(props: { windowMinimized: boolean }) {
   return (
     <div className="Threejs-bg-outerspace" style={{ position: 'relative', height: '100vh' }}>
-      {/* Container for relative positioning */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%' }}>
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 'auto' }}>
         <TextOverlay topAligned={true} />
       </div>
-      <Canvas style={{ width: props.windowMinimized ? `200px` : `100vw`, height: props.windowMinimized ? `200px` : `40vh` }}>
+      <Canvas style={{ width: props.windowMinimized ? `200px` : `100vw`, height: props.windowMinimized ? `200px` : `80vh` }}>
         <MySpaceScene />
       </Canvas>
     </div>

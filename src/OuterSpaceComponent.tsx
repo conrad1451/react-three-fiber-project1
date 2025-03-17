@@ -591,32 +591,55 @@ const TextOverlayAbout = () => {
 };
 
 export default function OuterSpaceComponent(props: { windowMinimized: boolean }) {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isScrolling) {
+        // Scrolling allowed, no action needed here
+      } else {
+        // Scrolling disabled, prevent default behavior
+        window.scrollTo(0, 0); // Reset scroll position to top
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isScrolling]);
+
+  let chosenDirection = 1;
+
+  // No longer setting window.onscroll to true or false.
+  // The useEffect handles the scroll behavior based on isScrolling.
+
   return (
     <div
       className="Threejs-bg-outerspace"
-      style={{ position: 'relative', height: '100vh' }}
+      style={{
+        position: 'relative',
+        height: '100vh',
+        overflowY: isScrolling ? 'auto' : 'hidden', // Disable vertical scrolling
+      }}
     >
       <div
         style={{
           position: 'absolute',
-          top: '80%', //'50%',//'90%',
-          // left: '50%',
+          top: '80%',
           transform: 'translate(-50%, -50%)',
           width: 'auto',
-          zIndex: 10, // Higher z-index for overlay
+          zIndex: 10,
         }}
       >
-        {/* <TextOverlayTest1 topAligned={true} /> */}
-           {/* <TextOverlayTitle/> */}
-           <TextOverlayAbout2/>
-           {/* <TextOverlayAbout/> */}
-            {/* <TextOverlayAbout/> */}
-       </div>
+        <TextOverlayAbout2 />
+      </div>
       <Canvas
         style={{
           width: props.windowMinimized ? `200px` : `100vw`,
           height: props.windowMinimized ? `200px` : `100vh`,
-          zIndex: 1, // lower z-index for canvas
+          zIndex: 1,
         }}
       >
         <MySpaceScene />

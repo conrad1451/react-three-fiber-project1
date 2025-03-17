@@ -292,7 +292,7 @@ const CameraPanning: React.FC = () => {
       anchorX="center"
       anchorY="top" // Anchor to top for scrolling effect
     >
-      {`This is scrolling text.\nIt scrolls up when the camera zooms out.\nYou can add more lines to make it longer.\nLike this!\nAnd this!\nAnd so on...\nAnd even more!\nAnd more!\nAnd MORE!`}
+      {`.`}
     </Text>
   );
 };
@@ -384,7 +384,7 @@ function MySpaceScene(){
 
 {/* Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322) */}
       {/* <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.1}/> */}
-      <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.5}/>
+      {/* <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.5}/> */}
 
       <CameraPanning/>
 

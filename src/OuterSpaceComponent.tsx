@@ -223,7 +223,7 @@ function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:n
 }
 
 
-const ScrollingText: React.FC = () => {
+const CameraPanning: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
 
@@ -386,7 +386,7 @@ function MySpaceScene(){
       {/* <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.1}/> */}
       <TextDisplay theText="Hello, React Three Fiber!" verticalIncrement={0.5}/>
 
-      <ScrollingText/>
+      <CameraPanning/>
 
       {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */} 

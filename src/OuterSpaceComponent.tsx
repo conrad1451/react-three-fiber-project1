@@ -226,14 +226,11 @@ function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:n
 const ScrollingText: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
-  // const [scrollPosition, setScrollPosition] = useState(0);
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  let chosenDirection = 1;
 
   const time = useRef(0);
   const movementSpeed = useRef(0.002);
@@ -241,37 +238,9 @@ const ScrollingText: React.FC = () => {
   const isAutopanning = true;
 
   const movementSelection = useRef(0);
-
-  // orig, not far enough
-  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 10, 2);
-  
-  // still not far enough
-  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 70, 2);
-
-  // close so better
-  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 120, 2);
  
-  // const xForBoundaryYVal = calcInputForDesiredOutputquarticPath(0.01, 150, 2);
-  // const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 150, 2);
   const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 120, 2);
 
-  // powerPath
-      // const directionThing = 10;
-
-  // useFrame(() => {
-  //   // if (camera.position.z > 10) { // Adjust zoom threshold
-
-  //   if (camera.position.z > directionThing) { // Adjust zoom threshold
-  //     // const scrollSpeed = (camera.position.z - directionThing) * 0.005; // Adjust scroll speed
-  //     // setScrollPosition((prev) => prev + scrollSpeed);
-  //   } else {
-  //     // setScrollPosition(0); // Reset scroll when not zoomed
-  //   }
-  //   if (meshRef.current) {
-  //     meshRef.current.position.y = scrollPosition;
-  //     // meshRef.current.position.y = 5;
-  //   }
-  // });
   useFrame((state, delta) => {
     time.current += 0.02; // Adjust speed 
 
@@ -279,26 +248,9 @@ const ScrollingText: React.FC = () => {
       movementSelection.current = time.current;
     } 
     if(movementSelection.current < xForBoundaryYVal){
-
-    // if(time.current <= 10.0){
       
     camera.position.z += 12*((movementSpeed.current)*movementSelection.current);
     camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, movementSelection.current, 0.4) ); 
-
-    // camera.position.x += 1*(quarticPath(0.01*movementSpeed.current, movementSelection.current, 0.4)); 
-
-
-    // quartic works but need to adjust the scale
-      // camera.position.z += 1*((movementSpeed.current)*time.current);
-      // camera.position.x += 1*(quarticPath(movementSpeed.current, time.current, 0.4)); 
-
-      // simply tinkering with z does not work - need a more massive arc - maybe quartic will do
-      // camera.position.z += 20*((movementSpeed.current)*time.current);
-      // camera.position.x += 1*(quadraticPath(movementSpeed.current, time.current, 0.4)); 
-      
-      // mutllyipling both by 40 just makes the animation go faster and move further without changing the shape or flattening the curve 
-      // camera.position.z += 40*((movementSpeed.current)*time.current);
-      // camera.position.x += 40*(quadraticPath(movementSpeed.current, time.current, 0.4)); 
     }
 
 

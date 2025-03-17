@@ -369,6 +369,16 @@ const Background = () => {
 }
 
 function MySpaceScene(){
+  const { camera } = useThree();
+  const htmlOverlayRef = useRef<HTMLDivElement>(null);
+
+  useFrame(() => {
+    if (htmlOverlayRef.current) {
+      const scrollAmount = camera.position.z * 1;
+      htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
+    }
+  });
+
   return(
     <>
       <ambientLight intensity={Math.PI / 2} />
@@ -508,6 +518,15 @@ const TextOverlayTitle = () => {
 
 
 const TextOverlayAbout2 = () => {
+//   const { camera } = useThree();
+//   const htmlOverlayRef = useRef<HTMLDivElement>(null);
+
+// useFrame(() => {
+//     if (htmlOverlayRef.current) {
+//         const scrollAmount = camera.position.z * 1;
+//         htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
+//     }
+// });
   return (
     <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
       left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>

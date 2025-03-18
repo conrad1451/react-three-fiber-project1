@@ -130,6 +130,7 @@ const BiographyText = (props: {theTextTop: string}) => {
     style={{
       position: 'absolute',
       top: props.theTextTop, // Use the state variable
+      // top: (props.theTextTop)+'%', // Use the state variable
       transform: 'translate(-50%, -50%)',
       width: 'auto',
       zIndex: 10,
@@ -181,7 +182,7 @@ const BiographyText = (props: {theTextTop: string}) => {
 }
 
 
-const BiographyText2 = (props: {theTextTop: string}) => {
+const ProjectsText = (props: {theTextTop: string}) => {
   return(
     <div
     style={{
@@ -209,22 +210,7 @@ const BiographyText2 = (props: {theTextTop: string}) => {
           .fill(null)
           .map((_, index) => (
             <div className="html-overlay" key={index}>
-              <h1>Conrad</h1>
-              <p>
-                My name is Conrad Hansen-Quartey. I live in West Haven, CT. I
-                majored in Engineering Science.
-              </p>
-              <p>
-                With a combination of self-taught and academic training, I
-                have both the passion and engineering skill of a professional
-                software engineer. Having self-taught programming languages
-                throughout high school and learning computer programming
-                design principles and techniques in college, I have become a
-                well-rounded computer scientist. I have a passion not only
-                for developing software, but for solving problems in creative
-                ways. I am deeply committed to using my talents and gifts to
-                serve those around me and society in general.
-              </p>
+              <h1>PROJECTS</h1>
             </div>
           ))}
       </div>
@@ -238,6 +224,8 @@ const BiographyText2 = (props: {theTextTop: string}) => {
 
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('80%'); // Initial top position
+  // const [textTopString, setTextTopString] = useState('80%'); // Initial top position
+  // const [textTopNumber, setTextTopNumber] = useState(80); // Initial top position
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -261,7 +249,12 @@ const TextOverlayAbout2 = () => {
     };
   }, []);
 
-  return ( <BiographyText theTextTop={textTop}/> );
+  return (
+    <>
+      <BiographyText theTextTop={textTop}/>
+      <ProjectsText theTextTop={'100%'}/>
+    </>
+    );
 };
 
 

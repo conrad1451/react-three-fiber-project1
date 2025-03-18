@@ -121,7 +121,62 @@ function MySpaceScene(){
     </>
   )
 }
- 
+
+// const BiographyText = (props: {theTextTop: number}) => {
+
+const BiographyText = (props: {theTextTop: string}) => {
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      >
+        <div style={{ display: 'flex' }}>
+          {Array(1)
+          .fill(null)
+          .map((_, index) => (
+            <div className="html-overlay" key={index}>
+              <h1>Conrad</h1>
+              <p>
+                My name is Conrad Hansen-Quartey. I live in West Haven, CT. I
+                majored in Engineering Science.
+              </p>
+              <p>
+                With a combination of self-taught and academic training, I
+                have both the passion and engineering skill of a professional
+                software engineer. Having self-taught programming languages
+                throughout high school and learning computer programming
+                design principles and techniques in college, I have become a
+                well-rounded computer scientist. I have a passion not only
+                for developing software, but for solving problems in creative
+                ways. I am deeply committed to using my talents and gifts to
+                serve those around me and society in general.
+              </p>
+            </div>
+          ))}
+      </div>
+    </div>
+  </div>);
+
+}
+
+
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('80%'); // Initial top position
 
@@ -147,55 +202,7 @@ const TextOverlayAbout2 = () => {
     };
   }, []);
 
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        top: textTop, // Use the state variable
-        transform: 'translate(-50%, -50%)',
-        width: 'auto',
-        zIndex: 10,
-      }}
-    >
-      <div
-        style={{
-          position: 'relative',
-          transform: 'translate(-10%, -30%)',
-          left: '75%',
-          margin: '1vw',
-          padding: '1vw',
-          width: '45vw',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <div style={{ display: 'flex' }}>
-          {Array(1)
-            .fill(null)
-            .map((_, index) => (
-              <div className="html-overlay" key={index}>
-                <h1>Conrad</h1>
-                <p>
-                  My name is Conrad Hansen-Quartey. I live in West Haven, CT. I
-                  majored in Engineering Science.
-                </p>
-                <p>
-                  With a combination of self-taught and academic training, I
-                  have both the passion and engineering skill of a professional
-                  software engineer. Having self-taught programming languages
-                  throughout high school and learning computer programming
-                  design principles and techniques in college, I have become a
-                  well-rounded computer scientist. I have a passion not only
-                  for developing software, but for solving problems in creative
-                  ways. I am deeply committed to using my talents and gifts to
-                  serve those around me and society in general.
-                </p>
-              </div>
-            ))}
-        </div>
-      </div>
-    </div>
-  );
+  return ( <BiographyText theTextTop={textTop}/> );
 };
 
 

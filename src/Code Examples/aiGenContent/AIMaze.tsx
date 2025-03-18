@@ -79,8 +79,6 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
-
-
 const Scene: React.FC = () => {
   return (
     <>
@@ -94,6 +92,7 @@ const Scene: React.FC = () => {
     </>
   );
 };
+
 const Background = () => {
     // const mesh = useRef();
     const ref = useRef<THREE.Mesh>(null!)
@@ -123,7 +122,6 @@ function MySpaceScene(){
 }
 
 // const BiographyText = (props: {theTextTop: number}) => {
-
 const BiographyText = (props: {theTextTop: string}) => {
   return(
     <div
@@ -181,7 +179,6 @@ const BiographyText = (props: {theTextTop: string}) => {
 
 }
 
-
 const ProjectsText = (props: {theTextTop: string}) => {
   return(
     <div
@@ -218,10 +215,7 @@ const ProjectsText = (props: {theTextTop: string}) => {
   </div>);
 
 }
-
-
-
-
+ 
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('80%'); // Initial top position
   // const [textTopString, setTextTopString] = useState('80%'); // Initial top position
@@ -256,7 +250,6 @@ const TextOverlayAbout2 = () => {
     </>
     );
 };
-
 
 const AIMaze: React.FC = () => {
   const [cameraZoom, setCameraZoom] = useState(0);

@@ -145,8 +145,28 @@ const TextOverlayAbout2 = () => {
     );
 };
 const AIMaze: React.FC = () => {
-   return (
-    <div className='Threejs-bg-outerspace'>
+  const [cameraZoom, setCameraZoom] = useState(0); // State for camera zoom
+
+  const handleZoomIn = () => {
+    setCameraZoom((prevZoom) => prevZoom - 2);
+  };
+
+  const handleZoomOut = () => {
+    setCameraZoom((prevZoom) => prevZoom + 2);
+  };
+
+  const CameraControls = () => {
+    const { camera } = useThree();
+
+    useFrame(() => {
+      camera.position.z = 10 + cameraZoom; // Apply zoom to camera position
+    });
+
+    return null; // This component doesn't render anything
+  };
+
+  return (
+    <div className="Threejs-bg-outerspace">
       <div
         style={{
           position: 'absolute',
@@ -157,12 +177,28 @@ const AIMaze: React.FC = () => {
         }}
       >
         <TextOverlayAbout2 />
-      </div> 
-    <Canvas style={{width: `100vw`, height:`100vh`}}>
-      <FirstPersonControls movementSpeed={1} autoForward={false}/>
-        <MySpaceScene />  
-    </Canvas>
-    </div> 
+      </div>
+      <Canvas style={{ width: `100vw`, height: `100vh` }}>
+        <FirstPersonControls movementSpeed={1} autoForward={false} />
+        <MySpaceScene />
+        <CameraControls /> {/* CameraControls moved inside Canvas */}
+      </Canvas>
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          right: '20px',
+          transform: 'translateY(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <button onClick={handleZoomIn} style={{ marginBottom: '10px' }}>
+          Zoom In
+        </button>
+        <button onClick={handleZoomOut}>Zoom Out</button>
+      </div>
+    </div>
   );
 };
 

@@ -201,8 +201,18 @@ const TextOverlayAbout2 = () => {
 
 const AIMaze: React.FC = () => {
   const [cameraZoom, setCameraZoom] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (isScrolling) {
+        // Scrolling allowed, no action needed here
+      } else {
+        // Scrolling disabled, prevent default behavior
+        window.scrollTo(0, 0); // Reset scroll position to top
+      }
+    };
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
         setCameraZoom((prevZoom) => prevZoom - 2);
@@ -216,7 +226,7 @@ const AIMaze: React.FC = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isScrolling]);
 
   const CameraControls = () => {
     const { camera } = useThree();
@@ -229,7 +239,14 @@ const AIMaze: React.FC = () => {
   };
 
   return (
-    <div className="Threejs-bg-outerspace">
+    <div
+      className="Threejs-bg-outerspace"
+      style={{
+        position: 'relative',
+        height: '100vh',
+        overflowY: isScrolling ? 'auto' : 'hidden', // Disable vertical scrolling
+      }}
+    >
       <Canvas style={{ width: `100vw`, height: `100vh` }}>
         <FirstPersonControls movementSpeed={1} autoForward={false} />
         <MySpaceScene />

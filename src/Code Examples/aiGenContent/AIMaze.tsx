@@ -84,24 +84,7 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
- 
-const TextOverlayAbout2 = () => { 
-    return (
-      <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
-        left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
-  
-        <div style={{ display: 'flex' }}>
-          {Array(1).fill(null).map((_, index) => (
-            <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
-                 <h1>Conrad</h1>
-                <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
-                <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
-             </div>
-          ))}
-        </div>
-      </div>
-    );
-};
+
 
 const Scene: React.FC = () => {
   return (
@@ -143,7 +126,24 @@ function MySpaceScene(){
     </>
   )
 }
-
+ 
+const TextOverlayAbout2 = () => { 
+    return (
+      <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
+        left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
+  
+        <div style={{ display: 'flex' }}>
+          {Array(1).fill(null).map((_, index) => (
+            <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
+                 <h1>Conrad</h1>
+                <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
+                <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
+             </div>
+          ))}
+        </div>
+      </div>
+    );
+};
 const AIMaze: React.FC = () => {
    return (
     <div className='Threejs-bg-outerspace'>

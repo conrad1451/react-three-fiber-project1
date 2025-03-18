@@ -122,7 +122,16 @@ function MySpaceScene(){
 }
 
 // const BiographyText = (props: {theTextTop: number}) => {
-const BiographyText = (props: {theTextTop: string}) => {
+// const BiographyText = (props: {theTextTop: string}) => {
+const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textRef.current && props.onHeightChange) {
+      props.onHeightChange(textRef.current.offsetHeight);
+    }
+  }, [props.onHeightChange]);
+
   return(
     <div
     style={{
@@ -218,6 +227,7 @@ const ProjectsText = (props: {theTextTop: string}) => {
  
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('80%'); // Initial top position
+  const [biographyHeight, setBiographyHeight] = useState(0);
   // const [textTopString, setTextTopString] = useState('80%'); // Initial top position
   // const [textTopNumber, setTextTopNumber] = useState(80); // Initial top position
 
@@ -243,10 +253,19 @@ const TextOverlayAbout2 = () => {
     };
   }, []);
 
+  const getProjectsTop = () => {
+    // CHQ: the height is stuck on 0
+    // return `${parseFloat(textTop) + (biographyHeight / window.innerHeight) * 100}%`;
+    return `${parseFloat(textTop) + (300 / window.innerHeight) * 100}%`;
+  };
+
   return (
     <>
-      <BiographyText theTextTop={textTop}/>
-      <ProjectsText theTextTop={'100%'}/>
+      {/* <BiographyText theTextTop={textTop}/> */}
+      {/* <ProjectsText theTextTop={`${parseFloat(textTop) + 35}vh`} /> */}
+
+      <BiographyText theTextTop={textTop} onHeightChange={setBiographyHeight} />
+      <ProjectsText theTextTop={getProjectsTop()} />
     </>
     );
 };

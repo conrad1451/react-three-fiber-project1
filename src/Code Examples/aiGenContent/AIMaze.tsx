@@ -212,17 +212,94 @@ const ProjectsText = (props: {theTextTop: string}) => {
       }}
       >
         <div style={{ display: 'flex' }}>
-          {Array(1)
-          .fill(null)
-          .map((_, index) => (
-            <div className="html-overlay" key={index}>
+          <div className="html-overlay">
               <h1>PROJECTS</h1>
-            </div>
-          ))}
+            </div> 
       </div>
     </div>
   </div>);
 
+}
+
+ 
+const ProjectList = (props: {theTextTop: string}) => {
+
+  const projectName = [
+    "Creative Contentions", 
+    "Bee Swarm Simulator (bss)"
+  ];
+  const projectSubtext1 = [
+    "(2D block world game)", 
+    "(spin-off of block character 3D world in roblox)"
+  ]; 
+  const projectSubtext2 = [
+    "Programming Language: Processing (based on Java)", 
+    "Programming Language: JavaScript (aka VanillaJS)"
+  ];
+  
+  const projectPurposes = [
+    "This is a 2D world of block characters, where the player can break down and collect blocks, craft new items, and fight mobs and monsters.",
+    "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+  ];
+
+  const contributionPoints = [
+    [
+      "Reduced CPU utilization by 42% through code refactoring to reduce time complexity of several sections of code.",
+      "Reduced time complexity of multiple functions from linear to constant time and removed duplicated sections of code.", 
+      "Make technical trade-offs to balance time complexity with file size to ensure execution speed at scale."
+    ],
+    [
+        "Improved readability of code by introducing comments for all edits from May 2023 and onward",
+        "Improved playability of game in several ways, including \n\t*Making all menus easily accessible by keyboard shortcut \n\t*Fixed an issue where the camera panning following the mouse position prevented the user from being able to select menus with the mouse"
+    ] 
+  ];
+
+
+
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      > 
+      <div style={{ display: 'flex' }}>
+          {Array(2)
+          .fill(null)
+          .map((_, index) => (
+            <div className="html-overlay" key={index} style={{ 
+          display: 'flex', 
+          margin: '1vw',
+          padding: '2vw'
+        }}>
+          <h1>{projectName[index]}</h1>
+          <p>{projectSubtext1[index]}</p>
+          <p>{projectSubtext2[index]}</p>
+          <p>{projectPurposes[index]}</p>
+          <p>{contributionPoints[index]}</p>
+        </div>
+      ))}
+      </div>
+    </div>
+  </div>
+
+ 
+  )
 }
  
 const TextOverlayAbout2 = () => {
@@ -236,12 +313,14 @@ const TextOverlayAbout2 = () => {
       if (event.key === 'ArrowUp') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${Math.max(0, prevValue - 5)}%`; // Move up by 5%, prevent going below 0
+          return `${prevValue - 5}%`; // Move up by 5% 
+          // return `${Math.max(0, prevValue - 5)}%`; // Move up by 5%, prevent going below 0
         });
       } else if (event.key === 'ArrowDown') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${Math.min(80, prevValue + 5)}%`; // Move up by 5%, prevent going below 0
+          return `${prevValue + 5}%`; // Move down by 5%
+          // return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%, prevent going below 0
         });
       }
     };
@@ -259,6 +338,12 @@ const TextOverlayAbout2 = () => {
     return `${parseFloat(textTop) + (300 / window.innerHeight) * 100}%`;
   };
 
+  const getProjectsListTop = () => {
+    // CHQ: the height is stuck on 0
+    // return `${parseFloat(textTop) + (biographyHeight / window.innerHeight) * 100}%`;
+    return `${parseFloat(textTop) + (1100 / window.innerHeight) * 100}%`;
+  };
+
   return (
     <>
       {/* <BiographyText theTextTop={textTop}/> */}
@@ -266,6 +351,7 @@ const TextOverlayAbout2 = () => {
 
       <BiographyText theTextTop={textTop} onHeightChange={setBiographyHeight} />
       <ProjectsText theTextTop={getProjectsTop()} />
+      <ProjectList theTextTop={getProjectsListTop()}/>
     </>
     );
 };

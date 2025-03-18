@@ -140,15 +140,23 @@ const TextOverlayAbout2 = () => {
     );
 };
 const AIMaze: React.FC = () => {
-  const [cameraZoom, setCameraZoom] = useState(0); // State for camera zoom
+  const [cameraZoom, setCameraZoom] = useState(0);
 
-  const handleZoomIn = () => {
-    setCameraZoom((prevZoom) => prevZoom - 2);
-  };
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        setCameraZoom((prevZoom) => prevZoom - 2);
+      } else if (event.key === 'ArrowRight') {
+        setCameraZoom((prevZoom) => prevZoom + 2);
+      }
+    };
 
-  const handleZoomOut = () => {
-    setCameraZoom((prevZoom) => prevZoom + 2);
-  };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   const CameraControls = () => {
     const { camera } = useThree();
@@ -188,10 +196,6 @@ const AIMaze: React.FC = () => {
           flexDirection: 'column',
         }}
       >
-        <button onClick={handleZoomIn} style={{ marginBottom: '10px' }}>
-          Zoom In
-        </button>
-        <button onClick={handleZoomOut}>Zoom Out</button>
       </div>
     </div>
   );

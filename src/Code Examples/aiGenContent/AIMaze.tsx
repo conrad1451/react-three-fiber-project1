@@ -1,12 +1,6 @@
-// import React, { useRef, useEffect, useState } from 'react';
-import { useRef, useState, useEffect, Suspense } from 'react'
-
+import React, { useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-// import { Canvas, useFrame, useThree } from '@react-three/fiber';
-// import { OrbitControls, useScroll } from '@react-three/drei';
-import { FirstPersonControls, useScroll } from '@react-three/drei';
-// import { useScroll } from '@react-three/drei';
-
+import { FirstPersonControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const NUMBER_OF_SPHERES = 20;

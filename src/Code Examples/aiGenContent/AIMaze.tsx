@@ -84,307 +84,8 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
-const CameraControl: React.FC = () => {
-  const camera = useRef<THREE.PerspectiveCamera>(null!);
-  const { gl } = useThree();
-  const [movement, setMovement] = useState({ forward: false, backward: false, left: false, right: false });
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case "ArrowUp":
-        case "w": // Also allow 'w' for forward
-          setMovement({ ...movement, forward: true });
-          break;
-        case "ArrowDown":
-        case "s": // Also allow 's' for backward
-          setMovement({ ...movement, backward: true });
-          break;
-        case "ArrowLeft":
-        case "a": // Also allow 'a' for left
-          setMovement({ ...movement, right: true });
-          break;
-        case "ArrowRight":
-        case "d": // Also allow 'd' for right
-          setMovement({ ...movement, right: true });
-          break;
-      }
-    };
-
-    const handleKeyUp = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case "ArrowUp":
-        case "w":
-          setMovement({ ...movement, forward: true });
-          break;
-        case "ArrowDown":
-        case "s":
-          setMovement({ ...movement, backward: false });
-          break;
-        case "ArrowLeft":
-        case "a":
-          setMovement({ ...movement, right: false });
-          break;
-        case "ArrowRight":
-        case "d":
-          setMovement({ ...movement, right: false });
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (camera.current) {
-      camera.current.position.set(0, 5, 10);
-      camera.current.lookAt(0, 0, 0);
-    }
-  }, []);
-
-  useFrame((state, delta) => {
-    if (camera.current) {
-      const moveSpeed = 5 * delta; // Adjust speed as needed
-
-      if (movement.forward) {
-        camera.current.position.z -= moveSpeed; // Move forward
-      }
-      if (movement.backward) {
-        camera.current.position.z += moveSpeed; // Move backward
-      }
-      if (movement.left) {
-        camera.current.position.x -= moveSpeed; // Move left
-      }
-      if (movement.right) {
-        camera.current.position.x += moveSpeed; // Move right
-      }
-    }
-  });
-
-  return (
-    <perspectiveCamera
-      ref={camera}
-      fov={75}
-      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
-      near={0.1}
-      far={1000}
-    />
-  );
-};
-
-const CameraControlAlt: React.FC = () => {
-    const camera = useRef<THREE.PerspectiveCamera>(null!);
-    const { gl } = useThree();
-    const [movement, setMovement] = useState({
-      forward: false,
-      backward: false,
-      left: false,
-      right: false,
-    });
-    const [rotation, setRotation] = useState(0); // Rotation angle
-  
-    useEffect(() => {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        switch (event.key) {
-          case "ArrowUp":
-          case "i":
-            setMovement({ ...movement, forward: true });
-            break;
-          case "ArrowDown":
-          case "k":
-            setMovement({ ...movement, backward: true });
-            break;
-          case "ArrowLeft":
-          case "j":
-            setMovement({ ...movement, left: true });
-            setRotation(-0.02); // Start rotating left
-            break;
-          case "ArrowRight":
-          case "l":
-            setMovement({ ...movement, right: true });
-            setRotation(0.02); // Start rotating right
-            break;
-        }
-      };
-  
-      const handleKeyUp = (event: KeyboardEvent) => {
-        switch (event.key) {
-          case "ArrowUp":
-          case "i":
-            setMovement({ ...movement, forward: false });
-            break;
-          case "ArrowDown":
-          case "k":
-            setMovement({ ...movement, backward: false });
-            break;
-          case "ArrowLeft":
-          case "j":
-          case "ArrowRight":
-          case "l":
-            setMovement({ ...movement, left: false, right: false });
-            setRotation(0); // Stop rotating
-            break;
-        }
-      };
-  
-      window.addEventListener('keydown', handleKeyDown);
-      window.addEventListener('keyup', handleKeyUp);
-  
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
-      };
-    }, []);
-  
-    useEffect(() => {
-      if (camera.current) {
-        camera.current.position.set(0, 5, 10);
-        camera.current.lookAt(0, 0, 0);
-      }
-    }, []);
-  
-    useFrame((state, delta) => {
-      if (camera.current) {
-        const moveSpeed = 5 * delta;
-        const rotationSpeed = 2 * delta;  // Adjust rotation speed
-  
-        if (movement.forward) {
-          camera.current.position.z -= moveSpeed * Math.cos(rotation);
-          camera.current.position.x -= moveSpeed * Math.sin(rotation);
-        }
-        if (movement.backward) {
-          camera.current.position.z += moveSpeed * Math.cos(rotation);
-          camera.current.position.x += moveSpeed * Math.sin(rotation);
-        }
-  
-        // Apply rotation
-        camera.current.rotation.y += rotation * rotationSpeed;
-  
-      }
-    });
-  
-    return (
-      <perspectiveCamera
-        ref={camera}
-        fov={75}
-        aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
-        near={0.1}
-        far={1000}
-      />
-    );
-  };
-
-// FIXME: causing all sorts of issues
-const CameraControl1: React.FC = () => {
-  const camera = useRef<THREE.PerspectiveCamera>(null!); // Non-null assertion (!)
-  const { gl } = useThree();
-  const scroll = useScroll();
-  const [targetSphereIndex, setTargetSphereIndex] = useState(0);
-
-  const spherePositions = Array.from({ length: NUMBER_OF_SPHERES }, (_, i) => {
-    const x = (Math.random() - 0.5) * 20;
-    const z = (Math.random() - 0.5) * 20;
-    return new THREE.Vector3(x, 0.5, z);
-  });
-
-  useFrame(() => {
-    if (scroll) { // Check if scroll is available
-        const scrollProgress = scroll.offset;
-
-    const newTargetIndex = Math.floor(scrollProgress * NUMBER_OF_SPHERES);
-    if (newTargetIndex !== targetSphereIndex && newTargetIndex < NUMBER_OF_SPHERES) {
-      setTargetSphereIndex(newTargetIndex);
-    }
-
-    const targetPosition = spherePositions[targetSphereIndex];
-    if (false) {
-    // if (targetPosition) {
-        camera.current.position.lerp(targetPosition, 0.05);
-        const lookAtPosition = new THREE.Vector3(
-          targetPosition.x,
-          targetPosition.y + 0.2,
-          targetPosition.z + 1
-        );
-  
-        camera.current.lookAt(lookAtPosition);
-      }
-    }
-
-    camera.current.position.setComponent(0.13, 0.14)
-  });
-
-  useEffect(() => {
-    camera.current.position.set(0, 2, 10);
-    camera.current.lookAt(new THREE.Vector3(0, 0, 0));
-  }, []);
-
-//   const myVar = gl.getSize;
-//   alert(myVar.toString())
-  
-  return (
-    <perspectiveCamera
-      ref={camera}
-      fov={75}
-    //   aspect={100/ 200}
-      aspect={gl.domElement.clientWidth/ gl.domElement.clientHeight}
-      near={0.1}
-      far={100}
-    />
-  );
-};
-
-
-const CameraControl2: React.FC = () => {
-  const camera = useRef<THREE.PerspectiveCamera>(null!);
-  const { gl } = useThree();
-  const targetZ = -50; // How far the camera should zoom
-
-  useEffect(() => {
-    // This is the ONLY place where you should directly manipulate camera.current
-    if (camera.current) {
-      camera.current.position.set(0, 5, 10);
-      camera.current.lookAt(0, 0, 0);
-    }
-  }, []); // Empty dependency array ensures this runs only once after mount
-
-  useFrame((state, delta) => {
-    if (camera.current) {  // Still important to check in useFrame!
-      camera.current.position.z -= 0.5 * 10 * delta;
-
-      if (camera.current.position.z <= targetZ) {
-        camera.current.position.z = targetZ;
-      }
-    }
-  });
-  return (
-    <perspectiveCamera
-      ref={camera}
-      fov={75}
-      aspect={gl.domElement.clientWidth / gl.domElement.clientHeight}
-      near={0.1}
-      far={1000} // Increased far plane for better visibility
-    />
-  );
-};
-
-
-
-const TextOverlayAbout2 = () => {
-  //   const { camera } = useThree();
-  //   const htmlOverlayRef = useRef<HTMLDivElement>(null);
-  
-  // useFrame(() => {
-  //     if (htmlOverlayRef.current) {
-  //         const scrollAmount = camera.position.z * 1;
-  //         htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
-  //     }
-  // });
+ 
+const TextOverlayAbout2 = () => { 
     return (
       <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
         left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
@@ -431,10 +132,7 @@ const Background = () => {
 }
 function MySpaceScene(){
   return(
-    <>
-      {/* <CameraControl1 /> */}
-      {/* <CameraControl2 /> */}
-      {/* <CameraControlAlt /> */}
+    <> 
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
@@ -442,34 +140,12 @@ function MySpaceScene(){
       <GrowingSphere/>
       <Floor />
       <Spheres /> 
-
-      {/* will comment out later when I get the movement of camera working */}
-      {/* <OrbitControls /> */}
-
-      {/*[2]  */}
-      {/* Got this warning when implenneting below code:
-      WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
-       */}
-      {/* <OrthographicCamera
-        makeDefault
-        zoom={1}
-        top={200}
-        bottom={-200}
-        left={200}
-        right={-200}
-        near={1}
-        far={2000}
-        position={[0, 0, 200]}
-      /> */}
     </>
   )
 }
 
 const AIMaze: React.FC = () => {
-
-    // const myChoice = 1;
-
-  return (
+   return (
     <div className='Threejs-bg-outerspace'>
       <div
         style={{
@@ -483,22 +159,10 @@ const AIMaze: React.FC = () => {
         <TextOverlayAbout2 />
       </div> 
     <Canvas style={{width: `100vw`, height:`100vh`}}>
-    {/* <FirstPersonControls mouseDragOn={true}/> */}
       <FirstPersonControls movementSpeed={1} autoForward={false}/>
-      {/* <FirstPersonControls movementSpeed={-1} autoForward={false}/> */}
-        {/* {
-            if(myChoice === 1)
-            {<Scene />}
-            else
-            {
-            <MySpaceScene /> 
-            }
-        } */}
-        <MySpaceScene /> 
-        {/* <Scene />  */}
+        <MySpaceScene />  
     </Canvas>
-    </div>
-
+    </div> 
   );
 };
 

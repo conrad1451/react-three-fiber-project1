@@ -3,6 +3,8 @@ import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import { FirstPersonControls } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Sources: [1]: secure clickable links: https://stackoverflow.com/questions/50350085/how-to-make-a-hyperlink-external-in-react
+
 const NUMBER_OF_SPHERES = 20;
 
 const SPHERE_SIZE = 0.5;
@@ -12,6 +14,26 @@ const INTERSPHERE_SPACING = 2;
 interface SphereProps {
   position: [number, number, number];
 }
+
+interface LinkButtonProps {
+  url: string;
+  buttonText: string;
+  style?: React.CSSProperties; // Optional styling for the button
+}
+
+const LinkButton: React.FC<LinkButtonProps> = ({ url, buttonText, style }) => {
+  const handleClick = () => {
+    window.open(url, '_blank'); // Opens the URL in a new tab
+    // If you want to open in the same tab, use:
+    // window.location.href = url;
+  };
+
+  return (
+    <button onClick={handleClick} style={style}>
+      {buttonText}
+    </button>
+  );
+};
 
 const GrowingSphere: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
@@ -253,6 +275,10 @@ const ProjectList = (props: {theTextTop: string}) => {
     ] 
   ];
 
+  const theURLs = [
+    "https://creative-contentions.vercel.app", "https://conrad1451.github.io/bss"
+  ]
+
   return(
     <div
     style={{
@@ -295,7 +321,29 @@ const ProjectList = (props: {theTextTop: string}) => {
           <p>{projectPurposes[index]}</p>
           <h2>Contributions:</h2> 
           <p>{contributionPoints[index]}</p>
-          <h2>Link:</h2> 
+          <h2>Link:</h2> {/* [1] */}
+          {/* CHQ: Did not work */}
+          {/* <a href={theURLs[index]} rel="noreferrer"> 
+            {theURLs[index]}
+          </a> */}
+
+          {/* CHQ: Still did not work */}
+          {/* <a href={theURLs[index]}> 
+            {theURLs[index]}
+          </a> */}
+
+          <LinkButton
+              url="https://conrad1451.github.io/bss"
+              buttonText="Go to Bee Swarm Simulator"
+              style={{
+                padding: '10px 20px',
+                fontSize: '16px',
+                backgroundColor: 'lightblue',
+                border: 'none',
+                cursor: 'pointer',
+                marginTop: '20px', // Add some spacing above the button
+              }}
+            />
 
         </div>
       ))}

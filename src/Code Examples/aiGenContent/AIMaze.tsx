@@ -333,8 +333,8 @@ const ProjectList = (props: {theTextTop: string}) => {
           </a> */}
 
           <LinkButton
-              url="https://conrad1451.github.io/bss"
-              buttonText="Go to Bee Swarm Simulator"
+              url={theURLs[index]}
+              buttonText={"Go to " + projectName[index]}
               style={{
                 padding: '10px 20px',
                 fontSize: '16px',

@@ -270,7 +270,7 @@ const ProjectList = (props: {theTextTop: string}) => {
         left: '75%',
         margin: '1vw',
         padding: '1vw',
-        width: '45vw',
+        width: '75vw', // CHQ: NOT for the width of each project tile
         display: 'flex',
         justifyContent: 'center',
       }}
@@ -280,6 +280,8 @@ const ProjectList = (props: {theTextTop: string}) => {
           .fill(null)
           .map((_, index) => (
             <div className="html-overlay" key={index} style={{ 
+          width: '75%', // 25 shrinks width of each projec ttile and pushes them upward, but 75 and 95 same. and 45 seems to shift it slightly downwards
+          // maybe when this width is sufficently smaller than partent width that the block gets squeezed and pushe dverticall upward
           display: 'flex', 
           margin: '1vw',
           padding: '2vw'
@@ -318,7 +320,7 @@ const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: nu
       <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
         <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
       </div>
-      <div style={{ position: 'absolute', top: '200%', left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+      <div style={{ position: 'absolute', top: '140%', left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
       {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
         <ProjectList theTextTop={'0%'} />
         {/* <ProjectList theTextTop={'50%'} /> */}
@@ -337,12 +339,14 @@ const TextOverlayAbout2 = () => {
       if (event.key === 'ArrowUp') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${Math.max(5, prevValue - 5)}%`; // Move up by 5%
+          // return `${Math.max(5, prevValue - 5)}%`; // Move up by 5%
+          return `${prevValue - 5}%`; // Move up by 5%
         });
       } else if (event.key === 'ArrowDown') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%
+          // return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%
+          return `${prevValue + 5}%`; // Move up by 5%
         });
       }
     };

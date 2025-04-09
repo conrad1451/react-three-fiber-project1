@@ -289,8 +289,14 @@ const ProjectList = (props: {theTextTop: string}) => {
           <h1>{projectName[index]}</h1>
           <p>{projectSubtext1[index]}</p>
           <p>{projectSubtext2[index]}</p>
+          {/* <p><b>Purpose:</b></p> */}
+          {/* <h3><b>Purpose:</b></h3> */}
+          <h2>Purpose:</h2> 
           <p>{projectPurposes[index]}</p>
+          <h2>Contributions:</h2> 
           <p>{contributionPoints[index]}</p>
+          <h2>Link:</h2> 
+
         </div>
       ))}
       </div>

@@ -15,6 +15,7 @@ interface SphereProps {
   position: [number, number, number];
 }
 
+// CHQ: LinkButtonProps and LinkButton created by Gemini AI
 interface LinkButtonProps {
   url: string;
   buttonText: string;

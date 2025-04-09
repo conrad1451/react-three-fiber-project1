@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, Suspense } from 'react'
-
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import { FirstPersonControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -254,8 +253,6 @@ const ProjectList = (props: {theTextTop: string}) => {
     ] 
   ];
 
-
-
   return(
     <div
     style={{
@@ -301,26 +298,51 @@ const ProjectList = (props: {theTextTop: string}) => {
  
   )
 }
+
+const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+// const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
+  // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
+  const [biographyHeight, setBiographyHeight] = useState(0);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textRef.current && props.onHeightChange) {
+      props.onHeightChange(textRef.current.offsetHeight);
+    }
+  }, [props.onHeightChange]);
+  
+  return (
+    // CHQ: position: sticky would work here excpet I had to disable the vertical scroll os that the 
+    // scroll activated three fiber animations function baed on scroll
+    <div style={{ position: 'absolute', top: props.theTextTop, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+      <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
+        <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+      </div>
+      <div style={{ position: 'absolute', top: '200%', left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+      {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
+        <ProjectList theTextTop={'0%'} />
+        {/* <ProjectList theTextTop={'50%'} /> */}
+      </div>
+      {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
+    </div>
+  );
+}
  
 const TextOverlayAbout2 = () => {
-  const [textTop, setTextTop] = useState('80%'); // Initial top position
+  const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
   const [biographyHeight, setBiographyHeight] = useState(0);
-  // const [textTopString, setTextTopString] = useState('80%'); // Initial top position
-  // const [textTopNumber, setTextTopNumber] = useState(80); // Initial top position
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowUp') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${prevValue - 5}%`; // Move up by 5% 
-          // return `${Math.max(0, prevValue - 5)}%`; // Move up by 5%, prevent going below 0
+          return `${Math.max(5, prevValue - 5)}%`; // Move up by 5%
         });
       } else if (event.key === 'ArrowDown') {
         setTextTop((prevTop) => {
           const prevValue = parseFloat(prevTop);
-          return `${prevValue + 5}%`; // Move down by 5%
-          // return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%, prevent going below 0
+          return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%
         });
       }
     };
@@ -333,27 +355,28 @@ const TextOverlayAbout2 = () => {
   }, []);
 
   const getProjectsTop = () => {
-    // CHQ: the height is stuck on 0
-    // return `${parseFloat(textTop) + (biographyHeight / window.innerHeight) * 100}%`;
-    return `${parseFloat(textTop) + (300 / window.innerHeight) * 100}%`;
+    return `${parseFloat(textTop) + biographyHeight + 20}px`; // Adjust spacing
   };
 
   const getProjectsListTop = () => {
-    // CHQ: the height is stuck on 0
-    // return `${parseFloat(textTop) + (biographyHeight / window.innerHeight) * 100}%`;
-    return `${parseFloat(textTop) + (1100 / window.innerHeight) * 100}%`;
+    return `50%`; // Center the project list vertically (adjust as needed)
   };
 
   return (
-    <>
-      {/* <BiographyText theTextTop={textTop}/> */}
-      {/* <ProjectsText theTextTop={`${parseFloat(textTop) + 35}vh`} /> */}
+    // textTop
+    <OuterTextblock theTextTop={textTop} onHeightChange={setBiographyHeight} />
+    // <OuterTextblock theTextTop={'0%'} onHeightChange={setBiographyHeight} />
 
-      <BiographyText theTextTop={textTop} onHeightChange={setBiographyHeight} />
-      <ProjectsText theTextTop={getProjectsTop()} />
-      <ProjectList theTextTop={getProjectsListTop()}/>
-    </>
-    );
+    // <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+    //   <div style={{ position: 'absolute', top: textTop, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
+    //     <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+    //   </div>
+    //   <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+    //     <ProjectList theTextTop={'0%'} />
+    //   </div>
+    //   {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
+    // </div>
+  );
 };
 
 const AIMaze: React.FC = () => {
@@ -379,9 +402,11 @@ const AIMaze: React.FC = () => {
     };
 
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [isScrolling]);
 
@@ -401,7 +426,7 @@ const AIMaze: React.FC = () => {
       style={{
         position: 'relative',
         height: '100vh',
-        overflowY: isScrolling ? 'auto' : 'hidden', // Disable vertical scrolling
+        overflowY: isScrolling ? 'auto' : 'hidden',
       }}
     >
       <Canvas style={{ width: `100vw`, height: `100vh` }}>

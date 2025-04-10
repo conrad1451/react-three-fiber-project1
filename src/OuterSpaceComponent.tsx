@@ -12,11 +12,32 @@ import { useRef, useState, useEffect, Suspense } from 'react'
 
 import { Canvas, useLoader, useFrame, ThreeElements, useThree } from '@react-three/fiber'
 
-import { OrbitControls, Text } from '@react-three/drei';
+// import { OrbitControls, Text } from '@react-three/drei';
  
 interface TextDisplayProps {
   text: string;
 }
+
+
+interface LinkButtonProps {
+  url: string;
+  buttonText: string;
+  style?: React.CSSProperties; // Optional styling for the button
+}
+
+const LinkButton: React.FC<LinkButtonProps> = ({ url, buttonText, style }) => {
+  const handleClick = () => {
+    window.open(url, '_blank'); // Opens the URL in a new tab
+    // If you want to open in the same tab, use:
+    // window.location.href = url;
+  };
+
+  return (
+    <button onClick={handleClick} style={style}>
+      {buttonText}
+    </button>
+  );
+};
 
 // import { OrbitControls, OrthographicCamera } from '@react-three/drei'
 // import { cameraPosition } from 'three/tsl'
@@ -283,17 +304,18 @@ const CameraPanning: React.FC = () => {
   }, [scrollPosition]);   
 
   return (
-    <Text
-      ref={meshRef}
-      // position={[0, 0, 0]}
-      position={[0, 0, camera.position.z-2.3]}
-      fontSize={0.3}
-      color="white"
-      anchorX="center"
-      anchorY="top" // Anchor to top for scrolling effect
-    >
-      {`.`}
-    </Text>
+    // <Text
+    //   ref={meshRef}
+    //   // position={[0, 0, 0]}
+    //   position={[0, 0, camera.position.z-2.3]}
+    //   fontSize={0.3}
+    //   color="white"
+    //   anchorX="center"
+    //   anchorY="top" // Anchor to top for scrolling effect
+    // >
+    //   {`.`}
+    // </Text>
+    <></>
   );
 };
  
@@ -401,7 +423,7 @@ function MySpaceScene(){
       {/* <Star position={[0,0,0]}/> */}
       {/* <InfoOfBoundingBody/> */} 
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
 
       {/*[2]  */}
       {/* Got this warning when implenneting below code:
@@ -517,32 +539,32 @@ const TextOverlayTitle = () => {
 };
 
 
-const TextOverlayAbout2 = () => {
-//   const { camera } = useThree();
-//   const htmlOverlayRef = useRef<HTMLDivElement>(null);
+// const TextOverlayAbout2 = () => {
+// //   const { camera } = useThree();
+// //   const htmlOverlayRef = useRef<HTMLDivElement>(null);
 
-// useFrame(() => {
-//     if (htmlOverlayRef.current) {
-//         const scrollAmount = camera.position.z * 1;
-//         htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
-//     }
-// });
-  return (
-    <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
-      left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
+// // useFrame(() => {
+// //     if (htmlOverlayRef.current) {
+// //         const scrollAmount = camera.position.z * 1;
+// //         htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
+// //     }
+// // });
+//   return (
+//     <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
+//       left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
 
-      <div style={{ display: 'flex' }}>
-        {Array(1).fill(null).map((_, index) => (
-          <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
-               <h1>Conrad</h1>
-              <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
-              <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
-           </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+//       <div style={{ display: 'flex' }}>
+//         {Array(1).fill(null).map((_, index) => (
+//           <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
+//                <h1>Conrad</h1>
+//               <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
+//               <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
+//            </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
 const TextOverlayAbout = () => {
   return (
@@ -558,6 +580,337 @@ const TextOverlayAbout = () => {
         ))}
       </div>
     </div>
+  );
+};
+
+const Note = (props: { theTextTop: string}) => {
+  
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      // top: (props.theTextTop)+'%', // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      >
+        <p>
+            Hint: Use up and down arrow keys to vertically scroll
+        </p>  
+    </div>
+  </div>);
+
+}
+
+const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textRef.current && props.onHeightChange) {
+      props.onHeightChange(textRef.current.offsetHeight);
+    }
+  }, [props.onHeightChange]);
+
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      // top: (props.theTextTop)+'%', // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      >
+        <div style={{ display: 'flex' }}>
+          {Array(1)
+          .fill(null)
+          .map((_, index) => (
+            <div className="html-overlay" key={index} style={{ 
+          display: 'flex', 
+          margin: '1vw',
+          padding: '2vw'
+        }}>
+          <h1>About Me</h1>
+          <p>
+            My name is Conrad Hansen-Quartey. I live in West Haven, CT. I
+            majored in Engineering Science.
+          </p>
+          <p>
+            With a combination of self-taught and academic training, I
+            have both the passion and engineering skill of a professional
+            software engineer. Having self-taught programming languages
+            throughout high school and learning computer programming
+            design principles and techniques in college, I have become a
+            well-rounded computer scientist. I have a passion not only
+            for developing software, but for solving problems in creative
+            ways. I am deeply committed to using my talents and gifts to
+            serve those around me and society in general.
+          </p>
+        </div>
+      ))}
+      </div>
+    </div>
+  </div>);
+
+}
+
+const ProjectsText = (props: {theTextTop: string}) => {
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      >
+        <div style={{ display: 'flex' }}>
+          <div className="html-overlay">
+              <h1>PROJECTS</h1>
+            </div> 
+      </div>
+    </div>
+  </div>);
+
+}
+
+ 
+const ProjectList = (props: {theTextTop: string}) => {
+
+  const projectName = [
+    "Creative Contentions", 
+    "Bee Swarm Simulator (bss)"
+  ];
+  const projectSubtext1 = [
+    "(2D block world game)", 
+    "(spin-off of block character 3D world in roblox)"
+  ]; 
+  const projectSubtext2 = [
+    "Programming Language: Processing (based on Java)", 
+    "Programming Language: JavaScript (aka VanillaJS)"
+  ];
+  
+  const projectPurposes = [
+    "This is a 2D world of block characters, where the player can break down and collect blocks, craft new items, and fight mobs and monsters.",
+    "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+  ];
+
+  const contributionPoints = [
+    [
+      "Reduced CPU utilization by 42% through code refactoring to reduce time complexity of several sections of code.",
+      "Reduced time complexity of multiple functions from linear to constant time and removed duplicated sections of code.", 
+      "Make technical trade-offs to balance time complexity with file size to ensure execution speed at scale."
+    ],
+    [
+        "Improved readability of code by introducing comments for all edits from May 2023 and onward",
+        "Improved playability of game in several ways, including \n\t*Making all menus easily accessible by keyboard shortcut \n\t*Fixed an issue where the camera panning following the mouse position prevented the user from being able to select menus with the mouse"
+    ] 
+  ];
+
+  const theURLs = [
+    "https://creative-contentions.vercel.app", "https://conrad1451.github.io/bss"
+  ]
+
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '75vw', // CHQ: NOT for the width of each project tile
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      > 
+      <div style={{ display: 'flex' }}>
+          {Array(2)
+          .fill(null)
+          .map((_, index) => (
+            <div className="html-overlay" key={index} style={{ 
+          width: '75%', // 25 shrinks width of each projec ttile and pushes them upward, but 75 and 95 same. and 45 seems to shift it slightly downwards
+          // maybe when this width is sufficently smaller than partent width that the block gets squeezed and pushe dverticall upward
+          display: 'flex', 
+          margin: '1vw',
+          padding: '2vw'
+        }}>
+          <h1>{projectName[index]}</h1>
+          <p>{projectSubtext1[index]}</p>
+          <p>{projectSubtext2[index]}</p>
+          {/* <p><b>Purpose:</b></p> */}
+          {/* <h3><b>Purpose:</b></h3> */}
+          <h2>Purpose:</h2> 
+          <p>{projectPurposes[index]}</p>
+          <h2>Contributions:</h2> 
+          <p>{contributionPoints[index]}</p>
+          <h2>Link:</h2> {/* [1] */}
+          {/* CHQ: Did not work */}
+          {/* <a href={theURLs[index]} rel="noreferrer"> 
+            {theURLs[index]}
+          </a> */}
+
+          {/* CHQ: Still did not work */}
+          {/* <a href={theURLs[index]}> 
+            {theURLs[index]}
+          </a> */}
+
+          <LinkButton
+              url={theURLs[index]}
+              buttonText={"Go to " + projectName[index]}
+              style={{
+                padding: '10px 20px',
+                fontSize: '16px',
+                backgroundColor: 'lightblue',
+                border: 'none',
+                cursor: 'pointer',
+                marginTop: '20px', // Add some spacing above the button
+              }}
+            />
+
+        </div>
+      ))}
+      </div>
+    </div>
+  </div>
+
+ 
+  )
+}
+
+const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+// const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
+  // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
+  const [biographyHeight, setBiographyHeight] = useState(0);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textRef.current && props.onHeightChange) {
+      props.onHeightChange(textRef.current.offsetHeight);
+    }
+  }, [props.onHeightChange]);
+  
+  return (
+    // CHQ: position: sticky would work here excpet I had to disable the vertical scroll os that the 
+    // scroll activated three fiber animations function baed on scroll
+    <div style={{ position: 'absolute', top: props.theTextTop, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+      {/* <p>Use up and down arrow keys to scroll</p> */}
+      <div style={{ position: 'absolute', top: -440, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto', color:'white', fontSize: '20px'}}>
+        <Note theTextTop={'0%'}/>
+      </div>
+      <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
+        <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+      </div>
+      <div style={{ position: 'absolute', top: '170%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+      {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
+        <ProjectList theTextTop={'0%'} />
+        {/* <ProjectList theTextTop={'50%'} /> */}
+      </div>
+      {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
+    </div>
+  );
+}
+ 
+const TextOverlayAbout2 = () => {
+  // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
+  const [textTop, setTextTop] = useState('80%'); // Adjust initial top position
+  const [biographyHeight, setBiographyHeight] = useState(0);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowUp') {
+        setTextTop((prevTop) => {
+          const prevValue = parseFloat(prevTop);
+          // return `${Math.max(5, prevValue - 5)}%`; // Move up by 5%
+          return `${prevValue - 5}%`; // Move up by 5%
+        });
+      } else if (event.key === 'ArrowDown') {
+        setTextTop((prevTop) => {
+          const prevValue = parseFloat(prevTop);
+          // return `${Math.min(80, prevValue + 5)}%`; // Move down by 5%
+          return `${prevValue + 5}%`; // Move up by 5%
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const getProjectsTop = () => {
+    return `${parseFloat(textTop) + biographyHeight + 20}px`; // Adjust spacing
+  };
+
+  const getProjectsListTop = () => {
+    return `50%`; // Center the project list vertically (adjust as needed)
+  };
+
+  return (
+    // textTop
+    <OuterTextblock theTextTop={textTop} onHeightChange={setBiographyHeight} />
+    // <OuterTextblock theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+
+    // <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+    //   <div style={{ position: 'absolute', top: textTop, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
+    //     <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+    //   </div>
+    //   <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+    //     <ProjectList theTextTop={'0%'} />
+    //   </div>
+    //   {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
+    // </div>
   );
 };
 
@@ -595,7 +948,7 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
         overflowY: isScrolling ? 'auto' : 'hidden', // Disable vertical scrolling
       }}
     >
-      <div
+      {/* <div
         style={{
           position: 'absolute',
           top: '80%',
@@ -605,7 +958,7 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
         }}
       >
         <TextOverlayAbout2 />
-      </div>
+      </div> */}
       <Canvas
         style={{
           width: props.windowMinimized ? `200px` : `100vw`,
@@ -615,6 +968,7 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
       >
         <MySpaceScene />
       </Canvas>
+      <TextOverlayAbout2 />
     </div>
   );
 }
@@ -622,3 +976,5 @@ export default function OuterSpaceComponent(props: { windowMinimized: boolean })
 // I think I can put
 // controls.update();
 //  in useFrame since it is something that must be udpated every frame
+
+

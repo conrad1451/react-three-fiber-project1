@@ -271,7 +271,7 @@ const CameraPanning: React.FC = () => {
     if(movementSelection.current < xForBoundaryYVal){
       
     camera.position.z += 12*((movementSpeed.current)*movementSelection.current);
-    camera.position.x += 1*( powerPath(4, 0.01*movementSpeed.current, movementSelection.current, 0.4) ); 
+    camera.position.x += 1*( powerPath(4, 1*0.01*movementSpeed.current, movementSelection.current, 0.4) ); 
     }
 
 
@@ -476,7 +476,7 @@ const TemplateOverlayBlock = (props: {blockTitle: string, blockMessage: string, 
 //       {/* const myVector: THREE.Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150))); */}
 
 //     {/* <div>HI</div> */}
-//     <TemplateOverlayBlock blockTitle='Conrad' blockMessage='🚀 Welcome to my portfolio!' repeatCount={blockCount}/>
+    // <TemplateOverlayBlock blockTitle='Conrad' blockMessage='🚀 Welcome to my portfolio!' repeatCount={2}/>
       
 //       {/* <div className="html-overlay">
 //         <div className="experienceleftside">
@@ -615,15 +615,15 @@ const Note = (props: { theTextTop: string}) => {
   </div>);
 
 }
+const BiographyText = (props: { theTextTop: string }) => {
+// const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+  // const textRef = useRef<HTMLDivElement>(null);
 
-const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (textRef.current && props.onHeightChange) {
-      props.onHeightChange(textRef.current.offsetHeight);
-    }
-  }, [props.onHeightChange]);
+  // useEffect(() => {
+  //   if (textRef.current && props.onHeightChange) {
+  //     props.onHeightChange(textRef.current.offsetHeight);
+  //   }
+  // }, [props.onHeightChange]);
 
   return(
     <div
@@ -827,17 +827,19 @@ const ProjectList = (props: {theTextTop: string}) => {
   )
 }
 
-const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+
+const OuterTextblock = (props: { theTextTop: string }) => {
+// const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
 // const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
   // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
-  const [biographyHeight, setBiographyHeight] = useState(0);
-  const textRef = useRef<HTMLDivElement>(null);
+  // const [biographyHeight, setBiographyHeight] = useState(0);
+  // const textRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (textRef.current && props.onHeightChange) {
-      props.onHeightChange(textRef.current.offsetHeight);
-    }
-  }, [props.onHeightChange]);
+  // useEffect(() => {
+  //   if (textRef.current && props.onHeightChange) {
+  //     props.onHeightChange(textRef.current.offsetHeight);
+  //   }
+  // }, [props.onHeightChange]);
   
   return (
     // CHQ: position: sticky would work here excpet I had to disable the vertical scroll os that the 
@@ -848,7 +850,8 @@ const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: nu
         <Note theTextTop={'0%'}/>
       </div>
       <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
-        <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+        {/* <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} /> */}
+        <BiographyText theTextTop={'0%'} />
       </div>
       <div style={{ position: 'absolute', top: '170%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
       {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}

@@ -1,6 +1,6 @@
 // Source: Gemini: 
 
-import React, { useRef, Suspense } from 'react';
+import { useRef, Suspense } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
+// import { Canvas, useFrame, useThree } from '@react-three/fiber'
 // import { OrbitControls, useScroll } from '@react-three/drei';
 import { useScroll } from '@react-three/drei';
 
@@ -37,7 +38,9 @@ const Spheres = () => {
 const Camera = () => {
   const camera = useRef<THREE.PerspectiveCamera>(null!)
   
-  const { gl, camera: defaultCamera } = useThree();
+  // const { gl } = useThree();
+//   const { gl, camera: defaultCamera } = useThree();
+
 
   //   CHQ: added typo below just to better understand the code
   //   Property 'camesra' does not exist on type 'RootState'.ts(2339)
@@ -83,8 +86,8 @@ const Camera = () => {
     camera.current.position.set(0, 2, 10);
     camera.current.lookAt(new THREE.Vector3(0, 0, 0));
   }, []);
-
-  return (<perspectiveCamera ref={camera} fov={75} aspect={gl.getCurrentViewport(targetSphereIndex) / gl.viewport.height} near={0.1} far={100} />);
+  // return (<perspectiveCamera ref={camera} fov={75} aspect={gl.getCurrentViewport(targetSphereIndex) / gl.viewport.height} near={0.1} far={100} />);
+  return (<perspectiveCamera ref={camera} fov={75} near={0.1} far={100} />);
 };
 
 const Scene = () => {

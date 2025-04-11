@@ -444,7 +444,9 @@ const TextOverlayAbout2 = () => {
 
 const AIMaze: React.FC = () => {
   const [cameraZoom, setCameraZoom] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
+  // const [isScrolling, setIsScrolling] = useState(false);
+
+  const isScrolling = false;
 
   useEffect(() => {
     const handleScroll = () => {

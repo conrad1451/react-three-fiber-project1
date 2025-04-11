@@ -200,11 +200,11 @@ function MyTorus(props: ThreeElements['mesh'])
       {...props}
       ref={ref}
       // scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
+      onClick={() => click(!clicked)}
     // onClick={click(!clicked)}
-      onPointerOver={(event) => hover(true)}
+      onPointerOver={() => hover(true)}
     // onPointerOver={hover(true)}
-      onPointerOut={(event) => hover(false)}>
+      onPointerOut={() => hover(false)}>
     {/* onPointerOut={hover(false)}> */}
 
           <torusGeometry args={[torusSize*(10/3), torusSize*(1), 32, 256]} />
@@ -218,9 +218,9 @@ function MyTorus(props: ThreeElements['mesh'])
   )
 }
 
-function quadraticPath(aVal: number, xVal: number, hVal:number){
-  return ((aVal)*(xVal-hVal)*(xVal-hVal));  
-}
+// function quadraticPath(aVal: number, xVal: number, hVal:number){
+//   return ((aVal)*(xVal-hVal)*(xVal-hVal));  
+// }
 
 // function quarticPath(aVal: number, xVal: number, hVal:number){
 //   return ((aVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal)*(xVal-hVal));  
@@ -230,24 +230,25 @@ function powerPath(thePower: number, aVal: number, xVal: number, hVal:number){
   return ((aVal)*Math.pow((xVal-hVal), thePower));  
 }
 
-function quarticPath(aVal: number, xVal: number, hVal:number){
-  return ((aVal)*Math.pow((xVal-hVal), 4 / 1));  
-}
+// function quarticPath(aVal: number, xVal: number, hVal:number){
+//   return ((aVal)*Math.pow((xVal-hVal), 4 / 1));  
+// }
 
 function calcInputForDesiredOutputPowerPath(thePower: number, aVal: number, yVal: number, hVal:number){
   return (Math.pow((yVal/aVal), 1 / thePower)+hVal);  
 }
 
-function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:number){
-  return (Math.pow((yVal/aVal), 1 / 4)+hVal);  
-}
+// function calcInputForDesiredOutputquarticPath(aVal: number, yVal: number, hVal:number){
+//   return (Math.pow((yVal/aVal), 1 / 4)+hVal);  
+// }
 
 
 const CameraPanning: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
 
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPosition = 0;
   const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -261,8 +262,8 @@ const CameraPanning: React.FC = () => {
  
   const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 120, 2);
 
-  useFrame((state, delta) => {
-    time.current += 0.02; // Adjust speed 
+  useFrame((_state, delta) => {
+    time.current += 0.02*delta; // Adjust speed 
 
     if(isAutopanning){
       movementSelection.current = time.current;

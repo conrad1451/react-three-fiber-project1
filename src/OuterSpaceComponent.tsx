@@ -853,7 +853,10 @@ const OuterTextblock = (props: { theTextTop: string }) => {
         {/* <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} /> */}
         <BiographyText theTextTop={'0%'} />
       </div>
-      <div style={{ position: 'absolute', top: '170%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+
+      <ProjectsText theTextTop={'40%'} />
+
+      <div style={{ position: 'absolute', top: '190%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
       {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
         <ProjectList theTextTop={'0%'} />
         {/* <ProjectList theTextTop={'50%'} /> */}

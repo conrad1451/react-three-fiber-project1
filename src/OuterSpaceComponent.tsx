@@ -444,6 +444,41 @@ function MySpaceScene(){
   )
 }
 
+
+const TitleText = (props: { theTextTop: string}) => {
+  
+  return(
+    <div
+    style={{
+      position: 'absolute',
+      top: props.theTextTop, // Use the state variable
+      // top: (props.theTextTop)+'%', // Use the state variable
+      transform: 'translate(-50%, -50%)',
+      width: 'auto',
+      zIndex: 10,
+    }}
+    >
+      <div
+      style={{
+        position: 'relative',
+        transform: 'translate(-10%, -30%)',
+        left: '75%',
+        margin: '1vw',
+        padding: '1vw',
+        width: '45vw',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      >
+        <div className="html-overlay">
+          <h1>Conrad</h1>
+          <p>🚀 Welcome to my portfolio!</p>
+        </div>
+    </div>
+  </div>);
+
+}
+
 const Note = (props: { theTextTop: string}) => {
   
   return(
@@ -696,6 +731,7 @@ const OuterTextblock = (props: { theTextTop: string }) => {
     // scroll activated three fiber animations function baed on scroll
     <div style={{ position: 'absolute', top: props.theTextTop, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
       {/* <p>Use up and down arrow keys to scroll</p> */}
+      <TitleText theTextTop={'-80%'}/>
       <div style={{ position: 'absolute', top: -440, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto', color:'white', fontSize: '20px'}}>
         <Note theTextTop={'0%'}/>
       </div>
@@ -714,7 +750,7 @@ const OuterTextblock = (props: { theTextTop: string }) => {
 }
  
 const TextOverlayAbout2 = () => {
-  const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
+  const [textTop, setTextTop] = useState('120%'); // Adjust initial top position
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {

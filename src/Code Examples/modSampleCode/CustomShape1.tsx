@@ -17,9 +17,9 @@ export const CustomShape = () => {
 
   const geometry = new THREE.ShapeGeometry(shape);
 
-  useFrame((state, delta) => {
-    meshRef.current.rotation.x += 0.01;
-    meshRef.current.rotation.y += 0.01;
+  useFrame((_state, delta) => {
+    meshRef.current.rotation.x += 0.01*delta;
+    meshRef.current.rotation.y += 0.01*delta;
   });
 
   return (

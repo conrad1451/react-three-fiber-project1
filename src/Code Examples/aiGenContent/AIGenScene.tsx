@@ -17,7 +17,7 @@ const Sphere = () => {
   const ref = useRef<THREE.Mesh>(null!)
 
   // Animate the sphere (optional - you can remove this)
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     //   mesh.current.rotation.x += 0.01 * delta;
     //   mesh.current.rotation.y += 0.005 * delta;
     ref.current.rotation.x += 0.01 * delta;

@@ -614,18 +614,18 @@ const ProjectsText = (props: {theTextTop: string}) => {
 const ProjectList = (props: {theTextTop: string}) => {
 
   const projectName = [
-    "Creative Contentions", 
+    "Creative Contentions",
     "Bee Swarm Simulator (bss)"
   ];
   const projectSubtext1 = [
-    "(2D block world game)", 
+    "(2D block world game)",
     "(spin-off of block character 3D world in roblox)"
-  ]; 
+  ];
   const projectSubtext2 = [
-    "Programming Language: Processing (based on Java)", 
+    "Programming Language: Processing (based on Java)",
     "Programming Language: JavaScript (aka VanillaJS)"
   ];
-  
+
   const projectPurposes = [
     "This is a 2D world of block characters, where the player can break down and collect blocks, craft new items, and fight mobs and monsters.",
     "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
@@ -634,13 +634,13 @@ const ProjectList = (props: {theTextTop: string}) => {
   const contributionPoints = [
     [
       "Reduced CPU utilization by 42% through code refactoring to reduce time complexity of several sections of code.",
-      "Reduced time complexity of multiple functions from linear to constant time and removed duplicated sections of code.", 
+      "Reduced time complexity of multiple functions from linear to constant time and removed duplicated sections of code.",
       "Make technical trade-offs to balance time complexity with file size to ensure execution speed at scale."
     ],
     [
         "Improved readability of code by introducing comments for all edits from May 2023 and onward",
         "Improved playability of game in several ways, including \n\t*Making all menus easily accessible by keyboard shortcut \n\t*Fixed an issue where the camera panning following the mouse position prevented the user from being able to select menus with the mouse"
-    ] 
+    ]
   ];
 
   const theURLs = [
@@ -649,77 +649,65 @@ const ProjectList = (props: {theTextTop: string}) => {
 
   return(
     <div
-    style={{
-      position: 'absolute',
-      top: props.theTextTop, // Use the state variable
-      transform: 'translate(-50%, -50%)',
-      width: 'auto',
-      zIndex: 10,
-    }}
+      style={{
+        position: 'absolute',
+        top: props.theTextTop, // Use the state variable
+        transform: 'translate(-50%, -50%)',
+        width: 'auto',
+        zIndex: 10,
+      }}
     >
       <div
-      style={{
-        position: 'relative',
-        transform: 'translate(-10%, -30%)',
-        left: '75%',
-        margin: '1vw',
-        padding: '1vw',
-        width: '75vw', // CHQ: NOT for the width of each project tile
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-      > 
-      <div style={{ display: 'flex' }}>
-          {Array(2)
-          .fill(null)
-          .map((_, index) => (
-            <div className="html-overlay" key={index} style={{ 
-          width: '75%', // 25 shrinks width of each projec ttile and pushes them upward, but 75 and 95 same. and 45 seems to shift it slightly downwards
-          // maybe when this width is sufficently smaller than partent width that the block gets squeezed and pushe dverticall upward
-          display: 'flex', 
+        style={{
+          position: 'relative',
+          transform: 'translate(-10%, -30%)',
+          left: '75%',
           margin: '1vw',
-          padding: '2vw'
-        }}>
-          <h1>{projectName[index]}</h1>
-          <p>{projectSubtext1[index]}</p>
-          <p>{projectSubtext2[index]}</p>
-          {/* <p><b>Purpose:</b></p> */}
-          {/* <h3><b>Purpose:</b></h3> */}
-          <h2>Purpose:</h2> 
-          <p>{projectPurposes[index]}</p>
-          <h2>Contributions:</h2> 
-          <p>{contributionPoints[index]}</p>
-          <h2>Link:</h2> {/* [1] */}
-          {/* CHQ: Did not work */}
-          {/* <a href={theURLs[index]} rel="noreferrer"> 
-            {theURLs[index]}
-          </a> */}
-
-          {/* CHQ: Still did not work */}
-          {/* <a href={theURLs[index]}> 
-            {theURLs[index]}
-          </a> */}
-
-          <LinkButton
-              url={theURLs[index]}
-              buttonText={"Go to " + projectName[index]}
-              style={{
-                padding: '10px 20px',
-                fontSize: '16px',
-                backgroundColor: 'lightblue',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '20px', // Add some spacing above the button
-              }}
-            />
-
+          padding: '1vw',
+          width: '75vw', // CHQ: NOT for the width of each project tile
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div style={{ display: 'flex' }}>
+          {Array(2)
+            .fill(null)
+            .map((_, index) => (
+              <div className="html-overlay" key={index} style={{
+                width: '75%',
+                display: 'flex',
+                margin: '1vw',
+                padding: '2vw',
+              }}>
+                <h1>{projectName[index]}</h1>
+                <p>{projectSubtext1[index]}</p>
+                <p>{projectSubtext2[index]}</p>
+                <h2>Purpose:</h2>
+                <p>{projectPurposes[index]}</p>
+                <h2>Contributions:</h2>
+                <ul> {/* Start of the unordered list for contributions */}
+                  {contributionPoints[index].map((point, pointIndex) => (
+                    <li key={pointIndex}>{point}</li>  
+                  ))}
+                </ul> {/* End of the unordered list */}
+                <h2>Link:</h2> {/* [1] */}
+                <LinkButton
+                  url={theURLs[index]}
+                  buttonText={"Go to " + projectName[index]}
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: 'lightblue',
+                    border: 'none',
+                    cursor: 'pointer',
+                    marginTop: '20px', // Add some spacing above the button
+                  }}
+                />
+              </div>
+            ))}
         </div>
-      ))}
       </div>
     </div>
-  </div>
-
- 
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import OuterSpaceComponent from './OuterSpaceComponent'
 
@@ -41,16 +41,16 @@ const colorMap = useLoader(TextureLoader, 'cross.jpg')
 }
 
 
-function MyScene() {
-  return (
-    <Canvas>
-      <Suspense fallback={null}>
-        {/* <SceneMulti /> */}
-        <Scene />
-      </Suspense>
-    </Canvas>
-  )
-}
+// function MyScene() {
+//   return (
+//     <Canvas>
+//       <Suspense fallback={null}>
+//         {/* <SceneMulti /> */}
+//         <Scene />
+//       </Suspense>
+//     </Canvas>
+//   )
+// }
 
 
 

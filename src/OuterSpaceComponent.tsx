@@ -14,9 +14,9 @@ import { Canvas, useLoader, useFrame, ThreeElements, useThree } from '@react-thr
 
 // import { OrbitControls, Text } from '@react-three/drei';
  
-interface TextDisplayProps {
-  text: string;
-}
+// interface TextDisplayProps {
+//   text: string;
+// }
 
 
 interface LinkButtonProps {
@@ -46,25 +46,25 @@ const LinkButton: React.FC<LinkButtonProps> = ({ url, buttonText, style }) => {
 // FIXME: FOr some reason this functional component causes the code to crash. 
 //       Will debug later
 // [1]
-function InfoOfBoundingBody() {
-  // const elementRef = useRef(null);
+// function InfoOfBoundingBody() {
+//   // const elementRef = useRef(null);
 
-  // for below code I got the error 
-  /**Type 'MutableRefObject<HTMLElement>' is not assignable to type 'LegacyRef<HTMLDivElement> | undefined'.
-  Type 'MutableRefObject<HTMLElement>' is not assignable to type 'RefObject<HTMLDivElement>'.
-    Types of property 'current' are incompatible.
-      Property 'align' is missing in type 'HTMLElement' but required in type 'HTMLDivElement'. */
-  // const elementRef = useRef(document.body); 
+//   // for below code I got the error 
+//   /**Type 'MutableRefObject<HTMLElement>' is not assignable to type 'LegacyRef<HTMLDivElement> | undefined'.
+//   Type 'MutableRefObject<HTMLElement>' is not assignable to type 'RefObject<HTMLDivElement>'.
+//     Types of property 'current' are incompatible.
+//       Property 'align' is missing in type 'HTMLElement' but required in type 'HTMLDivElement'. */
+//   // const elementRef = useRef(document.body); 
 
-  const elementRef = useRef<HTMLDivElement>(null!);
+//   const elementRef = useRef<HTMLDivElement>(null!);
  
-  useEffect(() => {
-    const rect = elementRef.current.getBoundingClientRect();
-    console.log(rect);
-  }, []);
+//   useEffect(() => {
+//     const rect = elementRef.current.getBoundingClientRect();
+//     console.log(rect);
+//   }, []);
 
-  return <div ref={elementRef}>This is an element</div>;
-}
+//   return <div ref={elementRef}>This is an element</div>;
+// }
 
 // const ref: React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material | THREE.Material[], THREE.Object3DEventMap>>
 
@@ -156,11 +156,11 @@ function Box(props: ThreeElements['mesh']) {
       {...props}
       ref={ref}
       // scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
+      onClick={() => click(!clicked)}
     // onClick={click(!clicked)}
-      onPointerOver={(event) => hover(true)}
+      onPointerOver={() => hover(true)}
     // onPointerOver={hover(true)}
-      onPointerOut={(event) => hover(false)}>
+      onPointerOut={() => hover(false)}>
     {/* onPointerOut={hover(false)}> */}
       {/* <boxGeometry args={[3, 3, 3]} /> */}
       <boxGeometry args={[1, 1, 1]} />
@@ -181,16 +181,15 @@ function MyTorus(props: ThreeElements['mesh'])
   const [clicked, click] = useState(false)
   // const colorMap = useLoader(THREE.TextureLoader, 'profilePic.png')
 
-  let chosenDirection = 1;
+  // let chosenDirection = 1;
 
+  // CHQ: edits suggested by Gemini AI
   // CHQ: automatically rotate cubes along x axis
-  useFrame((state, delta) => {
-    
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.005;
-    ref.current.rotation.z += 0.01;
-    // ref.current.rotation.x += (delta*chosenDirection);
-    // OrthographicCamera()
+  useFrame((_state, delta) => {
+    const rotationSpeed = 0.5; // Adjust as needed
+    ref.current.rotation.x += rotationSpeed * delta;
+    ref.current.rotation.y += (rotationSpeed / 2) * delta;
+    ref.current.rotation.z += rotationSpeed * delta;
   })
 
   // const torusSize = 3;
@@ -321,59 +320,59 @@ const CameraPanning: React.FC = () => {
  
 // Type 'string' is not assignable to type 'TextDisplayProps'.ts(2322)
 // const TextDisplay = (props: {theText: TextDisplayProps}) => {
-const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
+// const TextDisplay = (props: {theText: string, verticalIncrement: number}) => {
 
-// const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
-  const meshRef = useRef<THREE.Mesh>(null!);
+// // const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
+//   const meshRef = useRef<THREE.Mesh>(null!);
 
-  const backgroundRef = useRef<THREE.Mesh>(null!);
+//   const backgroundRef = useRef<THREE.Mesh>(null!);
 
-  const time = useRef(0);
+//   const time = useRef(0);
 
-  // const myWidth = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x);
-  const myWidth = useRef(0);
+//   // const myWidth = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x);
+//   const myWidth = useRef(0);
 
-  useFrame(() => {
-    if (meshRef.current && meshRef.current.geometry) {
-      myWidth.current = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x)
-      time.current += 0.02; // Adjust speed of oscillation
-      const oscillation = (props.verticalIncrement) * Math.sin(time.current) + 0
-      // meshRef.current.position.y += props.verticalIncrement;
-      meshRef.current.position.y = oscillation;
-      // meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
-      // meshRef.current.geometry.computeBoundingBox();
-      // const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
-      // myWidth = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
-      // console.log(`Text width (bounding box): ${width}`);
-    }
-    if (backgroundRef.current) {
-      time.current += 0.02; // Adjust speed of oscillation
-      const oscillation = Math.sin(time.current) * (props.verticalIncrement); // Adjust amplitude of oscillation
-      // backgroundRef.current.position.y += props.verticalIncrement;
-      backgroundRef.current.position.y = oscillation;
-      // backgroundRef.current.rotation.y += 0.01; // Optional: Rotate the text
-    }
-  });
+//   useFrame(() => {
+//     if (meshRef.current && meshRef.current.geometry) {
+//       myWidth.current = 1.2*(meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x)
+//       time.current += 0.02; // Adjust speed of oscillation
+//       const oscillation = (props.verticalIncrement) * Math.sin(time.current) + 0
+//       // meshRef.current.position.y += props.verticalIncrement;
+//       meshRef.current.position.y = oscillation;
+//       // meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+//       // meshRef.current.geometry.computeBoundingBox();
+//       // const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+//       // myWidth = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+//       // console.log(`Text width (bounding box): ${width}`);
+//     }
+//     if (backgroundRef.current) {
+//       time.current += 0.02; // Adjust speed of oscillation
+//       const oscillation = Math.sin(time.current) * (props.verticalIncrement); // Adjust amplitude of oscillation
+//       // backgroundRef.current.position.y += props.verticalIncrement;
+//       backgroundRef.current.position.y = oscillation;
+//       // backgroundRef.current.rotation.y += 0.01; // Optional: Rotate the text
+//     }
+//   });
 
-  return (
-    <group>
-      <mesh ref={backgroundRef} position={[0, 0, -0.1]}> {/* Black background mesh */}
-        <planeGeometry args={[myWidth.current, 1]} /> {/* Adjust size as needed */}
-        <meshBasicMaterial color="black" transparent opacity={0.5} />
-      </mesh>
-      <Text
-        ref={meshRef}
-        position={[0, 0, 0]}
-        fontSize={0.5}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {props.theText}
-      </Text>
-    </group>
-  );
-};
+//   return (
+//     <group>
+//       <mesh ref={backgroundRef} position={[0, 0, -0.1]}> {/* Black background mesh */}
+//         <planeGeometry args={[myWidth.current, 1]} /> {/* Adjust size as needed */}
+//         <meshBasicMaterial color="black" transparent opacity={0.5} />
+//       </mesh>
+//       <Text
+//         ref={meshRef}
+//         position={[0, 0, 0]}
+//         fontSize={0.5}
+//         color="white"
+//         anchorX="center"
+//         anchorY="middle"
+//       >
+//         {props.theText}
+//       </Text>
+//     </group>
+//   );
+// };
 
 const Background = () => {
     // const mesh = useRef();

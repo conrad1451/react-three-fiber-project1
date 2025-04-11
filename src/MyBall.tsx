@@ -71,6 +71,8 @@ export function Ball(props: ThreeElements['mesh']) {
 //   const colorMap = useLoader(TextureLoader, 'cross.jpg')
 
   // CHQ: automatically rotate ball along y axis
+  //   useFrame((delta) => {
+
   useFrame((state, delta) => {
     // ref.current.rotation.y += delta;
     ref.current.rotation.y += (clicked ? delta : -delta);

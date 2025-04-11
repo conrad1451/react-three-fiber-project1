@@ -1,10 +1,10 @@
 // Source: https://www.google.com/search?client=firefox-b-1-d&q=pass+in+path+to+texture+as+a+parameter+to+a+react+three+fiber+component
 // search "pass in path to texture as a parameter to a react three fiber component"
 
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
-import { ThreeElements } from '@react-three/fiber'
+// import { ThreeElements } from '@react-three/fiber'
 
 function TexturedSphere(props: { texturePath: string }) {
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react'
+import { useRef, useState, useEffect, Suspense } from 'react'
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import { FirstPersonControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -356,17 +356,18 @@ const ProjectList = (props: {theTextTop: string}) => {
   )
 }
 
-const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+const OuterTextblock = (props: { theTextTop: string }) => {
+// const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
 // const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
   // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
   // const [biographyHeight, setBiographyHeight] = useState(0);
-  const textRef = useRef<HTMLDivElement>(null);
+  // const textRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (textRef.current && props.onHeightChange) {
-      props.onHeightChange(textRef.current.offsetHeight);
-    }
-  }, [props.onHeightChange]);
+  // useEffect(() => {
+  //   if (textRef.current && props.onHeightChange) {
+  //     props.onHeightChange(textRef.current.offsetHeight);
+  //   }
+  // }, [props.onHeightChange]);
   
   return (
     // CHQ: position: sticky would work here excpet I had to disable the vertical scroll os that the 
@@ -389,7 +390,7 @@ const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: nu
  
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
-  const [biographyHeight, setBiographyHeight] = useState(0);
+  // const [biographyHeight, setBiographyHeight] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -425,7 +426,8 @@ const TextOverlayAbout2 = () => {
 
   return (
     // textTop
-    <OuterTextblock theTextTop={textTop} onHeightChange={setBiographyHeight} />
+    <OuterTextblock theTextTop={textTop} />
+    // <OuterTextblock theTextTop={textTop} onHeightChange={setBiographyHeight} />
     // <OuterTextblock theTextTop={'0%'} onHeightChange={setBiographyHeight} />
 
     // <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>

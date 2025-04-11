@@ -3,9 +3,10 @@ import { useState, useRef, useEffect } from 'react';
 import OuterSpaceComponent from './OuterSpaceComponent'
 
 
-import { Suspense } from 'react'
-import { Canvas, useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
+// import { Suspense } from 'react'
+// import { Canvas, useLoader } from '@react-three/fiber'
+// import { useLoader } from '@react-three/fiber'
+// import { TextureLoader } from 'three'
 
 // Source: 
 // [1]: https://www.google.com/search?client=firefox-b-1-d&sca_esv=e780fd848325495e&q=reactjs+make+component+full+screen&spell=1&sa=X&ved=2ahUKEwi4zJ7r47CLAxXOGVkFHRO0PXQQBSgAegQICxAB (from GeminiAI response to search "reactjs make component full screen")
@@ -14,31 +15,31 @@ import { TextureLoader } from 'three'
 
 
 
-function Scene() {
-//   const colorMap = useLoader(TextureLoader, 'PavingStones092_1K_Color.jpg')
-const colorMap = useLoader(TextureLoader, 'cross.jpg')
-// const colorMap = useLoader(TextureLoader, 'moon.jpg')
+// function Scene() {
+// //   const colorMap = useLoader(TextureLoader, 'PavingStones092_1K_Color.jpg')
+// const colorMap = useLoader(TextureLoader, 'cross.jpg')
+// // const colorMap = useLoader(TextureLoader, 'moon.jpg')
 
-  return (
-    <>
-      <ambientLight intensity={0.2} />
-      <directionalLight />
-      <mesh>
-        <sphereGeometry args={[1, 32, 32]} />
-        {/* CHQ: below also worked */}
-        {/* <coneGeometry args={[1, 32, 32]} /> */}
-        <meshStandardMaterial
-          displacementScale={0.2}
-          map={colorMap}
-          displacementMap={colorMap}
-        //   normalMap={colorMap}
-        //   roughnessMap={colorMap}
-        //   aoMap={colorMap}
-        />
-      </mesh>
-    </>
-  )
-}
+//   return (
+//     <>
+//       <ambientLight intensity={0.2} />
+//       <directionalLight />
+//       <mesh>
+//         <sphereGeometry args={[1, 32, 32]} />
+//         {/* CHQ: below also worked */}
+//         {/* <coneGeometry args={[1, 32, 32]} /> */}
+//         <meshStandardMaterial
+//           displacementScale={0.2}
+//           map={colorMap}
+//           displacementMap={colorMap}
+//         //   normalMap={colorMap}
+//         //   roughnessMap={colorMap}
+//         //   aoMap={colorMap}
+//         />
+//       </mesh>
+//     </>
+//   )
+// }
 
 
 // function MyScene() {

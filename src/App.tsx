@@ -19,7 +19,6 @@ import OuterSpaceComponent from './OuterSpaceComponent'
 // import AIGenComponent from './Code Examples/aiGenContent/AICareerZoom'
 
 // import AIScrollSphereGrow from './Code Examples/aiGenContent/AIScrollSphereGrow'
-// import AIMazeOld from './Code Examples/aiGenContent/AIMazeOld'
 
 // import Scene from './TextureTest3'
 

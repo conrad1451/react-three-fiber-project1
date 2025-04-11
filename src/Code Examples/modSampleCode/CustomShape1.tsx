@@ -1,7 +1,7 @@
 // Source: https://www.google.com/search?client=firefox-b-1-d&q=code+for+threejs+shape+in+react+three+fiber (search: code for threejs shape in react three fiber)
 
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 export const CustomShape = () => {

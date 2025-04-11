@@ -90,11 +90,11 @@ export function Ball(props: ThreeElements['mesh']) {
       {...props}
       ref={ref}
     //   scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
+      onClick={() => click(!clicked)}
     // onClick={click(!clicked)}
-      onPointerOver={(event) => hover(true)}
+      onPointerOver={() => hover(true)}
     // onPointerOver={hover(true)}
-      onPointerOut={(event) => hover(false)}>
+      onPointerOut={() => hover(false)}>
     {/* onPointerOut={hover(false)}> */}
       {/* <boxGeometry args={[1, 1, 1]} /> */}
       <sphereGeometry args={[1, 32, 32]} />

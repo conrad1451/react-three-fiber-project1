@@ -1,41 +1,41 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-interface TextDisplayProps {
-  text: string;
-}
+// interface TextDisplayProps {
+//   text: string;
+// }
 
-const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
-  const meshRef = React.useRef<THREE.Mesh>(null!);
+// const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => {
+//   const meshRef = React.useRef<THREE.Mesh>(null!);
 
-  useFrame(() => {
-    if (meshRef.current) {
-        meshRef.current.position.y += 0.01;
-    //   meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
-    }
-  });
+//   useFrame(() => {
+//     if (meshRef.current) {
+//         meshRef.current.position.y += 0.01;
+//     //   meshRef.current.rotation.y += 0.01; // Optional: Rotate the text
+//     }
+//   });
 
-  return (
-    <group>
-      <mesh position={[0, 0, -0.1]}> {/* Black background mesh */}
-        <planeGeometry args={[5, 1]} /> {/* Adjust size as needed */}
-        <meshBasicMaterial color="black" transparent opacity={0.5} />
-      </mesh>
-      <Text
-        ref={meshRef}
-        position={[0, 0, 0]}
-        fontSize={0.5}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {text}
-      </Text>
-    </group>
-  );
-};
+//   return (
+//     <group>
+//       <mesh position={[0, 0, -0.1]}> {/* Black background mesh */}
+//         <planeGeometry args={[5, 1]} /> {/* Adjust size as needed */}
+//         <meshBasicMaterial color="black" transparent opacity={0.5} />
+//       </mesh>
+//       <Text
+//         ref={meshRef}
+//         position={[0, 0, 0]}
+//         fontSize={0.5}
+//         color="white"
+//         anchorX="center"
+//         anchorY="middle"
+//       >
+//         {text}
+//       </Text>
+//     </group>
+//   );
+// };
 
 const ScrollingText: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);

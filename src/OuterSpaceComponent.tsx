@@ -244,14 +244,14 @@ function calcInputForDesiredOutputPowerPath(thePower: number, aVal: number, yVal
 
 
 const CameraPanning: React.FC = () => {
-  const meshRef = useRef<THREE.Mesh>(null!);
+  // const meshRef = useRef<THREE.Mesh>(null!);
   const { camera } = useThree();
 
   // const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollPosition = 0;
-  const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
+  // const scrollPosition = 0;
+  // const [textRect, setTextRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const time = useRef(0);
   const movementSpeed = useRef(0.002);
@@ -286,22 +286,22 @@ const CameraPanning: React.FC = () => {
     // OrthographicCamera()
   })
 
-  useEffect(() => {
-    if (meshRef.current && meshRef.current.geometry && scrollContainerRef.current) {
-      meshRef.current.geometry.computeBoundingBox();
-      const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
-      const height = meshRef.current.geometry.boundingBox!.max.y - meshRef.current.geometry.boundingBox!.min.y;
+  // useEffect(() => {
+  //   if (meshRef.current && meshRef.current.geometry && scrollContainerRef.current) {
+  //     meshRef.current.geometry.computeBoundingBox();
+  //     const width = meshRef.current.geometry.boundingBox!.max.x - meshRef.current.geometry.boundingBox!.min.x;
+  //     const height = meshRef.current.geometry.boundingBox!.max.y - meshRef.current.geometry.boundingBox!.min.y;
 
-      const canvasRect = scrollContainerRef.current.getBoundingClientRect();
-      const textPosition = {
-        top: canvasRect.top, // Adjust as needed
-        left: canvasRect.left, // Adjust as needed
-        width: width,
-        height: height,
-      };
-      setTextRect(textPosition);
-    }
-  }, [scrollPosition]);   
+  //     const canvasRect = scrollContainerRef.current.getBoundingClientRect();
+  //     const textPosition = {
+  //       top: canvasRect.top, // Adjust as needed
+  //       left: canvasRect.left, // Adjust as needed
+  //       width: width,
+  //       height: height,
+  //     };
+  //     setTextRect(textPosition);
+  //   }
+  // }, [scrollPosition]);   
 
   return (
     // <Text

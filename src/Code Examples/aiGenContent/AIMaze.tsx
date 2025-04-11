@@ -101,19 +101,19 @@ const Spheres: React.FC = () => {
   return <>{spheres}</>;
 };
 
-const Scene: React.FC = () => {
-  return (
-    <>
-      {/* <CameraControl1 /> */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 5]} intensity={0.8} />
-      <GrowingSphere />
+// const Scene: React.FC = () => {
+//   return (
+//     <>
+//       {/* <CameraControl1 /> */}
+//       <ambientLight intensity={0.5} />
+//       <directionalLight position={[10, 10, 5]} intensity={0.8} />
+//       <GrowingSphere />
 
-      <Floor />
-      <Spheres />
-    </>
-  );
-};
+//       <Floor />
+//       <Spheres />
+//     </>
+//   );
+// };
 
 const Background = () => {
     // const mesh = useRef();
@@ -144,15 +144,15 @@ function MySpaceScene(){
 }
 
 // const BiographyText = (props: {theTextTop: number}) => {
-// const BiographyText = (props: {theTextTop: string}) => {
-const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
-  const textRef = useRef<HTMLDivElement>(null);
+const BiographyText = (props: {theTextTop: string}) => {
+// const BiographyText = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
+  // const textRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (textRef.current && props.onHeightChange) {
-      props.onHeightChange(textRef.current.offsetHeight);
-    }
-  }, [props.onHeightChange]);
+  // useEffect(() => {
+  //   if (textRef.current && props.onHeightChange) {
+  //     props.onHeightChange(textRef.current.offsetHeight);
+  //   }
+  // }, [props.onHeightChange]);
 
   return(
     <div
@@ -359,7 +359,7 @@ const ProjectList = (props: {theTextTop: string}) => {
 const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
 // const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
   // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
-  const [biographyHeight, setBiographyHeight] = useState(0);
+  // const [biographyHeight, setBiographyHeight] = useState(0);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -373,14 +373,16 @@ const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: nu
     // scroll activated three fiber animations function baed on scroll
     <div style={{ position: 'absolute', top: props.theTextTop, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
       <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
-        <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
+        {/* <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} /> */}
+        <BiographyText theTextTop={'0%'}  />
+
       </div>
       <div style={{ position: 'absolute', top: '140%', left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
       {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
         <ProjectList theTextTop={'0%'} />
         {/* <ProjectList theTextTop={'50%'} /> */}
       </div>
-      {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
+      <ProjectsText theTextTop={'0%'} />
     </div>
   );
 }
@@ -413,13 +415,13 @@ const TextOverlayAbout2 = () => {
     };
   }, []);
 
-  const getProjectsTop = () => {
-    return `${parseFloat(textTop) + biographyHeight + 20}px`; // Adjust spacing
-  };
+  // const getProjectsTop = () => {
+  //   return `${parseFloat(textTop) + biographyHeight + 20}px`; // Adjust spacing
+  // };
 
-  const getProjectsListTop = () => {
-    return `50%`; // Center the project list vertically (adjust as needed)
-  };
+  // const getProjectsListTop = () => {
+  //   return `50%`; // Center the project list vertically (adjust as needed)
+  // };
 
   return (
     // textTop

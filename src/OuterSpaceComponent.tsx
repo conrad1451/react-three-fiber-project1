@@ -139,7 +139,7 @@ function Box(props: ThreeElements['mesh']) {
   let chosenDirection = 1;
 
   // CHQ: automatically rotate cubes along x axis
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     
     if(clicked)
     {
@@ -263,7 +263,7 @@ const CameraPanning: React.FC = () => {
   const xForBoundaryYVal = calcInputForDesiredOutputPowerPath(4, 0.01, 120, 2);
 
   useFrame((_state, delta) => {
-    time.current += 0.02*delta; // Adjust speed 
+    time.current += 0.02*(delta/delta); // Adjust speed 
 
     if(isAutopanning){
       movementSelection.current = time.current;

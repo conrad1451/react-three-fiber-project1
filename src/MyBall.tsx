@@ -73,7 +73,7 @@ export function Ball(props: ThreeElements['mesh']) {
   // CHQ: automatically rotate ball along y axis
   //   useFrame((delta) => {
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     // ref.current.rotation.y += delta;
     ref.current.rotation.y += (clicked ? delta : -delta);
 
@@ -92,9 +92,9 @@ export function Ball(props: ThreeElements['mesh']) {
       {...props}
       ref={ref}
     //   scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
-       onPointerOver={(event) => hover(true)}
-       onPointerOut={(event) => hover(false)}>
+      onClick={() => click(!clicked)}
+       onPointerOver={() => hover(true)}
+       onPointerOut={() => hover(false)}>
        <sphereGeometry args={[3, 32, 32]} />
       <meshStandardMaterial 
         color={hovered ? 'limegreen' : 'white'} 

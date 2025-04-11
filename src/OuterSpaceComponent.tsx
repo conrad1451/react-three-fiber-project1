@@ -444,145 +444,6 @@ function MySpaceScene(){
   )
 }
 
-
-const TemplateOverlayBlock = (props: {blockTitle: string, blockMessage: string, repeatCount: number}) => {
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +props.repeatCount+', 1fr)', width: '100vw' }}>
-      {Array(props.repeatCount).fill(null).map((_, index) => (
-        <div className="html-overlay" key={index}>
-          {/* <h1>{props.blockTitle}</h1> */}
-          <div className="experienceleftside">
-            <h1>{props.blockTitle}</h1>
-            <p>{props.blockMessage}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// const IntroBlock = (props: {widthOfTextOverlaySection: number}) => {
-
-//   const blockCount = 4;
-
-// // function IntroBlock() {
-//   return (
-//         // <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +16+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
-
-//         // <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +4*blockCount+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
-
-//     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' +blockCount+', 1fr)', width: props.widthOfTextOverlaySection+'vw' }}> {/* Container for four overlays */}
-      
-//       {/* const myVector: THREE.Vector3 = new THREE.Vector3(...Array(3).fill(null).map(()=>THREE.MathUtils.randFloatSpread(150))); */}
-
-//     {/* <div>HI</div> */}
-    // <TemplateOverlayBlock blockTitle='Conrad' blockMessage='🚀 Welcome to my portfolio!' repeatCount={2}/>
-      
-//       {/* <div className="html-overlay">
-//         <div className="experienceleftside">
-//            <p>🚀 Welcome to my portfolio!</p>
-//         </div>
-//       </div>
-//       <div className="html-overlay">
-//         <div className="experienceleftside">
-//            <p>🚀 Welcome to my portfolio!</p>
-//         </div>
-//       </div>
-//       <div className="html-overlay">
-//         <div className="experienceleftside">
-//            <p>🚀 Welcome to my portfolio!</p>
-//         </div>
-//       </div>
-//       <div className="html-overlay">
-//         <div className="experienceleftside">
-//           <h1>Conrad</h1>
-//           <p>🚀 Welcome to my portfolio!</p>
-//         </div>
-//       </div> */}
-//     </div>
-//   );
-// }
-
-
-// const TextOverlayTest1 = (props: { topAligned: boolean }) => {
-//   return (
-//     <div style={{ display: 'flex', justifyContent: 'center' }}>
-//       <div style={{ display: 'flex' }}>
-//         {Array(4).fill(null).map((_, index) => (
-//           <div className="html-overlay" key={index}>
-//             {/* <div className="experienceleftside"> */}
-//               <h1>Conrad</h1>
-//               <p>🚀 Welcome to my portfolio!</p>
-//             {/* </div> */}
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// const TextOverlayTitle = () => {
-//   return (
-//     <div style={{ position: 'relative', transform: 'translate(-50%, -30%)',
-//       left: '75%', width: '10vw', display: 'flex', justifyContent: 'center' }}>
-//       <div style={{ display: 'flex' }}>
-//         {Array(1).fill(null).map((_, index) => (
-//           <div className="html-overlay" key={index}>
-//                <h1>Conrad</h1>
-//               <p>🚀 Welcome to my portfolio!</p>
-//            </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// const TextOverlayAbout2 = () => {
-// //   const { camera } = useThree();
-// //   const htmlOverlayRef = useRef<HTMLDivElement>(null);
-
-// // useFrame(() => {
-// //     if (htmlOverlayRef.current) {
-// //         const scrollAmount = camera.position.z * 1;
-// //         htmlOverlayRef.current.style.transform = `translateY(-${scrollAmount}px)`;
-// //     }
-// // });
-//   return (
-//     <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
-//       left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
-
-//       <div style={{ display: 'flex' }}>
-//         {Array(1).fill(null).map((_, index) => (
-//           <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
-//                <h1>Conrad</h1>
-//               <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
-//               <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
-//            </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// const TextOverlayAbout = () => {
-//   return (
-//     <div style={{ position: 'relative', transform: 'translate(-10%, -30%)',
-//       left: '75%', margin: '1vw', padding: '1vw',  width: '45vw', display: 'flex', justifyContent: 'center' }}>
-//       <div style={{ display: 'flex' }}>
-//         {Array(1).fill(null).map((_, index) => (
-//           <div style={{margin: '0vw', padding: '3vw'}} className="html-overlay" key={index}>
-//                <h1>Conrad</h1>
-//               <p> My name is Conrad Hansen-Quartey. I live in West Haven, CT. I majored in Engineering Science. </p>
-//               <p> With a combination of self-taught and academic training, I have both the passion and engineering skill of a professional software engineer. Having self-taught programming languages throughout high school and learning computer programming design principles and techniques in college, I have become a well-rounded computer scientist. I have a passion not only for developing software, but for solving problems in creative ways. I am deeply committed to using my talents and gifts to serve those around me and society in general.  </p>
-//            </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
 const Note = (props: { theTextTop: string}) => {
   
   return(
@@ -828,21 +689,10 @@ const ProjectList = (props: {theTextTop: string}) => {
 }
 
 
-const OuterTextblock = (props: { theTextTop: string }) => {
-// const OuterTextblock = (props: { theTextTop: string; onHeightChange: (height: number) => void }) => {
-// const OuterTextblock = (props: {onHeightChange: (height: number) => void }) => {
-  // const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
-  // const [biographyHeight, setBiographyHeight] = useState(0);
-  // const textRef = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   if (textRef.current && props.onHeightChange) {
-  //     props.onHeightChange(textRef.current.offsetHeight);
-  //   }
-  // }, [props.onHeightChange]);
+const OuterTextblock = (props: { theTextTop: string }) => { 
   
   return (
-    // CHQ: position: sticky would work here excpet I had to disable the vertical scroll os that the 
+    // CHQ: position: sticky would work here except I had to disable the vertical scroll os that the 
     // scroll activated three fiber animations function baed on scroll
     <div style={{ position: 'absolute', top: props.theTextTop, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
       {/* <p>Use up and down arrow keys to scroll</p> */}
@@ -850,25 +700,21 @@ const OuterTextblock = (props: { theTextTop: string }) => {
         <Note theTextTop={'0%'}/>
       </div>
       <div style={{ position: 'absolute', top: 10, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
-        {/* <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} /> */}
         <BiographyText theTextTop={'0%'} />
       </div>
 
       <ProjectsText theTextTop={'40%'} />
 
       <div style={{ position: 'absolute', top: '190%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
-      {/* <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}> */}
         <ProjectList theTextTop={'0%'} />
         {/* <ProjectList theTextTop={'50%'} /> */}
       </div>
-      {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
     </div>
   );
 }
  
 const TextOverlayAbout2 = () => {
   const [textTop, setTextTop] = useState('10%'); // Adjust initial top position
-  // const [biographyHeight, setBiographyHeight] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -894,35 +740,12 @@ const TextOverlayAbout2 = () => {
     };
   }, []);
 
-  // const getProjectsTop = () => {
-  //   return `${parseFloat(textTop) + biographyHeight + 20}px`; // Adjust spacing
-  // };
-
-  // const getProjectsListTop = () => {
-  //   return `50%`; // Center the project list vertically (adjust as needed)
-  // };
-
   return (
-    // textTop
     <OuterTextblock theTextTop={textTop} />
-    // <OuterTextblock theTextTop={textTop} onHeightChange={setBiographyHeight} />
-    // <OuterTextblock theTextTop={'0%'} onHeightChange={setBiographyHeight} />
-
-    // <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
-    //   <div style={{ position: 'absolute', top: textTop, left: '2%', width: '45%', zIndex: 10, pointerEvents: 'auto' }}>
-    //     <BiographyText theTextTop={'0%'} onHeightChange={setBiographyHeight} />
-    //   </div>
-    //   <div style={{ position: 'absolute', top: getProjectsListTop(), left: '50%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
-    //     <ProjectList theTextTop={'0%'} />
-    //   </div>
-    //   {/* <ProjectsText theTextTop={getProjectsTop()} /> */}
-    // </div>
   );
 };
 
 export default function OuterSpaceComponent(props: { windowMinimized: boolean }) {
-  // const [isScrolling, setIsScrolling] = useState(false);
-
   const isScrolling = false;
 
   useEffect(() => {

@@ -611,7 +611,7 @@ const ProjectsText = (props: {theTextTop: string}) => {
 }
 
  
-const ProjectList = (props: {theTextTop: string}) => {
+const ProjectList = () => {
 
   const projectName = [
     "Monarch Butterfly",
@@ -749,7 +749,7 @@ const OuterTextblock = (props: { theTextTop: string }) => {
       <ProjectsText theTextTop={'40%'} />
 
       <div style={{ position: 'relative', width: '100%', zIndex: 10, pointerEvents: 'auto', marginTop: '60px' }}>
-        <ProjectList theTextTop={'0%'} />
+        <ProjectList />
         {/* <ProjectList theTextTop={'50%'} /> */}
       </div>
     </div>

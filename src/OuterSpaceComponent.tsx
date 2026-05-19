@@ -614,33 +614,47 @@ const ProjectsText = (props: {theTextTop: string}) => {
 const ProjectList = (props: {theTextTop: string}) => {
 
   const projectName = [
-    "Creative Contentions",
+    "Monarch Butterfly",
+    "Notion PKM CLI",
     "Bee Swarm Simulator (bss)"
   ];
   const projectSubtext1 = [
-    "(2D block world game)",
+    "(Python-based CLI tool)",
     "(spin-off of block character 3D world in roblox)"
   ];
   const projectSubtext2 = [
-    "Programming Language: Processing (based on Java)",
+    "Programming Language: Python",
     "Programming Language: JavaScript (aka VanillaJS)"
   ];
 
   const projectPurposes = [
-    "This is a 2D world of block characters, where the player can break down and collect blocks, craft new items, and fight mobs and monsters.",
-    "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+       "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
+       "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
   ];
 
   const contributionPoints = [
-    [
-      "Reduced CPU utilization by 42% through code refactoring to reduce time complexity of several sections of code.",
-      "Reduced time complexity of multiple functions from linear to constant time and removed duplicated sections of code.",
-      "Make technical trade-offs to balance time complexity with file size to ensure execution speed at scale."
+    [ "Designed an interactive Text User Interface (TUI) with keypress-driven navigation, database selection, and a per-database command menu using the click and readchar libraries",
+     "Implemented full CRUD operations (search, read, create, append) against the Notion API with results scoped to the user-selected database",
+     "Rendered clickable terminal hyperlinks in search results with graceful degradation for unsupported terminals",
+     "Secured API credentials via .env file and excluded sensitive config from version control using .gitignore",
+     "Structured project for local configurability with a databases.json schema for mapping human-readable names to Notion database IDs",
+     "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
     ],
     [
-        "Improved readability of code by introducing comments for all edits from May 2023 and onward",
-        "Improved playability of game in several ways, including \n\t*Making all menus easily accessible by keyboard shortcut \n\t*Fixed an issue where the camera panning following the mouse position prevented the user from being able to select menus with the mouse"
-    ]
+        "(Currently undergoing major refactoring, including 
+     \n\t•  Migrated from a single monolithic `index.js` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic.
+\n\t•  Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility.
+
+\n\t•  Fixed critical bugs: duplicate `onkeydown` handlers silently overwriting each other, `console.log = 0` killing browser logging, and unsafe array loops crashing on empty collections.
+
+\n\t•  Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and `float()` casts in shaders.
+
+\n\t•  Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.
+
+\n\t•  Upgraded token rendering to GPU instancing (`drawElementsInstanced`) and switched from a dynamic JS array to a fixed-size `Float32Array` in the draw loop for better performance.
+
+\n\t•  Added a proper game state foundation: a `world.step(dt)` physics object, a `triggers` array with zone callbacks, and a "move first, check collisions second" update loop order.   \n\t• Making all menus easily accessible by keyboard shortcut" 
+           ]
   ];
 
   const theURLs = [

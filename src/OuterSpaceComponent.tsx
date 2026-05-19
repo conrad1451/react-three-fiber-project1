@@ -749,9 +749,15 @@ const OuterTextblock = (props: { theTextTop: string }) => {
         <BiographyText theTextTop={'0%'} />
       </div>
 
-      <ProjectsText theTextTop={'40%'} />
+      {/* <ProjectsText theTextTop={'40%'} /> */}
 
       <div style={{ position: 'relative', width: '100%', zIndex: 10, pointerEvents: 'auto', marginTop: '60px' }}>
+        {/* CHQ: Claude AI Add the PROJECTS heading inline here instead */}
+        <div style={{ width: '100%', textAlign: 'center', pointerEvents: 'auto' }}>
+          <div className="html-overlay" style={{ display: 'inline-block', margin: '1vw', padding: '1vw' }}>
+            <h1>PROJECTS</h1>
+          </div>
+        </div>
         <ProjectList />
         {/* <ProjectList theTextTop={'50%'} /> */}
       </div>

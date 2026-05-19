@@ -619,20 +619,33 @@ const ProjectList = (props: {theTextTop: string}) => {
     "Bee Swarm Simulator (bss)"
   ];
   const projectSubtext1 = [
+    "Web App",
     "(Python-based CLI tool)",
     "(spin-off of block character 3D world in roblox)"
   ];
   const projectSubtext2 = [
+    "Programming Language: NextJS (a ReactJS Framework)",
     "Programming Language: Python",
     "Programming Language: JavaScript (aka VanillaJS)"
   ];
 
   const projectPurposes = [
+       "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
        "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
        "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
   ];
 
-  const contributionPoints = [
+  const contributionPoints = [    
+   [
+    "Built single-page application using React.js (React TypeScript) with Vite and deployed on Vercel",
+    "Managed state and lifecycle using React hooks (useState, useMemo, useEffect)",
+    "Maintained code quality using ESLint for consistent styling and formatting.",
+    "Created PostgreSQL Docker Container in a Google Cloud Platform (GCP) Virtual Machine and connected to Flask ETL.",
+    "Migrated PostgreSQL container from GCP to Digital Ocean Virtual Machine, and then to AivenDB",
+    "Tested API endpoints for CORS compliance with CORS Tester.",
+    "Created the workflow Monarch ETL Pipeline in GitHub Actions and set to automatically run on a schedule.",
+    "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
+    ],
     [ "Designed an interactive Text User Interface (TUI) with keypress-driven navigation, database selection, and a per-database command menu using the click and readchar libraries",
      "Implemented full CRUD operations (search, read, create, append) against the Notion API with results scoped to the user-selected database",
      "Rendered clickable terminal hyperlinks in search results with graceful degradation for unsupported terminals",
@@ -658,7 +671,7 @@ const ProjectList = (props: {theTextTop: string}) => {
   // ]
 
    const theURLs = [
-    "https://github.com/conrad1451/notion-pkm-cli", "https://github.com/conrad1451/bss"
+    "https://monarchbutterflywatch.vercel.app", "https://github.com/conrad1451/notion-pkm-cli", "https://github.com/conrad1451/bss"
   ]
 
   return(

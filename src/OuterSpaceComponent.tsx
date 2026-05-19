@@ -610,7 +610,8 @@ const ProjectsText = (props: {theTextTop: string}) => {
 
 }
 
- 
+
+// CHQ: Claude AI removed unused props
 const ProjectList = () => {
 
   const projectName = [
@@ -672,6 +673,7 @@ const ProjectList = () => {
     "https://github.com/conrad1451/bss"
   ];
 
+ // CHQ: Claude AI fixed the misalignemnt that became more pronounced when zooming out
   return (
     <div
       style={{
@@ -694,6 +696,7 @@ const ProjectList = () => {
           {Array(3).fill(null).map((_, index) => (
             <div className="html-overlay" key={index} style={{
               width: '45%',
+              boxSizing: 'border-box',   // CHQ: Claude AI edited
               display: 'flex',
               flexDirection: 'column',
               margin: '1vw',

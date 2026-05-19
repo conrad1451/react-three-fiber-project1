@@ -657,8 +657,12 @@ const ProjectList = (props: {theTextTop: string}) => {
            ]
   ];
 
-  const theURLs = [
-    "https://creative-contentions.vercel.app", "https://conrad1451.github.io/bss"
+  // const  = [
+  //   "https://creative-contentions.vercel.app", "https://conrad1451.github.io/bss"
+  // ]
+
+   const theURLs = [
+    "https://github.com/conrad1451/notion-pkm-cli", "https://github.com/conrad1451/bss"
   ]
 
   return(

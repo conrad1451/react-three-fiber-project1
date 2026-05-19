@@ -630,111 +630,109 @@ const ProjectList = (props: {theTextTop: string}) => {
   ];
 
   const projectPurposes = [
-       "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
-       "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
-       "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+    "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
+    "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
+    "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
   ];
 
   const contributionPoints = [    
-   [
-    "Built single-page application using React.js (React TypeScript) with Vite and deployed on Vercel",
-    "Managed state and lifecycle using React hooks (useState, useMemo, useEffect)",
-    "Maintained code quality using ESLint for consistent styling and formatting.",
-    "Created PostgreSQL Docker Container in a Google Cloud Platform (GCP) Virtual Machine and connected to Flask ETL.",
-    "Migrated PostgreSQL container from GCP to Digital Ocean Virtual Machine, and then to AivenDB",
-    "Tested API endpoints for CORS compliance with CORS Tester.",
-    "Created the workflow Monarch ETL Pipeline in GitHub Actions and set to automatically run on a schedule.",
-    "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
+    [
+      "Built single-page application using React.js (React TypeScript) with Vite and deployed on Vercel",
+      "Managed state and lifecycle using React hooks (useState, useMemo, useEffect)",
+      "Maintained code quality using ESLint for consistent styling and formatting.",
+      "Created PostgreSQL Docker Container in a Google Cloud Platform (GCP) Virtual Machine and connected to Flask ETL.",
+      "Migrated PostgreSQL container from GCP to Digital Ocean Virtual Machine, and then to AivenDB",
+      "Tested API endpoints for CORS compliance with CORS Tester.",
+      "Created the workflow Monarch ETL Pipeline in GitHub Actions and set to automatically run on a schedule.",
+      "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
     ],
-    [ "Designed an interactive Text User Interface (TUI) with keypress-driven navigation, database selection, and a per-database command menu using the click and readchar libraries",
-     "Implemented full CRUD operations (search, read, create, append) against the Notion API with results scoped to the user-selected database",
-     "Rendered clickable terminal hyperlinks in search results with graceful degradation for unsupported terminals",
-     "Secured API credentials via .env file and excluded sensitive config from version control using .gitignore",
-     "Structured project for local configurability with a databases.json schema for mapping human-readable names to Notion database IDs",
-     "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
+    [
+      "Designed an interactive Text User Interface (TUI) with keypress-driven navigation, database selection, and a per-database command menu using the click and readchar libraries",
+      "Implemented full CRUD operations (search, read, create, append) against the Notion API with results scoped to the user-selected database",
+      "Rendered clickable terminal hyperlinks in search results with graceful degradation for unsupported terminals",
+      "Secured API credentials via .env file and excluded sensitive config from version control using .gitignore",
+      "Structured project for local configurability with a databases.json schema for mapping human-readable names to Notion database IDs",
+      "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
     ],
-    ["Migrated from a single monolithic \`index.js\` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic.",
-     "Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility.",
-   "Fixed critical bugs: duplicate \`onkeydown\` handlers silently overwriting each other, \`console.log = 0\` killing browser logging, and unsafe array loops crashing on empty collections.",
-    "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and \`float()\` casts in shaders.",
-     "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.",
-      "Upgraded token rendering to GPU instancing (\`drawElementsInstanced\`) and switched from a dynamic JS array to a fixed-size \`Float32Array\` in the draw loop for better performance.",
-       "Added a proper game state foundation: a \`world.step(dt)\` physics object, a \`triggers\` array with zone callbacks, and a move first, check collisions second update loop order.",
-        "Making all menus easily accessible by keyboard shortcut"
-  ]
+    [
+      "Migrated from a single monolithic `index.js` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic.",
+      "Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility.",
+      "Fixed critical bugs: duplicate `onkeydown` handlers silently overwriting each other, `console.log = 0` killing browser logging, and unsafe array loops crashing on empty collections.",
+      "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and `float()` casts in shaders.",
+      "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.",
+      "Upgraded token rendering to GPU instancing (`drawElementsInstanced`) and switched from a dynamic JS array to a fixed-size `Float32Array` in the draw loop for better performance.",
+      "Added a proper game state foundation: a `world.step(dt)` physics object, a `triggers` array with zone callbacks, and a move first, check collisions second update loop order.",
+      "Making all menus easily accessible by keyboard shortcut"
+    ]
   ];
 
-  // const  = [
-  //   "https://creative-contentions.vercel.app", "https://conrad1451.github.io/bss"
-  // ]
+  const theURLs = [
+    "https://monarchbutterflywatch.vercel.app",
+    "https://github.com/conrad1451/notion-pkm-cli",
+    "https://github.com/conrad1451/bss"
+  ];
 
-   const theURLs = [
-    "https://monarchbutterflywatch.vercel.app", "https://github.com/conrad1451/notion-pkm-cli", "https://github.com/conrad1451/bss"
-  ]
-
-  return(
+  return (
     <div
       style={{
         position: 'absolute',
-        top: props.theTextTop, // Use the state variable
+        top: props.theTextTop,
         transform: 'translate(-50%, -50%)',
-        width: 'auto',
+        width: '90vw',
         zIndex: 10,
       }}
     >
       <div
         style={{
           position: 'relative',
-          transform: 'translate(-10%, -30%)',
-          left: '75%',
+          left: '0',
           margin: '1vw',
           padding: '1vw',
-          width: '75vw', // CHQ: NOT for the width of each project tile
+          width: '100%',
           display: 'flex',
           justifyContent: 'center',
         }}
       >
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-         {Array(3).fill(null).map((_, index) => (
-           <div className="html-overlay" key={index} style={{
-            width: '45%',  // ~half width so two fit per row
-            display: 'flex',
-            margin: '1vw',
-            padding: '2vw',
-           }}>
-                <h1>{projectName[index]}</h1>
-                <p>{projectSubtext1[index]}</p>
-                <p>{projectSubtext2[index]}</p>
-                <h2>Purpose:</h2>
-                <p>{projectPurposes[index]}</p>
-                <h2>Contributions:</h2>
-                <p>(Currently undergoing major refactoring, including:</p>
-                <ul> {/* Start of the unordered list for contributions */}
-                  {contributionPoints[index].map((point, pointIndex) => (
-                    <li key={pointIndex}>{point}</li>  
-                  ))}
-                </ul> {/* End of the unordered list */}
-                <h2>Link:</h2> {/* [1] */}
-                <LinkButton
-                  url={theURLs[index]}
-                  buttonText={"Go to " + projectName[index]}
-                  style={{
-                    padding: '10px 20px',
-                    fontSize: '16px',
-                    backgroundColor: 'lightblue',
-                    border: 'none',
-                    cursor: 'pointer',
-                    marginTop: '20px', // Add some spacing above the button
-                  }}
-                />
-              </div>
-            ))}
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
+          {Array(3).fill(null).map((_, index) => (
+            <div className="html-overlay" key={index} style={{
+              width: '45%',
+              display: 'flex',
+              flexDirection: 'column',
+              margin: '1vw',
+              padding: '2vw',
+            }}>
+              <h1>{projectName[index]}</h1>
+              <p>{projectSubtext1[index]}</p>
+              <p>{projectSubtext2[index]}</p>
+              <h2>Purpose:</h2>
+              <p>{projectPurposes[index]}</p>
+              <h2>Contributions:</h2>
+              <ul>
+                {contributionPoints[index].map((point, pointIndex) => (
+                  <li key={pointIndex}>{point}</li>
+                ))}
+              </ul>
+              <h2>Link:</h2>
+              <LinkButton
+                url={theURLs[index]}
+                buttonText={"Go to " + projectName[index]}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: '16px',
+                  backgroundColor: 'lightblue',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginTop: '20px',
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 const OuterTextblock = (props: { theTextTop: string }) => { 
   

@@ -675,10 +675,7 @@ const ProjectList = (props: {theTextTop: string}) => {
   return (
     <div
       style={{
-        position: 'absolute',
-        top: props.theTextTop,
-        transform: 'translate(-50%, -50%)',
-        width: '90vw',
+        width: '100%',
         zIndex: 10,
       }}
     >
@@ -751,7 +748,7 @@ const OuterTextblock = (props: { theTextTop: string }) => {
 
       <ProjectsText theTextTop={'40%'} />
 
-      <div style={{ position: 'absolute', top: '190%', left: '35%', transform: 'translateX(-50%)', width: '96%', maxWidth: '1200px', zIndex: 10, pointerEvents: 'auto' }}>
+      <div style={{ position: 'relative', width: '100%', zIndex: 10, pointerEvents: 'auto', marginTop: '60px' }}>
         <ProjectList theTextTop={'0%'} />
         {/* <ProjectList theTextTop={'50%'} /> */}
       </div>

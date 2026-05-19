@@ -653,13 +653,13 @@ const ProjectList = (props: {theTextTop: string}) => {
      "Structured project for local configurability with a databases.json schema for mapping human-readable names to Notion database IDs",
      "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
     ],
-    ["Migrated from a single monolithic \`index.js\` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic."
-     "Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility."
-   "Fixed critical bugs: duplicate \`onkeydown\` handlers silently overwriting each other, \`console.log = 0\` killing browser logging, and unsafe array loops crashing on empty collections."
-    "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and \`float()\` casts in shaders."
-     "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic."
-      "Upgraded token rendering to GPU instancing (\`drawElementsInstanced\`) and switched from a dynamic JS array to a fixed-size \`Float32Array\` in the draw loop for better performance."
-       "Added a proper game state foundation: a \`world.step(dt)\` physics object, a \`triggers\` array with zone callbacks, and a "move first, check collisions second" update loop order."
+    ["Migrated from a single monolithic \`index.js\` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic.",
+     "Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility.",
+   "Fixed critical bugs: duplicate \`onkeydown\` handlers silently overwriting each other, \`console.log = 0\` killing browser logging, and unsafe array loops crashing on empty collections.",
+    "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and \`float()\` casts in shaders.",
+     "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.",
+      "Upgraded token rendering to GPU instancing (\`drawElementsInstanced\`) and switched from a dynamic JS array to a fixed-size \`Float32Array\` in the draw loop for better performance.",
+       "Added a proper game state foundation: a \`world.step(dt)\` physics object, a \`triggers\` array with zone callbacks, and a "move first, check collisions second" update loop order.",
         "Making all menus easily accessible by keyboard shortcut"
   ]
   ];

@@ -695,7 +695,7 @@ const ProjectList = (props: {theTextTop: string}) => {
         }}
       >
         <div style={{ display: 'flex' }}>
-          {Array(2)
+          {Array(projectName.length)
             .fill(null)
             .map((_, index) => (
               <div className="html-overlay" key={index} style={{

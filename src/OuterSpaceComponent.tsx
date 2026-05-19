@@ -694,16 +694,14 @@ const ProjectList = (props: {theTextTop: string}) => {
           justifyContent: 'center',
         }}
       >
-        <div style={{ display: 'flex' }}>
-          {Array(projectName.length)
-            .fill(null)
-            .map((_, index) => (
-              <div className="html-overlay" key={index} style={{
-                width: '75%',
-                display: 'flex',
-                margin: '1vw',
-                padding: '2vw',
-              }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+         {Array(3).fill(null).map((_, index) => (
+           <div className="html-overlay" key={index} style={{
+            width: '45%',  // ~half width so two fit per row
+            display: 'flex',
+            margin: '1vw',
+            padding: '2vw',
+           }}>
                 <h1>{projectName[index]}</h1>
                 <p>{projectSubtext1[index]}</p>
                 <p>{projectSubtext2[index]}</p>

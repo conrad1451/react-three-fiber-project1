@@ -659,7 +659,7 @@ const ProjectList = (props: {theTextTop: string}) => {
     "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and \`float()\` casts in shaders.",
      "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.",
       "Upgraded token rendering to GPU instancing (\`drawElementsInstanced\`) and switched from a dynamic JS array to a fixed-size \`Float32Array\` in the draw loop for better performance.",
-       "Added a proper game state foundation: a \`world.step(dt)\` physics object, a \`triggers\` array with zone callbacks, and a "move first, check collisions second" update loop order.",
+       "Added a proper game state foundation: a \`world.step(dt)\` physics object, a \`triggers\` array with zone callbacks, and a move first, check collisions second update loop order.",
         "Making all menus easily accessible by keyboard shortcut"
   ]
   ];

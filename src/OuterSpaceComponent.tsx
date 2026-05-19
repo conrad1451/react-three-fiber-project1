@@ -670,7 +670,7 @@ const ProjectList = () => {
   const theURLs = [
     "https://monarchbutterflywatch.vercel.app",
     "https://github.com/conrad1451/notion-pkm-cli",
-    "https://github.com/conrad1451/bss"
+    "https://github.com/conrad1451/bss/tree/vanilla-js-version"
   ];
 
  // CHQ: Claude AI fixed the misalignemnt that became more pronounced when zooming out

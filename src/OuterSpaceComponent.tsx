@@ -617,17 +617,20 @@ const ProjectList = () => {
   const projectName = [
     "Monarch Butterfly",
     "Notion PKM CLI",
-    "Arcade Master"
+    "Arcade Master",
+    "TicTacToeBro"
   ];
   const projectSubtext1 = [
     "Web App",
     "(Python-based CLI tool)",
-    "Web App for Arcade Games"
+    "Web App for Arcade Games",
+    "Web App for Tick Tack Toe Game"
   ];
   const projectSubtext2 = [
     "Programming Languages / Frameworks: NextJS (a ReactJS Framework)",
     "Programming Languages / Frameworks: Python",
-    "Programming Languages / Frameworks: ReactJS, Java SpringBoot, MySQL"
+    "Programming Languages / Frameworks: ReactJS, Java SpringBoot, MySQL",
+    "Programming Languages / Frameworks: ReactJS, ExpressJS (NodeJS Framework), MongoDB"
   ];
 
   // const projectPurposes = [
@@ -642,6 +645,7 @@ const ProjectList = () => {
     "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
     "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
    "A full-stack browser-based arcade platform featuring 2048, Tetris, and Ping Pong",
+   "Online game of tick tack toe with multiple board size options.",
   ];
 
   const contributionPoints = [    
@@ -673,6 +677,16 @@ const ProjectList = () => {
      "Designed and developed a Spring Boot REST API with MySQL for persistent score storage, supporting score submission, per-user scores, and game-specific leaderboard retrieval through REST endpoint",
      "Deployed Spring Boot backend on Render in a Docker container, connecting to a cloud MySQL database in TiDB",
      "Backend health monitoring and frontend server wake-up handling to detect Render backend availability before gameplay"
+    ],
+    [
+
+      "Front end Developed a single-page application using React, TypeScript, and Vite, and Material UI, deployed on Vercel",
+      "Integrate Descope SDK for user auth",
+      "Maintained code quality and long-term maintainability through ESLint, reusable React components, and Architecture Decision Records (ADRs) documenting key technical trade-offs", 
+      "Designed and developed a Express.js REST API with MySQL for persistent score storage, supporting score submission, per-user scores, and game-specific leaderboard retrieval through REST endpoint",
+      "Deployed Express.js backend on Render, connecting to a cloud MySQL database in TiDB",
+      "Migrated backend architecture (MySQL/TiDB -> serverless MongoDB Atlas/Mongoose) hosted on Netlify Functions using serverless-http.",
+      "Configured cross-origin resource sharing (CORS) preflight (OPTIONS) handling and Netlify path-rewriting (:splat redirects) to establish seamless communication with the Vercel-hosted frontend."      
     ]
   ];
 
@@ -680,6 +694,7 @@ const ProjectList = () => {
    "https://monarchbutterflywatch.vercel.app",
    "https://github.com/conrad1451/notion-pkm-cli",
    "https://arcademaster.vercel.app",
+   "https://tictactoebro.vercel.app",
    ];
 
  // CHQ: Claude AI fixed the misalignemnt that became more pronounced when zooming out

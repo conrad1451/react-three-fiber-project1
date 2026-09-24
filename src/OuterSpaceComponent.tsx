@@ -617,7 +617,7 @@ const ProjectList = () => {
   const projectName = [
     "Monarch Butterfly",
     "Notion PKM CLI",
-    "Bee Swarm Simulator (bss)"
+    "Arcade Master"
   ];
   const projectSubtext1 = [
     "Web App",

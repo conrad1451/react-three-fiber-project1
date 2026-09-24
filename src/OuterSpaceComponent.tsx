@@ -622,18 +622,26 @@ const ProjectList = () => {
   const projectSubtext1 = [
     "Web App",
     "(Python-based CLI tool)",
-    "(spin-off of block character 3D world in roblox)"
+    "Web App for Arcade Games"
   ];
   const projectSubtext2 = [
-    "Programming Language: NextJS (a ReactJS Framework)",
-    "Programming Language: Python",
-    "Programming Language: JavaScript (aka VanillaJS)"
+    "Programming Languages / Frameworks: NextJS (a ReactJS Framework)",
+    "Programming Languages / Frameworks: Python",
+    "Programming Languages / Frameworks: ReactJS, Java SpringBoot, MySQL"
   ];
 
+  // const projectPurposes = [
+  //   "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
+  //   "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
+  //   "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+  // ];
+
+
+ 
   const projectPurposes = [
     "Website that tracks monarch butterfly sightings in the United States by using a Flask Framework (Python) Extract-Transform-Load (ETL) Pipeline hosted on GitHub Actions to transforms monarch butterfly sightings from Global Biodiversity Information Facility (GBIF) using reverse geocaching for county and city/town of sightings.",
     "Terminal CLI written in Python as a driver for my Notion personal knowledge management (PKM) system",
-    "This is a 3D world of block characters in which the main player controls a swarm of bees. The main player can talk to characters (mostly bears) to receive and complete quests and earn honey and items. The player can use honey to buy bee eggs and items to upgrade their tools and storage pack."
+   "A full-stack browser-based arcade platform featuring 2048, Tetris, and Ping Pong",
   ];
 
   const contributionPoints = [    
@@ -656,22 +664,23 @@ const ProjectList = () => {
       "Enforced code quality with Pylint, achieving a 10/10 lint score across the codebase"
     ],
     [
-      "Migrated from a single monolithic `index.js` to a modular architecture with dedicated files for UI, input, entities, data, and engine logic.",
-      "Replaced a single canvas with a three-canvas WebGL pipeline (3D scene, 2D UI overlay, hidden texture compiler) plus DOM shims for legacy script compatibility.",
-      "Fixed critical bugs: duplicate `onkeydown` handlers silently overwriting each other, `console.log = 0` killing browser logging, and unsafe array loops crashing on empty collections.",
-      "Patched TypeScript and GLSL type errors blocking compilation — null guards on checkpoint state, correct ref signatures, and `float()` casts in shaders.",
-      "Built out a data-driven entity system: static definitions for mobs, quests, NPCs, and physics-capable tokens replace hardcoded imperative logic.",
-      "Upgraded token rendering to GPU instancing (`drawElementsInstanced`) and switched from a dynamic JS array to a fixed-size `Float32Array` in the draw loop for better performance.",
-      "Added a proper game state foundation: a `world.step(dt)` physics object, a `triggers` array with zone callbacks, and a move first, check collisions second update loop order.",
-      "Making all menus easily accessible by keyboard shortcut"
+     "Developed a single-page application using React, TypeScript, and Vite, and Material UI, deployed on Vercel",
+     "Implemented client-side routing, Redux state management, and responsive layouts across desktop and mobile devices",
+     "Implemented interactive 2048, Tetris, and Ping Pong games with keyboard, swipe, and touch controls, including game state management, collision detection, scoring, line clearing, animations, and game-over/win conditions",
+     "Maintained code quality and long-term maintainability through ESLint, reusable React components, and Architecture Decision Records (ADRs) documenting key technical trade-offs", 
+     "Wrote 34 automated component/integration tests using Vitest and React Testing Library, covering username validation, routing, Redux state, and server pinging",
+     "Integrated an advertising network to monetize the platform, implementing route-based ad visibility to display ads on non-game pages while preserving a full-screen gameplay experience",
+     "Designed and developed a Spring Boot REST API with MySQL for persistent score storage, supporting score submission, per-user scores, and game-specific leaderboard retrieval through REST endpoint",
+     "Deployed Spring Boot backend on Render in a Docker container, connecting to a cloud MySQL database in TiDB",
+     "Backend health monitoring and frontend server wake-up handling to detect Render backend availability before gameplay"
     ]
   ];
 
   const theURLs = [
-    "https://monarchbutterflywatch.vercel.app",
-    "https://github.com/conrad1451/notion-pkm-cli",
-    "https://github.com/conrad1451/bss/tree/vanilla-js-version"
-  ];
+   "https://monarchbutterflywatch.vercel.app",
+   "https://github.com/conrad1451/notion-pkm-cli",
+   "https://arcademaster.vercel.app",
+   ];
 
  // CHQ: Claude AI fixed the misalignemnt that became more pronounced when zooming out
   return (

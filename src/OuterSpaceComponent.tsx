@@ -521,6 +521,7 @@ const BiographyText = (props: { theTextTop: string }) => {
   //   }
   // }, [props.onHeightChange]);
 
+
   return(
     <div
     style={{
@@ -613,6 +614,9 @@ const BiographyText = (props: { theTextTop: string }) => {
 
 // CHQ: Claude AI removed unused props
 const ProjectList = () => {
+
+
+  const listSize: number = 4;
 
   const projectName = [
     "Monarch Butterfly",
@@ -717,7 +721,7 @@ const ProjectList = () => {
         }}
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
-          {Array(3).fill(null).map((_, index) => (
+          {Array(listSize).fill(null).map((_, index) => (
             <div className="html-overlay" key={index} style={{
               width: '45%',
               boxSizing: 'border-box',   // CHQ: Claude AI edited

@@ -577,38 +577,38 @@ const BiographyText = (props: { theTextTop: string }) => {
 
 }
 
-const ProjectsText = (props: {theTextTop: string}) => {
-  return(
-    <div
-    style={{
-      position: 'absolute',
-      top: props.theTextTop, // Use the state variable
-      transform: 'translate(-50%, -50%)',
-      width: 'auto',
-      zIndex: 10,
-    }}
-    >
-      <div
-      style={{
-        position: 'relative',
-        transform: 'translate(-10%, -30%)',
-        left: '75%',
-        margin: '1vw',
-        padding: '1vw',
-        width: '45vw',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-      >
-        <div style={{ display: 'flex' }}>
-          <div className="html-overlay">
-              <h1>PROJECTS</h1>
-            </div> 
-      </div>
-    </div>
-  </div>);
+// const ProjectsText = (props: {theTextTop: string}) => {
+//   return(
+//     <div
+//     style={{
+//       position: 'absolute',
+//       top: props.theTextTop, // Use the state variable
+//       transform: 'translate(-50%, -50%)',
+//       width: 'auto',
+//       zIndex: 10,
+//     }}
+//     >
+//       <div
+//       style={{
+//         position: 'relative',
+//         transform: 'translate(-10%, -30%)',
+//         left: '75%',
+//         margin: '1vw',
+//         padding: '1vw',
+//         width: '45vw',
+//         display: 'flex',
+//         justifyContent: 'center',
+//       }}
+//       >
+//         <div style={{ display: 'flex' }}>
+//           <div className="html-overlay">
+//               <h1>PROJECTS</h1>
+//             </div> 
+//       </div>
+//     </div>
+//   </div>);
 
-}
+// }
 
 
 // CHQ: Claude AI removed unused props
